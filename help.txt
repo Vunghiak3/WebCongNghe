@@ -1,0 +1,28 @@
+-- npm init
+
+-- npm install express
+
+// save
+-- npm install nodemon
+
+// show http request and time send request
+-- npm install morgan --save-dev
+
+// Template engine
+-- npm install express-handlebars@3.1.0
+
+---> model handlebars:
+
+---- app.js
+|___ views
+      |---- home.handlebars
+      |____ layouts
+             |____ main.handlebars
+
+// SCSS
+-- npm install node-sass --save-dev
+
+
+##Run Terminal
+-- npm run start
+-- npm run watch
