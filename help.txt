@@ -13,9 +13,9 @@
 
 ---> model handlebars:
 
----- app.js
+____ app.js
 |___ views
-      |---- home.handlebars
+      |____ home.handlebars
       |____ layouts
              |____ main.handlebars
 
