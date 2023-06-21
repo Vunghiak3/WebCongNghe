@@ -1,21 +1,41 @@
-<div class="menu">
-  <div class="logo">
-    <a href="/">
-        <img src="imgs/logo.png" alt="" class="logo-img" />
-    </a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" style="margin-right:50px!important;" href="/">SalesShop</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home
+          <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/search">Search</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        class="form-control mr-sm-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button
+        class="btn btn-outline-success my-2 my-sm-0"
+        type="submit"
+      >Search</button>
+    </form>
   </div>
-  <div class="menu-item">
-    <a href="#">Máy tính</a>
-  </div>
-  <div class="menu-item">
-    <a href="#">Điện thoại</a>
-  </div>
-  <div class="menu-item">
-    <a href="#">Sản phẩm</a>
-  </div>
-  <div class="search-box">
-    <input type="text" placeholder="Tìm kiếm..." />
-    <button type="button">Tìm kiếm</button>
-  </div>
-  <button class="btnLogin" type="button">Đăng nhập</button>
-</div>
+</nav>

@@ -2,76 +2,235 @@
   padding: 0;
   margin: 0;
   text-decoration: none;
-  list-style: none; }
+  list-style: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif; }
 
-.menu {
+:root {
+  --max-width: 1200px; }
+
+.technique-container {
+  background-color: #d4d4d4;
+  padding: 150px 0; }
+
+/* css section 1 */
+.technique-wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  height: 30px;
-  overflow: hidden; }
+  align-items: center; }
 
-.menu-item {
-  cursor: pointer; }
-
-.menu-item:nth-child(4) {
-  margin-right: 20px; }
-
-.menu-item a {
-  color: white;
-  padding: 20px 30px; }
-
-.menu-item a:hover {
-  background-color: whitesmoke;
-  color: black;
-  transition: all 0.2s linear; }
-
-.logo {
-  margin-right: auto;
-  cursor: pointer; }
-
-.logo-img {
-  height: 120px; }
-
-.search-box {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  padding: 5px;
-  border-radius: 5px;
-  width: 300px; }
-
-.search-box input[type="text"] {
-  border: none;
-  padding: 5px;
-  font-size: 16px;
-  flex-grow: 1;
-  outline: none; }
-
-.search-box button {
-  background-color: #333;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  margin-left: 10px;
-  cursor: pointer; }
-
-.btnLogin {
-  margin-left: 50px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer; }
-
-.footer {
-  background-color: #333;
-  color: white;
-  padding: 20px;
+.tech-title_header {
   text-align: center; }
 
-.footer a {
+.tech-title_header .tt1 {
   color: white;
-  text-decoration: none; }
+  font-size: 70px;
+  letter-spacing: 2px; }
+
+.tech-title_header .tt2 {
+  font-size: 30px;
+  margin: 10px 0; }
+
+.shop-now {
+  color: white;
+  background-color: #868686;
+  padding: 15px 35px;
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 25px; }
+
+.tech-img_header img {
+  height: 500px; }
+
+/* css seciton 2 */
+.product-option_container {
+  padding: 100px 0;
+  background-color: #f5f5f5; }
+
+.product-wrapper {
+  display: flex;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  justify-content: space-between; }
+
+.device-content {
+  text-align: center; }
+
+.device-content img {
+  height: 350px; }
+
+.device-content p {
+  font-size: 40px;
+  margin: 20px 0; }
+
+.view-more {
+  font-size: 20px;
+  padding: 10px 0;
+  font-weight: bolder;
+  position: relative; }
+
+.view-more::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.1s ease-in-out, transform 0.1s ease-in-out; }
+
+.view-more:hover::before {
+  width: 100%; }
+
+/* css section 3 */
+.top-product_container {
+  padding: 50px 0; }
+
+.top-product_wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center; }
+
+.top-title_header {
+  text-align: center; }
+
+.top-title_header div {
+  font-size: 35px; }
+
+.top-title_header p {
+  color: gray;
+  margin: 20px 0; }
+
+.top-product_content {
+  display: flex;
+  justify-content: space-between;
+  margin: 60px 0; }
+
+.top-proItem {
+  padding: 10px; }
+
+.top-proItem img {
+  height: 250px; }
+
+.top-proItem .name-proItem {
+  font-size: 18px;
+  margin: 10px 0; }
+
+.top-proItem .price-proItem {
+  margin-bottom: 20px; }
+
+.top-proItem:hover {
+  background-color: #dedbdb;
+  transition: all 0.1s linear; }
+
+/* css section 4 */
+.new-product_container {
+  background-color: #a5a5a5; }
+
+.new-product_wrapper {
+  max-width: calc(var(--max-width) + 200px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.shop-now {
+  background-color: white;
+  color: black; }
+
+.content-product_wrapper .tt1 {
+  font-size: 30px; }
+
+.content-product_wrapper .tt2 {
+  font-size: 70px;
+  font-weight: bolder;
+  margin-bottom: 20px; }
+
+/* css section 5 */
+.blogs-container {
+  padding: 50px 0; }
+
+.blogs-wrapper {
+  max-width: calc(var(--max-width) + 200px);
+  margin: 0 auto;
+  text-align: center; }
+
+.blog-title_header .tt1 {
+  font-size: 45px; }
+
+.blogs-container .tt2 {
+  color: #a6a4a4;
+  font-size: 18px;
+  margin: 20px 0; }
+
+.blogs-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 60px 0; }
+
+.build {
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5); }
+
+.clean {
+  border-radius: 10px; }
+
+.item-blog p {
+  font-size: 23px;
+  margin: 10px 0; }
+
+.read-more {
+  font-size: 20px;
+  padding: 10px 0;
+  position: relative;
+  color: #de4545; }
+
+.read-more::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #de4545;
+  transition: width 0.1s ease-in-out, transform 0.1s ease-in-out; }
+
+.read-more:hover::before {
+  width: 100%; }
+
+.view-all-post {
+  font-size: 30px;
+  padding: 10px 0;
+  border-bottom: 1px solid black; }
+
+.view-all-post:hover {
+  color: #595959;
+  border-bottom-color: #595959; }
+
+/* css section 6 */
+.instagram-container {
+  padding: 150px 0;
+  background-image: url(/imgs/background-instagram.png);
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.insta-wrapper {
+  text-align: center; }
+
+.title-insta {
+  font-size: 60px; }
+
+.insta-wrapper p {
+  font-size: 20px;
+  margin: 10px 0; }
+
+.btn-Follow {
+  background-color: #f0efef;
+  display: inline-block;
+  padding: 20px 80px;
+  font-size: 25px;
+  border-radius: 50px;
+  margin-top: 40px; }

@@ -1,0 +1,170 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --maxWidth: 1000px;
+}
+
+/* css title Log In */
+.header-container {
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.layout_title {
+  background-image: url(/imgs/background-login.png);
+  padding: 150px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(2px);
+}
+
+.title-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 50px;
+}
+
+.title-header span {
+  color: rgb(216, 215, 215);
+  font-size: 20px;
+}
+
+.page-home {
+  color: white;
+}
+
+.page-home i {
+  color: white;
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+/* css content-main */
+.content-main {
+  padding: 100px 0;
+}
+
+.wrapper-login-regis {
+  display: flex;
+  max-width: var(--maxWidth);
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+/* css login-container */
+.title-login,
+.title-register {
+  font-size: 30px;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.username-login label,
+.password-login label {
+  font-size: 20px;
+}
+
+#username-login,
+#password-login,
+#username-register,
+#password-register,
+#again-pass,
+#fullname,
+#address {
+  margin: 20px 0;
+  line-height: 35px;
+  width: 370px;
+  height: 30px;
+  outline: none;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+#username-login:focus,
+#password-login:focus,
+#username-register:focus,
+#password-register:focus,
+#again-pass:focus,
+#fullname:focus,
+#address:focus {
+  border-color: rgb(34, 104, 245);
+}
+
+.remember-me {
+  margin: 20px 0px;
+  font-size: 18px;
+}
+
+#remember {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+}
+
+.btnLogin,
+.btnRegister {
+  background-color: white;
+  padding: 20px 60px;
+  border-radius: 15px;
+  font-size: 20px;
+  margin-top: 20px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.btnLogin:active,
+.btnRegister:active {
+  background-color: rgb(219, 217, 217);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.forgot-password {
+  margin-left: 30px;
+  font-size: 18px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+/* css service-container */
+.service-container {
+  background-color: #faf4f4;
+  padding: 100px 0;
+}
+
+.wrapper-service {
+  max-width: calc(var(--maxWidth) + 200px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-service {
+  width: 350px;
+}
+
+.title-service {
+  font-size: 40px;
+  font-weight: lighter;
+}
+
+.content-service {
+  color: gray;
+  font-size: 18px;
+}

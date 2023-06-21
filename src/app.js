@@ -23,8 +23,19 @@ app.set("views", path.join(__dirname, "resources\\views"));
 
 
 
-app.use("/", (req, res) => {
-  res.render("home");
+app.get("/", (req, res) => {
+  res.render("home", {
+    title: "Home",
+    linkcss: "/css/app.css",
+  });
+});
+
+app.get("/login", (req, res) => {
+  res.render("login", {
+    title: "Login",
+    linkcss: "/css/login.css",
+    linkjs: "/js/login.js"
+  });
 });
 
 app.listen(PORT, () => {
