@@ -38,6 +38,14 @@ app.get("/login", (req, res) => {
   });
 });
 
+app.get("/product", (req, res) => {
+  res.render("product", {
+    title: "Product",
+    linkcss: "/css/product.css",
+    // linkjs: "/js/product.js"
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Listening ${PORT}...`);
 });
