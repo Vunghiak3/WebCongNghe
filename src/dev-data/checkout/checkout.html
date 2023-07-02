@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="checkout.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Check Out</title>
+  </head>
+  <body>
+    <div class="container">
+      <main>
+        <section class="title-header_container">
+          <p class="tt1">Checkout</p>
+          <span class="tt2">
+            <a href="../home/home.html">
+              Home
+              <i class="fa-solid fa-chevron-right"></i>
+            </a>
+            Phone
+          </span>
+        </section>
+        <section class="checkout-container">
+          <div class="checkout-wrapper">
+            <div class="delivery-address">
+              <div class="title-address">
+                <i class="fa-solid fa-location-dot"></i>
+                Delivery Address
+              </div>
+              <form class="form-product">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" /><br />
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" /><br />
+
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" /><br />
+
+                <label for="number-phone">Number phone:</label>
+                <input
+                  type="text"
+                  id="number-phone"
+                  name="number-phone"
+                /><br />
+              </form>
+            </div>
+            <div class="product-container">
+              <div class="infor-product">
+                <table class="table-product">
+                  <thead class="product-header">
+                    <tr>
+                      <th class="name-column name-product">Product</th>
+                      <th class="name-column quantity-product"></th>
+                      <th class="name-column subtotal-product">Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody class="product-body">
+                    <tr class="item-product">
+                      <td class="name">IPhone 14</td>
+                      <td class="quantity">x 2</td>
+                      <td class="price">30.000.000 VND</td>
+                    </tr>
+                    <tr class="item-product">
+                      <td class="name">IPhone13</td>
+                      <td class="quantity">x 1</td>
+                      <td class="price">35.000.000 VND</td>
+                    </tr>
+                    <tr class="item-product">
+                      <td class="name">Z Flip 4</td>
+                      <td class="quantity">x 3</td>
+                      <td class="price">50.000.000 VND</td>
+                    </tr>
+                    <!-- thêm các hàng khác cho sản phẩm khác -->
+                  </tbody>
+                  <tfoot class="product-foot">
+                    <tr>
+                      <td colspan="2" class="subtotal">Subtotal:</td>
+                      <td class="subtotal-price"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" class="total">Total:</td>
+                      <td class="total-price"></td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <div class="payment-method">
+                <h2 class="title-payment">Payment methods</h2>
+                <div class="payment-options">
+                  <div class="payment-option">
+                    <input
+                      type="radio"
+                      name="payment-method"
+                      id="cash-on-delivery"
+                      value="cash-on-delivery"
+                      checked
+                    />
+                    <label for="cash-on-delivery">Payment on delivery</label>
+                  </div>
+                  <div class="payment-option">
+                    <input
+                      type="radio"
+                      name="payment-method"
+                      id="momo"
+                      value="momo"
+                    />
+                    <label for="momo">Payment via momo</label>
+                  </div>
+                </div>
+                <div class="momo-payment">
+                  <!-- Phần tử chứa phương thức thanh toán qua Momo -->
+                  <div class="momo-payment-details">
+                    <p>Vui lòng chuyển khoản đến số tài khoản Momo sau:</p>
+                    <p>Số điện thoại: 0123456789</p>
+                    <p>Số tiền: <input type="number" /> đồng</p>
+                    <p>Nội dung: <input type="text" /></p>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-placeOrder">
+                <button id="place-order-button">Place Order</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="service-container">
+            <div class="wrapper-service">
+              <div class="item-service">
+                <h1 class="title-service">Free Delivery</h1>
+                <p class="content-service">
+                  For all oders ovver $50, consectetur adipim scing elit.
+                </p>
+              </div>
+              <div class="item-service">
+                <h1 class="title-service">90 Days Return</h1>
+                <p class="content-service">
+                  If goods have problems, consectetur adipim scing elit.
+                </p>
+              </div>
+              <div class="item-service">
+                <h1 class="title-service">Secure Payment</h1>
+                <p class="content-service">
+                  100% secure payment, consectetur adipim scing elit.
+                </p>
+              </div>
+            </div>
+          </section>
+      </main>
+    </div>
+
+    <script src="checkout.js"></script>
+  </body>
+</html>

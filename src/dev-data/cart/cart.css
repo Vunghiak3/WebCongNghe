@@ -85,8 +85,9 @@ td {
   margin-top: 10px;
 }
 
-.price-product, .name-product span{
-    color: gray;
+.price-product,
+.name-product span {
+  color: gray;
 }
 
 .remove-product i {
@@ -101,56 +102,55 @@ td {
   font-size: 18px;
 }
 
-.table-products_foot .total, 
-.table-products_foot .total-price{
+.table-products_foot .total,
+.table-products_foot .total-price {
   font-weight: bold;
 }
 
-.table-products_foot .total-price{
-    text-align: right;
+.table-products_foot .total-price {
+  text-align: right;
 }
 
 /* css btn buy */
-.buy-products a{
-    padding: 20px 60px;
-    background-color: #FBEBB5;
-    font-size: 20px;
-    border-radius: 15px;
-    float: right;
-    border: 1px solid black;
-    margin: 30px 50px;
+.buy-products a {
+  padding: 20px 60px;
+  background-color: #fbebb5;
+  font-size: 20px;
+  border-radius: 15px;
+  float: right;
+  border: 1px solid black;
+  margin: 30px 50px;
 }
 
-.buy-products a:hover{
-    background-color: #f9e086;
-    transition: all 0.1s linear;
+.buy-products a:hover {
+  background-color: #f9e086;
+  transition: all 0.1s linear;
 }
 
 /* css service-container */
 .service-container {
-    background-color: #FAF4F4;
-    padding: 20px 0;
-    margin: 100px 0;
-  }
-  
-  .wrapper-service {
-    max-width: var(--maxWidth);
-    margin: 100px auto;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .item-service {
-    width: 350px;
-  }
-  
-  .title-service {
-    font-size: 40px;
-    font-weight: lighter;
-  }
-  
-  .content-service {
-    color: gray;
-    font-size: 18px;
-  }
-  
+  background-color: #faf4f4;
+  padding: 20px 0;
+  margin: 100px 0;
+}
+
+.wrapper-service {
+  max-width: var(--maxWidth);
+  margin: 100px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-service {
+  width: 350px;
+}
+
+.title-service {
+  font-size: 40px;
+  font-weight: lighter;
+}
+
+.content-service {
+  color: gray;
+  font-size: 18px;
+}
