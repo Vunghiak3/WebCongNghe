@@ -1,47 +1,44 @@
-// Lấy tất cả các ô nhập số lượng sản phẩm
+// Lấy danh sách các phần tử con của tbody
+const items = document.querySelectorAll('.item-product');
+
+// Lặp qua từng phần tử để tính tổng giá trị subtotal của chúng
+let total = 0;
+items.forEach(item => {
+  const price = parseFloat(item.querySelector('.price-product').textContent.replace(/\D/g, ''));
+  let quantity = parseInt(item.querySelector('.quantity').value);
+  let subtotal = price * quantity;
+  item.querySelector('.subtotal').textContent = subtotal.toLocaleString('vi-VN') + ' VND';
+  total += subtotal;
+});
+
+// Cập nhật giá trị tổng
+document.querySelector('.total-price').textContent = total.toLocaleString('vi-VN') + ' VND';
+
+// Thêm sự kiện lắng nghe cho các phần tử input để tính lại giá trị subtotal khi số lượng thay đổi
 const quantityInputs = document.querySelectorAll('.quantity');
-
-// Lặp qua từng ô nhập số lượng sản phẩm
-quantityInputs.forEach(quantityInput => {
-  // Lắng nghe sự kiện 'input' của từng ô nhập số lượng sản phẩm
-  quantityInput.addEventListener('input', () => {
-    // Lấy giá trị số lượng sản phẩm và giá tiền của sản phẩm tương ứng
-    const quantity = parseInt(quantityInput.value);
-    const priceElement = quantityInput.parentElement.previousElementSibling;
-    const price = parseFloat(priceElement.textContent.replace(/\D/g, ''));
-
-    // Tính lại giá trị sub-total của sản phẩm tương ứng
-    const subtotalElement = quantityInput.parentElement.nextElementSibling;
-    const subtotal = quantity * price;
-    subtotalElement.textContent = `${subtotal.toLocaleString()} VND`;
-
-    // Tính lại tổng giá trị đơn hàng sau khi thay đổi số lượng sản phẩm
-    const subtotalElements = document.querySelectorAll('.subtotal');
-    let total = 0;
-    subtotalElements.forEach(subtotalElement => {
-      total += parseFloat(subtotalElement.textContent.replace(/\D/g, ''));
+quantityInputs.forEach(input => {
+  input.addEventListener('change', () => {
+    const item = input.closest('.item-product');
+    const price = parseFloat(item.querySelector('.price-product').textContent.replace(/\D/g, ''));
+    let quantity = parseInt(input.value);
+    let subtotal = price * quantity;
+    item.querySelector('.subtotal').textContent = subtotal.toLocaleString('vi-VN') + ' VND';
+    total = 0;
+    items.forEach(item => {
+      total += parseFloat(item.querySelector('.subtotal').textContent.replace(/\D/g, ''));
     });
-    document.querySelector('.total-price').textContent = `${total.toLocaleString()} VND`;
+    document.querySelector('.total-price').textContent = total.toLocaleString('vi-VN') + ' VND';
   });
 });
 
-// Lấy tất cả các biểu tượng xóa
-const removeButtons = document.querySelectorAll('.remove-product');
-
-// Lặp qua từng biểu tượng xóa
-removeButtons.forEach(removeButton => {
-  // Lắng nghe sự kiện 'click' của từng biểu tượng
-  removeButton.addEventListener('click', () => {
-    // Xác định phần tử cha (cột sản phẩm) của biểu tượng xóa và xóa nó khỏi bảng giỏ hàng
-    const productColumn = removeButton.parentElement.parentElement;
-    productColumn.remove();
-
-    // Tính lại tổng giá trị đơn hàng sau khi xóa sản phẩm
-    const subtotalElements = document.querySelectorAll('.subtotal');
-    let total = 0;
-   subtotalElements.forEach(subtotalElement => {
-      total += parseFloat(subtotalElement.textContent.replace(/\D/g, ''));
-    });
-    document.querySelector('.total-price').textContent = `${total.toLocaleString()} VND`;
+// Thêm sự kiện lắng nghe cho các phần tử i để xóa phần tử tương ứng và cập nhật lại tổng giá trị
+const deleteButtons = document.querySelectorAll('.fa-trash');
+deleteButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const item = button.closest('.item-product');
+    const subtotal = parseFloat(item.querySelector('.subtotal').textContent.replace(/\D/g, ''));
+    item.remove();
+    total -= subtotal;
+    document.querySelector('.total-price').textContent = total.toLocaleString('vi-VN') + ' VND';
   });
 });
