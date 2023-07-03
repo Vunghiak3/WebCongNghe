@@ -167,11 +167,70 @@
   align-items: center;
 }
 
-.shop-now {
-  background-color: white;
-  color: black;
+.btn-shopNow {
+  position: relative;
+  display: block;
+  padding: 20px 0;
+  overflow: hidden;
+  border: none;
 }
 
+.btn-shopNow a{
+  padding: 20px 40px;
+  color: black;
+  font-size: 20px;
+}
+
+.btn-shopNow span {
+  position: relative;
+  color: #fff;
+  z-index: 1;
+}
+
+.btn-shopNow > div {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background: white;
+  transition: 0.5s;
+}
+
+.btn-shopNow > div::after,
+.btn-shopNow > div::before {
+  content: "";
+  width: 200%;
+  height: 200%;
+  position: absolute;
+}
+
+.btn-shopNow > div::before {
+  border-radius: 45%;
+  background: gray;
+  animation: animate 5s linear infinite;
+}
+
+.btn-shopNow > div::after {
+  border-radius: 40%;
+  background: gray;
+  animation: animate 10s linear infinite;
+}
+
+.btn-shopNow:hover > div {
+  top: -140px;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(-40%, -70%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-40%, -70%) rotate(360deg);
+  }
+}
+
+// //////////////////////////////////////////////////
 .content-product_wrapper .tt1 {
   font-size: 30px;
 }
@@ -248,40 +307,40 @@
   font-size: 30px;
   padding: 10px 0;
   border-bottom: 1px solid black;
-
 }
 
-.view-all-post:hover{
-    color: #595959;
-    border-bottom-color: #595959;
+.view-all-post:hover {
+  color: #595959;
+  border-bottom-color: #595959;
 }
 
 /* css section 6 */
-.instagram-container{
-    padding: 150px 0;
-    background-image: url(/imgs/background-instagram.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+.instagram-container {
+  padding: 150px 0;
+  background-image: url(/imgs/background-instagram.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.insta-wrapper{
-    text-align: center;
+.insta-wrapper {
+  text-align: center;
 }
 
-.title-insta{
-    font-size: 60px;
+.title-insta {
+  font-size: 60px;
 }
 
-.insta-wrapper p{
-    font-size: 20px;
-    margin: 10px 0;
+.insta-wrapper p {
+  font-size: 20px;
+  margin: 10px 0;
 }
 
-.btn-Follow{
-    background-color: #f0efef;
-    display: inline-block;
-    padding: 20px 80px;
-    font-size: 25px;
-    border-radius: 50px;
-    margin-top: 40px;
+.btn-Follow {
+  background-color: #f0efef;
+  display: inline-block;
+  padding: 20px 80px;
+  font-size: 25px;
+  border-radius: 50px;
+  margin-top: 40px;
+  cursor: pointer;
 }

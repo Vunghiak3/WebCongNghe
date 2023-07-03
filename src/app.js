@@ -46,6 +46,22 @@ app.get("/product", (req, res) => {
   });
 });
 
+app.get("/cart", (req, res) => {
+  res.render("cart", {
+    title: "Cart",
+    linkcss: "/css/cart.css",
+    linkjs: "/js/cart.js"
+  });
+});
+
+app.get("/checkout", (req, res) => {
+  res.render("checkout", {
+    title: "Checkout",
+    linkcss: "/css/checkout.css",
+    linkjs: "/js/checkout.js"
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Listening ${PORT}...`);
 });
