@@ -51,8 +51,8 @@
 }
 
 /* css content-main */
-.content-main{
-    padding: 100px 0;
+.content-main {
+  padding: 100px 0;
 }
 
 .wrapper-login-regis {
@@ -155,16 +155,16 @@
   justify-content: space-between;
 }
 
-.item-service{
-    width: 350px;
+.item-service {
+  width: 350px;
 }
 
-.title-service{
-    font-size: 40px;
-    font-weight: lighter;
+.title-service {
+  font-size: 40px;
+  font-weight: lighter;
 }
 
-.content-service{
-    color: gray;
-    font-size: 18px;
+.content-service {
+  color: gray;
+  font-size: 18px;
 }

@@ -248,40 +248,39 @@
   font-size: 30px;
   padding: 10px 0;
   border-bottom: 1px solid black;
-
 }
 
-.view-all-post:hover{
-    color: #595959;
-    border-bottom-color: #595959;
+.view-all-post:hover {
+  color: #595959;
+  border-bottom-color: #595959;
 }
 
 /* css section 6 */
-.instagram-container{
-    padding: 150px 0;
-    background-image: url(../../public/imgs/background-instagram.png);
-    background-size: cover;
-    background-repeat: no-repeat;
+.instagram-container {
+  padding: 150px 0;
+  background-image: url(../../public/imgs/background-instagram.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.insta-wrapper{
-    text-align: center;
+.insta-wrapper {
+  text-align: center;
 }
 
-.title-insta{
-    font-size: 60px;
+.title-insta {
+  font-size: 60px;
 }
 
-.insta-wrapper p{
-    font-size: 20px;
-    margin: 10px 0;
+.insta-wrapper p {
+  font-size: 20px;
+  margin: 10px 0;
 }
 
-.btn-Follow{
-    background-color: #f0efef;
-    display: inline-block;
-    padding: 20px 80px;
-    font-size: 25px;
-    border-radius: 50px;
-    margin-top: 40px;
+.btn-Follow {
+  background-color: #f0efef;
+  display: inline-block;
+  padding: 20px 80px;
+  font-size: 25px;
+  border-radius: 50px;
+  margin-top: 40px;
 }

@@ -4,10 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="../menu/menu.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Home</title>
   </head>
   <body>
     <div class="container">
+      <menu>
+        <div class="menu-main">
+          <div class="menu-wrapper">
+            <div class="menu-logo">
+              <a href="../home/home.html"
+                ><img src="../../public/imgs/logoweb.png" alt=""
+              /></a>
+            </div>
+            <div class="menu-container">
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <a href="../home/home.html">Home</a>
+                </li>
+                <li class="menu-item">
+                  <a href="../shop/shop.html">Phone</a>
+                </li>
+                <li class="menu-item">
+                  <a href="../shop/shop.html">Laptop</a>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-fun">
+              <div class="search-products">
+                <form action="#" method="get">
+                  <input type="text" name="search" id="search" />
+                  <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+              <div class="cart-products">
+                <a href="../cart/cart.html">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+              </div>
+              <div class="account">
+                <a href="../login/login.html">
+                  <i class="fa-solid fa-user"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </menu>
+
       <main>
         <section class="technique-container">
           <div class="technique-wrapper">
@@ -104,65 +157,63 @@
           </div>
         </section>
         <section class="new-product_container">
-            <div class="new-product_wrapper">
-                <div class="img-product_wrapper">
-                    <img src="../../public/imgs/Phone/z-flip4.png" alt="">
-                </div>
-                <div class="content-product_wrapper">
-                    <p class="tt1">
-                        New Arrivals
-                    </p>
-                    <p class="tt2">
-                        Oppo Find N2
-                    </p>
-                    <a href="../shop/shop.html" class="shop-now">Shop Now</a>
-                </div>
+          <div class="new-product_wrapper">
+            <div class="img-product_wrapper">
+              <img src="../../public/imgs/Phone/z-flip4.png" alt="" />
             </div>
+            <div class="content-product_wrapper">
+              <p class="tt1">New Arrivals</p>
+              <p class="tt2">Oppo Find N2</p>
+              <a href="../shop/shop.html" class="shop-now">Shop Now</a>
+            </div>
+          </div>
         </section>
         <section class="blogs-container">
-            <div class="blogs-wrapper">
-                <div class="blog-title_header">
-                    <p class="tt1">
-                        Our Blogs
-                    </p>
-                    <p class="tt2">
-                        Find a bright ideal to suit your taste with our great selection
-                    </p>
-                </div>
-                <div class="blogs-content">
-                    <div class="item-blog">
-                        <img class="build" src="../../public/imgs/blog-build-pc.png" alt="">
-                        <p class="name-content">
-                            How to build pc at home?
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                    <div class="item-blog">
-                        <img class="clean" src="../../public/imgs/blog-clean-pc.png" alt="">
-                        <p class="name-content">
-                            How to build pc at home?
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                    <div class="item-blog">
-                        <img class="decore" src="../../public/imgs/blog-decore-pc.png" alt="">
-                        <p class="name-content">
-                            How to build pc at home?
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <a href="#" class="view-all-post">View All Post</a>
+          <div class="blogs-wrapper">
+            <div class="blog-title_header">
+              <p class="tt1">Our Blogs</p>
+              <p class="tt2">
+                Find a bright ideal to suit your taste with our great selection
+              </p>
             </div>
+            <div class="blogs-content">
+              <div class="item-blog">
+                <img
+                  class="build"
+                  src="../../public/imgs/blog-build-pc.png"
+                  alt=""
+                />
+                <p class="name-content">How to build pc at home?</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+              <div class="item-blog">
+                <img
+                  class="clean"
+                  src="../../public/imgs/blog-clean-pc.png"
+                  alt=""
+                />
+                <p class="name-content">How to build pc at home?</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+              <div class="item-blog">
+                <img
+                  class="decore"
+                  src="../../public/imgs/blog-decore-pc.png"
+                  alt=""
+                />
+                <p class="name-content">How to build pc at home?</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </div>
+            <a href="#" class="view-all-post">View All Post</a>
+          </div>
         </section>
         <section class="instagram-container">
-            <div class="insta-wrapper">
-                <h1 class="title-insta">
-                    Our Instagram
-                </h1>
-                <p>Follow our store on Instagram</p>
-                <div class="btn-Follow">Follow Us</div>
-            </div>
+          <div class="insta-wrapper">
+            <h1 class="title-insta">Our Instagram</h1>
+            <p>Follow our store on Instagram</p>
+            <div class="btn-Follow">Follow Us</div>
+          </div>
         </section>
       </main>
     </div>

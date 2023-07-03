@@ -8,7 +8,7 @@
 }
 
 :root {
-  --maxWidth: 1000px;
+  --maxWidth: 1200px;
   --size-img-product: 100px;
 }
 
@@ -175,66 +175,64 @@ td:last-child {
 }
 
 /* btn */
-.btn-placeOrder{
-    text-align: center;
-    margin-top: 30px;
+.btn-placeOrder {
+  text-align: center;
+  margin-top: 30px;
 }
 
-#place-order-button{
-    padding: 20px 90px;
-    border-radius: 15px;
-    border: 1px solid black;
-    background-color: white;
-    cursor: pointer;
-    font-size: 18px;
+#place-order-button {
+  padding: 20px 90px;
+  border-radius: 15px;
+  border: 1px solid black;
+  background-color: white;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-#place-order-button:hover{
-    background-color: rgb(237, 235, 235);
-    transition: all 0.1s linear;
+#place-order-button:hover {
+  background-color: rgb(237, 235, 235);
+  transition: all 0.1s linear;
 }
 
-#place-order-button:active{
-    background-color: rgb(219, 219, 219);
+#place-order-button:active {
+  background-color: rgb(219, 219, 219);
 }
-
 
 /* css thank order */
-.thank-order{
-    background-color: #d7f8de;
-    color: #eb5967;
-    padding: 12px 24px;
-    font-size: 16px;
-    border: 1px solid #d7f8de;
-    border-radius: 4px;
-    margin-top: 16px;
+.thank-order {
+  background-color: #d7f8de;
+  color: #eb5967;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: 1px solid #d7f8de;
+  border-radius: 4px;
+  margin-top: 16px;
 }
 
 /* css service-container */
 .service-container {
-    background-color: #FAF4F4;
-    padding: 20px 0;
-    margin: 100px 0;
-  }
-  
-  .wrapper-service {
-    max-width: calc(var(--maxWidth) + 300px);
-    margin: 100px auto;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .item-service {
-    width: 350px;
-  }
-  
-  .title-service {
-    font-size: 40px;
-    font-weight: lighter;
-  }
-  
-  .content-service {
-    color: gray;
-    font-size: 18px;
-  }
-  
+  background-color: #faf4f4;
+  padding: 20px 0;
+  margin: 100px 0;
+}
+
+.wrapper-service {
+  max-width: calc(var(--maxWidth) + 200px);
+  margin: 100px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-service {
+  width: 350px;
+}
+
+.title-service {
+  font-size: 40px;
+  font-weight: lighter;
+}
+
+.content-service {
+  color: gray;
+  font-size: 18px;
+}

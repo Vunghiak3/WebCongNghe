@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="checkout.css" />
+    <link rel="stylesheet" href="../menu/menu.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -15,6 +16,51 @@
   </head>
   <body>
     <div class="container">
+      <menu>
+        <div class="menu-main">
+          <div class="menu-wrapper">
+            <div class="menu-logo">
+              <a href="../home/home.html"
+                ><img src="../../public/imgs/logoweb.png" alt=""
+              /></a>
+            </div>
+            <div class="menu-container">
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <a href="../home/home.html">Home</a>
+                </li>
+                <li class="menu-item">
+                  <a href="../shop/shop.html">Phone</a>
+                </li>
+                <li class="menu-item">
+                  <a href="../shop/shop.html">Laptop</a>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-fun">
+              <div class="search-products">
+                <form action="#" method="get">
+                  <input type="text" name="search" id="search" />
+                  <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+              <div class="cart-products">
+                <a href="../cart/cart.html">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+              </div>
+              <div class="account">
+                <a href="../login/login.html">
+                  <i class="fa-solid fa-user"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </menu>
+
       <main>
         <section class="title-header_container">
           <p class="tt1">Checkout</p>
@@ -131,27 +177,27 @@
           </div>
         </section>
         <section class="service-container">
-            <div class="wrapper-service">
-              <div class="item-service">
-                <h1 class="title-service">Free Delivery</h1>
-                <p class="content-service">
-                  For all oders ovver $50, consectetur adipim scing elit.
-                </p>
-              </div>
-              <div class="item-service">
-                <h1 class="title-service">90 Days Return</h1>
-                <p class="content-service">
-                  If goods have problems, consectetur adipim scing elit.
-                </p>
-              </div>
-              <div class="item-service">
-                <h1 class="title-service">Secure Payment</h1>
-                <p class="content-service">
-                  100% secure payment, consectetur adipim scing elit.
-                </p>
-              </div>
+          <div class="wrapper-service">
+            <div class="item-service">
+              <h1 class="title-service">Free Delivery</h1>
+              <p class="content-service">
+                For all oders ovver $50, consectetur adipim scing elit.
+              </p>
             </div>
-          </section>
+            <div class="item-service">
+              <h1 class="title-service">90 Days Return</h1>
+              <p class="content-service">
+                If goods have problems, consectetur adipim scing elit.
+              </p>
+            </div>
+            <div class="item-service">
+              <h1 class="title-service">Secure Payment</h1>
+              <p class="content-service">
+                100% secure payment, consectetur adipim scing elit.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
 

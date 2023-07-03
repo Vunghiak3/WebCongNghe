@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="../menu/menu.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -15,6 +16,51 @@
   </head>
   <body>
     <div class="container">
+      <menu>
+        <div class="menu-main">
+          <div class="menu-wrapper">
+            <div class="menu-logo">
+              <a href="../home/home.html"
+                ><img src="../../public/imgs/logoweb.png" alt=""
+              /></a>
+            </div>
+            <div class="menu-container">
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <a href="../home/home.html">Home</a>
+                </li>
+                <li class="menu-item">
+                  <a href="../shop/shop.html">Phone</a>
+                </li>
+                <li class="menu-item">
+                  <a href="../shop/shop.html">Laptop</a>
+                </li>
+              </ul>
+            </div>
+            <div class="menu-fun">
+              <div class="search-products">
+                <form action="#" method="get">
+                  <input type="text" name="search" id="search" />
+                  <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+              </div>
+              <div class="cart-products">
+                <a href="../cart/cart.html">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+              </div>
+              <div class="account">
+                <a href="../login/login.html">
+                  <i class="fa-solid fa-user"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </menu>
+
       <main class="main-content">
         <section class="header-container">
           <div class="layout_title"></div>
@@ -33,100 +79,101 @@
         <section class="content-main">
           <div class="wrapper-login-regis">
             <div class="login-container">
-                <div class="layout-login">
-                  <div class="title-login">
-                    <h1>Đăng nhập</h1>
-                  </div>
-                  <form action="" id="login-form">
-                    <div class="username-login">
-                      <label for="username-login"> Tên người dùng hoặc email </label
-                      ><br />
-                      <input
-                        type="text"
-                        id="username-login"
-                        name="username-login"
-                      />
-                    </div>
-                    <div class="password-login">
-                      <label for="password-login"> Mật khẩu </label><br />
-                      <input
-                        type="text"
-                        id="password-login"
-                        name="password-login"
-                      />
-                    </div>
-                    <div class="remember-me">
-                      <input type="checkbox" name="remember" id="remember" />
-                      <label for="remember">Nhớ tài khoản</label>
-                    </div>
-                    <input type="submit" value="Đăng nhập" class="btnLogin" />
-                    <a class="forgot-password" href="#">Quên mật khẩu?</a>
-                  </form>
+              <div class="layout-login">
+                <div class="title-login">
+                  <h1>Đăng nhập</h1>
                 </div>
-              </div>
-    
-              <div class="register-container">
-                <div class="layout-register">
-                  <div class="title-register">
-                    <h1>Đăng ký</h1>
+                <form action="" id="login-form">
+                  <div class="username-login">
+                    <label for="username-login">
+                      Tên người dùng hoặc email </label
+                    ><br />
+                    <input
+                      type="text"
+                      id="username-login"
+                      name="username-login"
+                    />
                   </div>
-                  <form action="" id="register-form">
-                    <div class="username-register">
-                      <label for="username-register">
-                        Tên người dùng hoặc email </label
-                      ><br />
-                      <input
-                        type="text"
-                        id="username-register"
-                        name="username-register"
-                      />
-                    </div>
-                    <div class="password-register">
-                      <label for="password-register">Mật khẩu</label><br />
-                      <input
-                        type="text"
-                        name="password-register"
-                        id="password-register"
-                      />
-                    </div>
-                    <div class="again-pass">
-                      <label for="again-pass">Nhập lại mật khẩu</label><br />
-                      <input type="text" name="again-pass" id="again-pass" />
-                    </div>
-                    <div class="fullname">
-                      <label for="fullname">Họ và Tên</label><br />
-                      <input type="text" name="fullname" id="fullname" />
-                    </div>
-                    <div class="address">
-                      <label for="address">Địa chỉ</label><br />
-                      <input type="text" name="address" id="address" />
-                    </div>
-                    <input type="submit" value="Đăng ký" class="btnRegister" />
-                  </form>
-                </div>
+                  <div class="password-login">
+                    <label for="password-login"> Mật khẩu </label><br />
+                    <input
+                      type="text"
+                      id="password-login"
+                      name="password-login"
+                    />
+                  </div>
+                  <div class="remember-me">
+                    <input type="checkbox" name="remember" id="remember" />
+                    <label for="remember">Nhớ tài khoản</label>
+                  </div>
+                  <input type="submit" value="Đăng nhập" class="btnLogin" />
+                  <a class="forgot-password" href="#">Quên mật khẩu?</a>
+                </form>
               </div>
+            </div>
+
+            <div class="register-container">
+              <div class="layout-register">
+                <div class="title-register">
+                  <h1>Đăng ký</h1>
+                </div>
+                <form action="" id="register-form">
+                  <div class="username-register">
+                    <label for="username-register">
+                      Tên người dùng hoặc email </label
+                    ><br />
+                    <input
+                      type="text"
+                      id="username-register"
+                      name="username-register"
+                    />
+                  </div>
+                  <div class="password-register">
+                    <label for="password-register">Mật khẩu</label><br />
+                    <input
+                      type="text"
+                      name="password-register"
+                      id="password-register"
+                    />
+                  </div>
+                  <div class="again-pass">
+                    <label for="again-pass">Nhập lại mật khẩu</label><br />
+                    <input type="text" name="again-pass" id="again-pass" />
+                  </div>
+                  <div class="fullname">
+                    <label for="fullname">Họ và Tên</label><br />
+                    <input type="text" name="fullname" id="fullname" />
+                  </div>
+                  <div class="address">
+                    <label for="address">Địa chỉ</label><br />
+                    <input type="text" name="address" id="address" />
+                  </div>
+                  <input type="submit" value="Đăng ký" class="btnRegister" />
+                </form>
+              </div>
+            </div>
           </div>
         </section>
         <section class="service-container">
           <div class="wrapper-service">
             <div class="item-service">
-                <h1 class="title-service">Free Delivery</h1>
-                <p class="content-service">
-                  For all oders ovver $50, consectetur adipim scing elit.
-                </p>
-              </div>
-              <div class="item-service">
-                <h1 class="title-service">90 Days Return</h1>
-                <p class="content-service">
-                  If goods have problems, consectetur adipim scing elit.
-                </p>
-              </div>
-              <div class="item-service">
-                <h1 class="title-service">Secure Payment</h1>
-                <p class="content-service">
-                  100% secure payment, consectetur adipim scing elit.
-                </p>
-              </div>
+              <h1 class="title-service">Free Delivery</h1>
+              <p class="content-service">
+                For all oders ovver $50, consectetur adipim scing elit.
+              </p>
+            </div>
+            <div class="item-service">
+              <h1 class="title-service">90 Days Return</h1>
+              <p class="content-service">
+                If goods have problems, consectetur adipim scing elit.
+              </p>
+            </div>
+            <div class="item-service">
+              <h1 class="title-service">Secure Payment</h1>
+              <p class="content-service">
+                100% secure payment, consectetur adipim scing elit.
+              </p>
+            </div>
           </div>
         </section>
       </main>
