@@ -50,7 +50,6 @@ main {
   align-items: center;
 }
 
-<<<<<<< HEAD
 .img-select > ul {
   display: flex;
   justify-content: center;
@@ -67,10 +66,9 @@ main {
 .img-select > ul > li > img {
   max-width: 100%;
   max-height: 100%;
-=======
+}
 .img-select li img {
   cursor: pointer;
->>>>>>> 46a0c40bbf2b58189084b55e092fbfa5325d4fb7
 }
 
 .img-show {
@@ -98,7 +96,7 @@ main {
 }
 
 .product-overview {
-  width: 50%;
+  width: 70%;
 }
 
 .name-product {
