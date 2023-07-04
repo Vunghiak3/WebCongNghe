@@ -37,11 +37,13 @@ imgItems.forEach((imgItem, index) => {
 imgShow.addEventListener("click", () => {
   imgWrapper.style.display = "block";
   imgBig.src = imgShow.src;
+  document.body.style.overflow = "hidden";
 });
 
 // Đóng phần hiển thị ảnh lớn chi tiết
 imgClose.addEventListener("click", () => {
   imgWrapper.style.display = "none";
+  document.body.style.overflow = "auto";
 });
 
 // Chuyển đến ảnh trước đó
@@ -66,6 +68,7 @@ imgNext.addEventListener("click", () => {
 imgWrapper.addEventListener("click", (event) => {
   if (event.target === imgWrapper) {
     imgWrapper.style.display = "none";
+    document.body.style.overflow = "auto";
   }
 });
 
