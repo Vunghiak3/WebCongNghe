@@ -1,192 +1,139 @@
 <main>
-  <section class="title-header_container">
-    <p class="tt1">Phone</p>
-    <span class="tt2">
-      <a href="/">
-        Home
-        <i class="fa-solid fa-chevron-right"></i>
-      </a>
-      Phone
-    </span>
+  <!-- Navigation -->
+  <section class="direction">
+    <div class="navigation">
+      <a href="../home/home.html"><i class="fas fa-home"></i>Home</a>
+      <span> > </span>
+      <a href="../shop/shop.html"><i class="fas fa-shopping-cart"></i>Shop</a>
+      <span> > </span>
+      <span class="current-page">Phone</span>
+    </div>
   </section>
-  <section class="lst-product_container">
-    <div class="sort-product_wrapper">
-      <div class="sort-product">
-        <div class="sort-by">
-          <p>Xếp theo Tên: A đến Z <i class="fas fa-caret-down"></i></p>
-          <ul class="dropdown-sort">
-            <li class="item-sort sort-by-product-asc">
-              Xếp theo Tên: A đến Z
+  <!-- Product Info -->
+  <section class="product-info">
+    <div class="product-wrapper">
+      <div class="image-wrapper">
+        <div class="img-select">
+          <ul>
+            <li>
+              <img
+                class="img-1"
+                src="/imgs/Phone/Mask group.png"
+                onclick="changeImage('/imgs/Phone/galaxys23ultra.webp')"
+                alt=""
+              />
             </li>
-            <li class="item-sort sort-by-product-dsc">
-              Xếp theo Tên: Z đến A
+            <li>
+              <img
+                class="img-2"
+                src="/imgs/Phone/Mask group.png"
+                onclick="changeImage('/imgs/Phone/galaxys23ultra.webp')"
+                alt=""
+              />
             </li>
-            <li class="item-sort sort-by-price-asc">
-              Xếp theo giá: Thấp đến Cao
-            </li>
-            <li class="item-sort sort-by-price-dsc">
-              Xếp theo giá: Cao đến Thấp
-            </li>
-            <li class="item-sort sort-by-popularity-asc">
-              Xếp theo phổ biến nhất
+            <li>
+              <img
+                class="img-3"
+                src="/imgs/Phone/Mask group.png"
+                onclick="changeImage('/imgs/Phone/galaxys23ultra.webp')"
+                alt=""
+              />
             </li>
           </ul>
         </div>
+        <div class="img-show">
+          <img id="displayed-image" src="/imgs/Phone/IP13.webp" alt="Snow" />
+
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="img01" />
+
+            <!-- Modal Caption (Image Text) -->
+            <div id="caption"></div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="list-products_wrrapper">
-      <div class="grid-products">
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
+      <div class="product-description">
+        <h2 class="name-product">SAMSUNG S23 ULTRA</h2>
+        <h3 class="price-product">VND. 25,000.000</h3>
+        <div class="horizontal-line" style="width: 50%"></div>
+        <p class="product-overview">
+          The S23 Ultra has a Snapdragon 8 Gen 2 chip, a 200MP camera, a 256GB
+          storage option, improved speakers, less video cutting in 8K30 videos,
+          Victus 2 glass, and an improved battery life.
+        </p>
+        <div class="horizontal-line" style="width: 50%"></div>
+
+        <div class="selection">
+          <label for="size">Size:</label>
+          <div class="custom-dropdown">
+            <select id="size">
+              <option value="size-1">128GB</option>
+              <option value="size-2">256GB</option>
+              <option value="size-3">1TB</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="selection">
+          <label for="color">Color:</label>
+          <div class="custom-dropdown">
+            <select id="color">
+              <option value="color-1">Blue</option>
+              <option value="color-2">Purple</option>
+              <option value="color-3">White</option>
+            </select>
+          </div>
+        </div>
+        <div class="add-to-cart">
+          <label for="">Quantity:</label>
+          <div>
+            <td class="quantity-product">
+              <input class="quantity" type="number" value="1" min="1" />
+            </td>
+            <button id="cart-btn" class="active">Add to Cart</button>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="pagenumbers" id="panigation">
-      <div class="page-prev page hidden-page">Prev</div>
-      <div class="page-1 page active-page">1</div>
-      <div class="page-2 page">2</div>
-      <div class="page-3 page">3</div>
-      <div class="page-4 page">4</div>
-      <div class="page-next page">Next</div>
     </div>
   </section>
-  <section class="service-container">
-    <div class="wrapper-service">
-      <div class="item-service">
-        <h1 class="title-service">Free Delivery</h1>
-        <p class="content-service">
-          For all oders ovver $50, consectetur adipim scing elit.
+  <div class="horizontal-line"></div>
+  <!-- Description -->
+  <section class="description">
+    <div class="description-wrapper">
+      <div class="toggle-buttons">
+        <button id="description-btn" class="active">Description</button>
+        <button id="additional-info-btn">Additional Information</button>
+      </div>
+
+      <div id="description-section">
+        <p class="description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam at est
+          vel magna sagittis fringilla eu id dolor. Sed eu varius urna, et
+          fringilla nunc. Quisque in ligula ac nunc tincidunt lacinia. Duis in
+          tellus ipsum. Donec semper, quam ut eleifend ultrices, tortor urna
+          fringilla ex, non faucibus augue neque sed purus. Sed sodales ligula
+          ac est ultrices pulvinar. Nunc at congue est. Proin imperdiet arcu
+          tellus, a tempus velit maximus vitae.
         </p>
       </div>
-      <div class="item-service">
-        <h1 class="title-service">90 Days Return</h1>
-        <p class="content-service">
-          If goods have problems, consectetur adipim scing elit.
-        </p>
+
+      <div id="additional-info-section" style="display: none">
+        <ul>
+          <li>Size: Large</li>
+          <li>Color: Red</li>
+          <li>Material: Cotton</li>
+          <li>Weight: 200g</li>
+        </ul>
       </div>
-      <div class="item-service">
-        <h1 class="title-service">Secure Payment</h1>
-        <p class="content-service">
-          100% secure payment, consectetur adipim scing elit.
-        </p>
-      </div>
+    </div>
+    <div class="front-back view">
+      <img class="front-img" src="/imgs/S23 Ultra Front View.png" alt="" />
+      <img class="back-img" src="/imgs/S23 Ultra Front View.png" alt="" />
     </div>
   </section>
 </main>
