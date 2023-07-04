@@ -26,7 +26,7 @@ app.set("views", path.join(__dirname, "resources\\views"));
 app.get("/", (req, res) => {
   res.render("home", {
     title: "Home",
-    linkcss: "/css/app.css",
+    linkcss: "/css/home.css",
   });
 });
 
@@ -38,11 +38,11 @@ app.get("/login", (req, res) => {
   });
 });
 
-app.get("/product", (req, res) => {
-  res.render("product", {
-    title: "Product",
-    linkcss: "/css/product.css",
-    // linkjs: "/js/product.js"
+app.get("/shop", (req, res) => {
+  res.render("shop", {
+    title: "Shop",
+    linkcss: "/css/shop.css",
+    // linkjs: "/js/shop.js"
   });
 });
 
@@ -59,6 +59,14 @@ app.get("/checkout", (req, res) => {
     title: "Checkout",
     linkcss: "/css/checkout.css",
     linkjs: "/js/checkout.js"
+  });
+});
+
+app.get("/product", (req, res) => {
+  res.render("product", {
+    title: "Product",
+    linkcss: "/css/product.css",
+    linkjs: "/js/product.js"
   });
 });
 
