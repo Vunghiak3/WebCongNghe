@@ -37,10 +37,13 @@ footer {
 
 .link > li,
 .help > li {
-  padding: 4% 0;
+  padding: 10% 0;
   width: max-content;
 }
-
+.help > li {
+  padding: 7% 0;
+  width: max-content;
+}
 .links-wrapper > h1,
 .help-wrapper > h1 {
   font-size: xx-large;
