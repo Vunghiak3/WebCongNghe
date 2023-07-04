@@ -63,73 +63,52 @@
       </menu>
 
       <main>
-        <!-- Navigation -->
-        <section class="direction">
-          <div class="navigation">
-            <a href="../home/home.html"><i class="fas fa-home"></i>Home</a>
-            <span> > </span>
-            <a href="../shop/shop.html"
-              ><i class="fas fa-shopping-cart"></i>Shop</a
-            >
-            <span> > </span>
-            <span class="current-page">Phone</span>
+        <section class="title-page">
+          <div class="title-wrapper">
+            <a href="../home/home.html" class="tthome">Home</a>
+            <i class="fa-solid fa-angle-right"></i>
+            <a href="../shop/shop.html" class="ttShop">Shop</a>
+            <i class="fa-solid fa-angle-right"></i>
+            <span class="ttProduct">Phone</span>
           </div>
         </section>
-        <!-- Product Info -->
-        <section class="product-info">
+        <section class="product-container">
           <div class="product-wrapper">
-            <div class="image-wrapper">
-              <div class="img-select">
-                <ul>
-                  <li>
-                    <img
-                      class="img-1"
-                      src="../../public/imgs/Phone/galaxys23ultra.webp"
-                      onclick="changeImage('../../public/imgs/Phone/galaxys23ultra.webp')"
-                      alt=""
-                    />
-                  </li>
-                  <li>
-                    <img
-                      class="img-2"
-                      src="../../public/imgs/Phone/galaxys23ultra.webp"
-                      onclick="changeImage('../../public/imgs/Phone/galaxys23ultra.webp')"
-                      alt=""
-                    />
-                  </li>
-                  <li>
-                    <img
-                      class="img-3"
-                      src="../../public/imgs/Phone/galaxys23ultra.webp"
-                      onclick="changeImage('../../public/imgs/Phone/galaxys23ultra.webp')"
-                      alt=""
-                    />
-                  </li>
-                </ul>
+            <div class="imgs-product">
+              <div class="list-img_product">
+                <div class="img-item">
+                  <img
+                    src="../../public/imgs/Phone/Sony-Xperia-1-V.png"
+                    alt=""
+                  />
+                </div>
+                <div class="img-item">
+                  <img src="../../public/imgs/Phone/Mask group.png" alt="" />
+                </div>
               </div>
-              <div class="img-show">
-                <img
-                  id="displayed-image"
-                  src="../../public/imgs/Phone/IP13.webp"
-                  alt="Snow"
-                />
-
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
-                  <!-- The Close Button -->
-                  <span class="close">&times;</span>
-
-                  <!-- Modal Content (The Image) -->
-                  <img class="modal-content" id="img01" />
-
-                  <!-- Modal Caption (Image Text) -->
-                  <div id="caption"></div>
+              <div class="img-show_container">
+                <div class="img-show">
+                  <img src="" alt="" />
+                </div>
+                <div class="img-detail">
+                  <div class="close">
+                    <i class="fa-solid fa-xmark"></i>
+                  </div>
+                  <div class="prev">
+                    <i class="fa-solid fa-angle-left"></i>
+                  </div>
+                  <div class="img-wrapper">
+                    <img src="" alt="" class="img-big" />
+                  </div>
+                  <div class="next">
+                    <i class="fa-solid fa-angle-right"></i>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="product-description">
-              <h2 class="name-product">SAMSUNG S23 ULTRA</h2>
-              <h3 class="price-product">VND. 25,000.000</h3>
+              <p class="name-product">SAMSUNG S23 ULTRA</p>
+              <p class="price-product">25.000.000 VND</p>
               <div class="horizontal-line" style="width: 70%"></div>
               <p class="product-overview">
                 The S23 Ultra has a Snapdragon 8 Gen 2 chip, a 200MP camera, a
@@ -159,20 +138,31 @@
                   </select>
                 </div>
               </div>
-              <div class="add-to-cart">
-                <label for="">Quantity:</label>
-                <div>
-                  <td class="quantity-product">
-                    <input class="quantity" type="number" value="1" min="1" />
-                  </td>
-                  <button id="cart-btn" class="active">Add to Cart</button>
+              <div class="btn-wrapper">
+                <div class="add-to-cart">
+                  <label for="quantity">Quantity:</label>
+                  <div>
+                    <div class="quantity-product">
+                      <input
+                        class="quantity"
+                        type="number"
+                        value="1"
+                        min="1"
+                        id="quantity"
+                        name="quantity"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="btn-buy">
+                  <button id="cart-btn" class="active" type="submit">
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <div class="horizontal-line"></div>
-        <!-- Description -->
         <section class="description">
           <div class="description-wrapper">
             <div class="toggle-buttons">

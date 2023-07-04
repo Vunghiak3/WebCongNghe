@@ -1,11 +1,76 @@
-document
-  .getElementById("description-btn")
-  .addEventListener("click", function () {
-    document.getElementById("description-btn").classList.add("active");
-    document.getElementById("additional-info-btn").classList.remove("active");
-    document.getElementById("description-section").style.display = "block";
-    document.getElementById("additional-info-section").style.display = "none";
+// const imgItems = document.querySelectorAll('.img-item img');
+// const imgShow = document.querySelector('.img-show img');
+
+// // Mặc định hiển thị ảnh đầu tiên trong img-show
+// imgShow.src = imgItems[0].src;
+
+// // Lắng nghe sự kiện click trên từng ảnh trong img-item
+// imgItems.forEach(function(imgItem) {
+//   imgItem.addEventListener('click', function() {
+//     // Thay đổi ảnh hiển thị trong img-show
+//     imgShow.src = imgItem.src;
+//   });
+// });
+
+const imgItems = document.querySelectorAll(".img-item img");
+const imgShow = document.querySelector(".img-show img");
+const imgWrapper = document.querySelector(".img-detail");
+const imgBig = document.querySelector(".img-big");
+const imgPrev = document.querySelector(".prev");
+const imgNext = document.querySelector(".next");
+const imgClose = document.querySelector(".close");
+
+let currentIndex = 0;
+
+// Mặc định hiển thị ảnh đầu tiên trong img-show
+imgShow.src = imgItems[0].src;
+
+// Lắng nghe sự kiện click trên từng ảnh trong img-item và thay đổi ảnh hiển thị trong img-show
+imgItems.forEach((imgItem, index) => {
+  imgItem.addEventListener("click", () => {
+    imgShow.src = imgItem.src;
+    currentIndex = index;
   });
+});
+
+// Lắng nghe sự kiện click trên ảnh trong img-show để hiển thị lên img-wrapper
+imgShow.addEventListener("click", () => {
+  imgWrapper.style.display = "block";
+  imgBig.src = imgShow.src;
+  document.body.style.overflow = "hidden";
+});
+
+// Đóng phần hiển thị ảnh lớn chi tiết
+imgClose.addEventListener("click", () => {
+  imgWrapper.style.display = "none";
+  document.body.style.overflow = "auto";
+});
+
+// Chuyển đến ảnh trước đó
+imgPrev.addEventListener("click", () => {
+  currentIndex--;
+  if (currentIndex < 0) {
+    currentIndex = imgItems.length - 1;
+  }
+  imgBig.src = imgItems[currentIndex].src;
+});
+
+// Chuyển đến ảnh tiếp theo
+imgNext.addEventListener("click", () => {
+  currentIndex++;
+  if (currentIndex >= imgItems.length) {
+    currentIndex = 0;
+  }
+  imgBig.src = imgItems[currentIndex].src;
+});
+
+// Đóng phần hiển thị ảnh lớn chi tiết khi click vào vùng bên ngoài
+imgWrapper.addEventListener("click", (event) => {
+  if (event.target === imgWrapper) {
+    imgWrapper.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+});
 
 document
   .getElementById("additional-info-btn")
@@ -16,30 +81,11 @@ document
     document.getElementById("additional-info-section").style.display = "block";
   });
 
-function changeImage(imagePath) {
-  var displayedImage = document.getElementById("displayed-image");
-  displayedImage.src = imagePath;
-}
-
-//Img Modal
-var modal = document.getElementById("myModal");
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById("displayed-image");
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function () {
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-};
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-//change img//
+document
+  .getElementById("description-btn")
+  .addEventListener("click", function () {
+    document.getElementById("description-btn").classList.add("active");
+    document.getElementById("additional-info-btn").classList.remove("active");
+    document.getElementById("description-section").style.display = "block";
+    document.getElementById("additional-info-section").style.display = "none";
+  });
