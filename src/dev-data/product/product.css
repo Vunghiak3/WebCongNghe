@@ -94,7 +94,7 @@
 
 /* css phần hiện ảnh chi tiết */
 .img-detail {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -110,11 +110,6 @@
   color: white;
   background-color: rgb(66, 66, 66);
   padding: 10px;
-}
-
-.close {
-  text-align: right;
-  margin: 30px;
 }
 
 .prev,

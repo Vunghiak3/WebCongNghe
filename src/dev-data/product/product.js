@@ -1,17 +1,3 @@
-// const imgItems = document.querySelectorAll('.img-item img');
-// const imgShow = document.querySelector('.img-show img');
-
-// // Mặc định hiển thị ảnh đầu tiên trong img-show
-// imgShow.src = imgItems[0].src;
-
-// // Lắng nghe sự kiện click trên từng ảnh trong img-item
-// imgItems.forEach(function(imgItem) {
-//   imgItem.addEventListener('click', function() {
-//     // Thay đổi ảnh hiển thị trong img-show
-//     imgShow.src = imgItem.src;
-//   });
-// });
-
 const imgItems = document.querySelectorAll(".img-item img");
 const imgShow = document.querySelector(".img-show img");
 const imgWrapper = document.querySelector(".img-detail");
@@ -38,12 +24,6 @@ imgShow.addEventListener("click", () => {
   imgWrapper.style.display = "block";
   imgBig.src = imgShow.src;
   document.body.style.overflow = "hidden";
-});
-
-// Đóng phần hiển thị ảnh lớn chi tiết
-imgClose.addEventListener("click", () => {
-  imgWrapper.style.display = "none";
-  document.body.style.overflow = "auto";
 });
 
 // Chuyển đến ảnh trước đó
