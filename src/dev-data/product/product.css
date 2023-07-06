@@ -277,19 +277,18 @@ button {
   outline: none;
 }
 
-.front-back-view {
+.front-back {
   display: flex;
   justify-content: center;
-}
-
-.front-img,
-.back-img {
-  width: 30%;
+  column-gap: 40px;
 }
 
 .front-img {
-  margin-right: 3%;
-  margin-left: 20%;
+  width: 20%;
+  padding: 0px 150px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  user-select: none;
 }
 
 .description {

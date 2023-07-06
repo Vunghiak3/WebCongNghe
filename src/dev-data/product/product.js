@@ -1,5 +1,6 @@
 const imgItems = document.querySelectorAll(".img-item img");
 const imgShow = document.querySelector(".img-show img");
+const imgShowWrapper = document.querySelector(".img-show");
 const imgWrapper = document.querySelector(".img-detail");
 const imgBig = document.querySelector(".img-big");
 const imgPrev = document.querySelector(".prev");
@@ -20,7 +21,7 @@ imgItems.forEach((imgItem, index) => {
 });
 
 // Lắng nghe sự kiện click trên ảnh trong img-show để hiển thị lên img-wrapper
-imgShow.addEventListener("click", () => {
+imgShowWrapper.addEventListener("click", () => {
   imgWrapper.style.display = "block";
   imgBig.src = imgShow.src;
   document.body.style.overflow = "hidden";
@@ -69,3 +70,10 @@ document
     document.getElementById("description-section").style.display = "block";
     document.getElementById("additional-info-section").style.display = "none";
   });
+
+const images = document.querySelectorAll("img");
+images.forEach((image) => {
+  image.addEventListener("mousedown", (event) => {
+    event.preventDefault();
+  });
+});

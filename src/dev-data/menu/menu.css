@@ -81,3 +81,15 @@
   font-size: 23px;
   cursor: pointer;
 }
+
+/* scroll menu */
+.menu-hidden{
+  display: none;
+}
+
+menu{
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 99;
+}
