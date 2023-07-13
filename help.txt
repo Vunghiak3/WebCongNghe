@@ -8,6 +8,20 @@
 // show http request and time send request
 -- npm install morgan --save-dev
 
+#reading environment variables with dotenv
+npm install dotenv
+
+#install tedious
+npm install tedious
+#using mssql as wrapper of tedious
+npm install mssql
+
+#install bcryptjs
+npm install bcryptjs
+
+#install JsonWebToken
+npm install jsonwebtoken
+
 // Template engine
 -- npm install express-handlebars@3.1.0
 

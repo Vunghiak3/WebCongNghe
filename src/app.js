@@ -3,7 +3,6 @@ const app = express();
 const morgan = require("morgan");
 const path = require("path");
 const handlebars = require("express-handlebars");
-const PORT = 8080;
 
 app.use(express.json());
 //HTTP logger
@@ -21,8 +20,6 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources\\views"));
 
-
-
 app.get("/", (req, res) => {
   res.render("home", {
     title: "Home",
@@ -34,7 +31,7 @@ app.get("/login", (req, res) => {
   res.render("login", {
     title: "Login",
     linkcss: "/css/login.css",
-    linkjs: "/js/login.js"
+    linkjs: "/js/login.js",
   });
 });
 
@@ -50,7 +47,7 @@ app.get("/cart", (req, res) => {
   res.render("cart", {
     title: "Cart",
     linkcss: "/css/cart.css",
-    linkjs: "/js/cart.js"
+    linkjs: "/js/cart.js",
   });
 });
 
@@ -58,18 +55,19 @@ app.get("/checkout", (req, res) => {
   res.render("checkout", {
     title: "Checkout",
     linkcss: "/css/checkout.css",
-    linkjs: "/js/checkout.js"
+    linkjs: "/js/checkout.js",
   });
 });
 
-app.get("/product", (req, res) => {
-  res.render("product", {
-    title: "Product",
-    linkcss: "/css/product.css",
-    linkjs: "/js/product.js"
-  });
-});
+// app.get("/product", (req, res) => {
+//   res.render("product", {
+//     title: "Product",
+//     linkcss: "/css/product.css",
+//     linkjs: "/js/product.js",
+//   });
+// });
 
-app.listen(PORT, () => {
-  console.log(`Listening ${PORT}...`);
-});
+const productRouter = require("./routes/product");
+app.use("/Phones", productRouter);
+
+module.exports = app;

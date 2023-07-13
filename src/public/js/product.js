@@ -1,19 +1,6 @@
-// const imgItems = document.querySelectorAll('.img-item img');
-// const imgShow = document.querySelector('.img-show img');
-
-// // Mặc định hiển thị ảnh đầu tiên trong img-show
-// imgShow.src = imgItems[0].src;
-
-// // Lắng nghe sự kiện click trên từng ảnh trong img-item
-// imgItems.forEach(function(imgItem) {
-//   imgItem.addEventListener('click', function() {
-//     // Thay đổi ảnh hiển thị trong img-show
-//     imgShow.src = imgItem.src;
-//   });
-// });
-
 const imgItems = document.querySelectorAll(".img-item img");
 const imgShow = document.querySelector(".img-show img");
+const imgShowWrapper = document.querySelector(".img-show");
 const imgWrapper = document.querySelector(".img-detail");
 const imgBig = document.querySelector(".img-big");
 const imgPrev = document.querySelector(".prev");
@@ -34,14 +21,10 @@ imgItems.forEach((imgItem, index) => {
 });
 
 // Lắng nghe sự kiện click trên ảnh trong img-show để hiển thị lên img-wrapper
-imgShow.addEventListener("click", () => {
+imgShowWrapper.addEventListener("click", () => {
   imgWrapper.style.display = "block";
   imgBig.src = imgShow.src;
-});
-
-// Đóng phần hiển thị ảnh lớn chi tiết
-imgClose.addEventListener("click", () => {
-  imgWrapper.style.display = "none";
+  document.body.style.overflow = "hidden";
 });
 
 // Chuyển đến ảnh trước đó
@@ -66,6 +49,7 @@ imgNext.addEventListener("click", () => {
 imgWrapper.addEventListener("click", (event) => {
   if (event.target === imgWrapper) {
     imgWrapper.style.display = "none";
+    document.body.style.overflow = "auto";
   }
 });
 
@@ -86,3 +70,10 @@ document
     document.getElementById("description-section").style.display = "block";
     document.getElementById("additional-info-section").style.display = "none";
   });
+
+const images = document.querySelectorAll("img");
+images.forEach((image) => {
+  image.addEventListener("mousedown", (event) => {
+    event.preventDefault();
+  });
+});

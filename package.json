@@ -4,17 +4,22 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "start": "nodemon src/app.js",
+    "start": "nodemon src/server.js",
     "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-handlebars": "^3.1.0",
     "handlebars": "^4.7.7",
-    "nodemon": "^2.0.22"
+    "jsonwebtoken": "^9.0.1",
+    "mssql": "^9.1.1",
+    "nodemon": "^2.0.22",
+    "tedious": "^16.2.0"
   },
   "devDependencies": {
     "morgan": "^1.10.0",

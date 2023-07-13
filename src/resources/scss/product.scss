@@ -94,7 +94,7 @@
 
 /* css phần hiện ảnh chi tiết */
 .img-detail {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -110,11 +110,6 @@
   color: white;
   background-color: rgb(66, 66, 66);
   padding: 10px;
-}
-
-.close {
-  text-align: right;
-  margin: 30px;
 }
 
 .prev,
@@ -204,7 +199,6 @@
 }
 
 /* css btn add to cart */
-
 #cart-btn {
   z-index: 1;
   position: relative;
@@ -283,19 +277,18 @@ button {
   outline: none;
 }
 
-.front-back-view {
+.front-back {
   display: flex;
   justify-content: center;
-}
-
-.front-img,
-.back-img {
-  width: 30%;
+  column-gap: 40px;
 }
 
 .front-img {
-  margin-right: 3%;
-  margin-left: 20%;
+  width: 20%;
+  padding: 0px 150px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  user-select: none;
 }
 
 .description {
@@ -306,4 +299,49 @@ button {
 #additional-info-btn {
   font-size: 20px;
   font-weight: normal;
+}
+
+/*footer css*/
+.horizontal-line {
+  border-top: 1px solid #d9d9d9;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+footer {
+  margin-top: 5%;
+}
+.footer-wrapper {
+  display: flex;
+  justify-content: safe;
+  align-items: center;
+}
+
+.img-logo {
+  margin-left: 12%;
+}
+
+.section-wrapper {
+  display: flex;
+  width: fit-content;
+  column-gap: 50%;
+  justify-content: space-between;
+  margin-left: 20%;
+}
+
+.link > li,
+.help > li {
+  padding: 4% 0;
+  width: max-content;
+}
+
+.links-wrapper > h1,
+.help-wrapper > h1 {
+  font-size: xx-large;
+  color: #d9d9d9;
+}
+.copyright-noitice {
+  display: flex;
+  justify-content: center;
+  padding: 2% 0;
 }
