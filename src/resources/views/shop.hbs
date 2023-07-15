@@ -1,12 +1,12 @@
 <main>
   <section class="title-header_container">
-    <p class="tt1">Phone</p>
+    <p class="tt1">Products</p>
     <span class="tt2">
-      <a href="/">
+      <a href="/home">
         Home
         <i class="fa-solid fa-chevron-right"></i>
       </a>
-      Phone
+      Products
     </span>
   </section>
   <section class="lst-product_container">
@@ -36,135 +36,11 @@
     </div>
     <div class="list-products_wrrapper">
       <div class="grid-products">
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
-        <a href="#" class="item-product">
-          <img
-            class="img-product"
-            src="/imgs/Phone/Sony-Xperia-1-V.png"
-            alt="Sony Xperia 1 V"
-            title="Sony Xperia 1 V"
-          />
-          <p class="name-product">Sony Xperia 1 V</p>
-          <p class="price-product">5.000.000 VND</p>
-        </a>
+        {{> productPartials productPartialData}}
       </div>
     </div>
     <div class="pagenumbers" id="panigation">
-      <div class="page-prev page hidden-page">Prev</div>
-      <div class="page-1 page active-page">1</div>
-      <div class="page-2 page">2</div>
-      <div class="page-3 page">3</div>
-      <div class="page-4 page">4</div>
-      <div class="page-next page">Next</div>
+      {{> panigation productPartialData}}
     </div>
   </section>
   <section class="service-container">

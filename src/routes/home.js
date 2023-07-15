@@ -4,8 +4,6 @@ const productController = require("./../app/controllers/productController");
 // const authController = require("./../controllers/auth");
 // const StaticData = require("./../utils/StaticData");
 
-router.route("/Laptops").get(productController.showLaptopHandler);
-router.route("/Phones").get(productController.showPhoneHandler);
-router.route("/:category/:name/:id").get(productController.showDetailProductHandler);
+router.route("/").get(productController.showTopProductHandler);
 
 module.exports = router;

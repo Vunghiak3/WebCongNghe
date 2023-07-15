@@ -20,12 +20,12 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources\\views"));
 
-app.get("/", (req, res) => {
-  res.render("home", {
-    title: "Home",
-    linkcss: "/css/home.css",
-  });
-});
+// app.get("/", (req, res) => {
+//   res.render("home", {
+//     title: "Home",
+//     linkcss: "/css/home.css",
+//   });
+// });
 
 app.get("/login", (req, res) => {
   res.render("login", {
@@ -35,13 +35,13 @@ app.get("/login", (req, res) => {
   });
 });
 
-app.get("/shop", (req, res) => {
-  res.render("shop", {
-    title: "Shop",
-    linkcss: "/css/shop.css",
-    // linkjs: "/js/shop.js"
-  });
-});
+// app.get("/shop", (req, res) => {
+//   res.render("shop", {
+//     title: "Shop",
+//     linkcss: "/css/shop.css",
+//     // linkjs: "/js/shop.js"
+//   });
+// });
 
 app.get("/cart", (req, res) => {
   res.render("cart", {
@@ -68,6 +68,9 @@ app.get("/checkout", (req, res) => {
 // });
 
 const productRouter = require("./routes/product");
-app.use("/Phones", productRouter);
+const hometRouter = require("./routes/home");
+app.use("/Home", hometRouter);
+app.use("/", productRouter);
+app.use("/", productRouter);
 
 module.exports = app;

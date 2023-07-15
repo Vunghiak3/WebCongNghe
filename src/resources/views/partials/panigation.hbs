@@ -1,0 +1,15 @@
+{{#if isFirstPage}}
+  <a href="?page={{prevPage}}" class="page-prev page">Prev</a>
+{{else}}
+  <a class="page-prev page hidden-page">Prev</a>
+{{/if}}
+
+{{#each pages}}
+  <a href="?page={{page}}" class="{{#if active}}page active-page{{else}}page{{/if}}">{{page}}</a>
+{{/each}}
+
+{{#if isLastPage}}
+  <a href="?page={{nextPage}}" class="page-next page">Next</a>
+{{else}}
+  <a class="page-next page hidden-page">Next</a>
+{{/if}}

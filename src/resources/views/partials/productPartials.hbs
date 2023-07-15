@@ -1,0 +1,14 @@
+{{#each products}}
+  <a
+    href="/{{this.categoryName}}/{{this.productName}}/{{this.productId}}"
+    class="top-proItem item-product"
+  >
+    <img
+      src="{{this.imageURL}}"
+      alt="{{this.productName}}"
+      title="{{this.productName}}"
+    />
+    <p class="name-proItem">{{this.productName}}</p>
+    <p class="price-proItem">{{this.price}}</p>
+  </a>
+{{/each}}

@@ -22,6 +22,9 @@ npm install bcryptjs
 #install JsonWebToken
 npm install jsonwebtoken
 
+#install panigation
+npm install paginate-info.
+
 // Template engine
 -- npm install express-handlebars@3.1.0
 

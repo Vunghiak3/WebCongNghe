@@ -89,6 +89,9 @@
   padding: 20px 0px;
   text-align: center; }
 
+.item-product img {
+  height: 80%; }
+
 .item-product:hover {
   background-color: #eae9e9;
   transition: all 0.1s linear; }

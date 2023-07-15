@@ -13,7 +13,7 @@
       <div class="imgs-product">
         <div class="list-img_product">
           <div class="img-item">
-            <img src="/imgs/Phone/Sony-Xperia-1-V.png" alt="" />
+            <img src="{{product.imageURL}}" alt="" />
           </div>
           <div class="img-item">
             <img src="/imgs/Phone/Mask group.png" alt="" />
@@ -41,11 +41,11 @@
         </div>
       </div>
       <div class="product-description">
-        <p class="name-product">{{products.name}}</p>
-        <p class="price-product">{{products.price}}</p>
+        <p class="name-product">{{product.productName}}</p>
+        <p class="price-product">{{product.price}}</p>
         <div class="horizontal-line" style="width: 70%"></div>
         <p class="product-overview">
-          {{products.description}}
+          {{product.description}}
         </p>
         <div class="horizontal-line" style="width: 70%"></div>
 
