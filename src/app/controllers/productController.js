@@ -1,4 +1,5 @@
 const ProductDAO = require("./../../DAO/ProductDAO");
+const jwt = require("jsonwebtoken");
 
 exports.getALLProductsHandler = async (req, res) => {
   try {
@@ -29,6 +30,23 @@ exports.getALLProductsHandler = async (req, res) => {
 exports.showDetailProductHandler = async (req, res) => {
   const id = req.params.id * 1;
   const product = await ProductDAO.getProductsById(id);
+  const imgs = await ProductDAO.getAllImgProductByIdProduct(id);
+  const options = await ProductDAO.getAllOptionsByIdProduct(id);
+  // product.options = options;
+  const uniqueSizes = [...new Set(options.map((opt) => opt.size))];
+  const uniqueColors = [...new Set(options.map((opt) => opt.color))];
+
+  const sortedOptions = options.sort((a, b) => {
+    if (a.size !== b.size) {
+      return a.size - b.size;
+    } else {
+      return a.color.localeCompare(b.color);
+    }
+  });
+  product.imgs = imgs;
+  product.options = sortedOptions;
+  product.uniqueSizes = uniqueSizes;
+  product.uniqueColors = uniqueColors;
   if (!product) {
     res.send(`<h1>Can not find Product with id = ${id} </h1>`);
   } else {
@@ -141,5 +159,69 @@ exports.showLaptopHandler = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
+  }
+};
+
+exports.createProductHandler = async (req, res) => {
+  const product = req.body;
+  try {
+    await ProductDAO.createNewProduct(product);
+    const newProduct = await ProductDAO.getProductByCreatedAt(
+      product.createdAt
+    );
+    let result = {
+      code: 200,
+      msg: "Booking Successful!",
+      data: {
+        newProduct,
+      },
+    };
+    return res.status(200).json(result);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
+  }
+};
+
+exports.checkProductById = async (req, res, next, val) => {
+  try {
+    const id = val;
+    let product = await ProductDAO.getProductById(id);
+    if (!product) {
+      return res.status(404).json({
+        code: 404,
+        msg: `Not found product with id ${id}`,
+      });
+    }
+    req.product = product;
+  } catch (e) {
+    return res
+      .status(500) // 500 - Internal Error
+      .json({
+        code: 500,
+        msg: e.toString(),
+      });
+  }
+  next();
+};
+
+exports.getProductHandler = async (req, res) => {
+  try {
+    const product = req.product;
+    let result = {
+      code: 200,
+      msg: "OK",
+      data: { product },
+    };
+    res.status(200).json(result);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
   }
 };

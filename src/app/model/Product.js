@@ -33,17 +33,6 @@ const ProductSchema = new ModelSchema(
       sqlType: sql.Int,
       require: true,
     }),
-    size: new ModelSchemaValidator({
-      name: "size",
-      sqlType: sql.Int,
-      require: true,
-    }),
-    color: new ModelSchemaValidator({
-      name: "color",
-      sqlType: sql.VarChar,
-      maxLength: 200,
-      require: true,
-    }),
     categoryId: new ModelSchemaValidator({
       name: "categoryId",
       sqlType: sql.Int,

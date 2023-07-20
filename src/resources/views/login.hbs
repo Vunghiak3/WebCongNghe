@@ -20,15 +20,15 @@
           <div class="title-login">
             <h1>Đăng nhập</h1>
           </div>
-          <form action="" id="login-form">
-            <div class="username-login">
-              <label for="username-login"> Tên người dùng hoặc email </label><br
+          <form action="/Users/login" method="post" id="login-form">
+            <div class="username_login">
+              <label for="username_login"> Tên người dùng hoặc email </label><br
               />
-              <input type="text" id="username-login" name="username-login" />
+              <input type="text" id="username_login" name="username_login" />
             </div>
-            <div class="password-login">
-              <label for="password-login"> Mật khẩu </label><br />
-              <input type="text" id="password-login" name="password-login" />
+            <div class="password_login">
+              <label for="password_login"> Mật khẩu </label><br />
+              <input type="password" id="password_login" name="password_login" />
             </div>
             <div class="remember-me">
               <input type="checkbox" name="remember" id="remember" />
@@ -45,7 +45,7 @@
           <div class="title-register">
             <h1>Đăng ký</h1>
           </div>
-          <form action="" id="register-form">
+          <form action="/Users/singup" method="post" id="register-form">
             <div class="username-register">
               <label for="username-register">
                 Tên người dùng hoặc email
@@ -59,14 +59,14 @@
             <div class="password-register">
               <label for="password-register">Mật khẩu</label><br />
               <input
-                type="text"
+                type="password"
                 name="password-register"
                 id="password-register"
               />
             </div>
             <div class="again-pass">
               <label for="again-pass">Nhập lại mật khẩu</label><br />
-              <input type="text" name="again-pass" id="again-pass" />
+              <input type="password" name="again-pass" id="again-pass" />
             </div>
             <div class="fullname">
               <label for="fullname">Họ và Tên</label><br />

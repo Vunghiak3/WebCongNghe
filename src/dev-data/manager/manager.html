@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="manager.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="slidebar-container">
+        <div class="sidebar-header">
+          <p>VINATECH</p>
+        </div>
+        <div class="web-profile">
+          <div class="profile-dtl">
+            <div>
+              <img src="../../public/imgs/imgProfile.png" alt="" />
+            </div>
+            <h2>VinaTech</h2>
+          </div>
+        </div>
+        <div class="menu-slidebar_container">
+          <ul class="menu-slidebar_wrapper">
+            <li class="item-slidebar product-list">
+              <a href="">
+                <i class="fa-solid fa-list"></i>
+                Danh sách sản phẩm
+              </a>
+            </li>
+            <li class="item-slidebar product-category">
+              <a href="">
+                <i class="fa-solid fa-gears"></i>
+                Danh mục sản phẩm
+              </a>
+            </li>
+            <li class="item-slidebar product-cart">
+              <a href="">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Giỏ hàng
+              </a>
+            </li>
+            <li class="item-slidebar product-order">
+              <a href="">
+                <i class="fa-solid fa-file-invoice"></i>
+                Tanh toán sản phẩm
+              </a>
+            </li>
+            <li class="item-slidebar product-review">
+              <a href="">
+                <i class="fa-solid fa-comment"></i>
+                Đánh giá sản phẩm
+              </a>
+            </li>
+            <li class="item-slidebar user-account">
+              <a href="">
+                <i class="fa-solid fa-user"></i>
+                Người dùng
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="main-container">
+        <div class="funtion-header">
+          <div class="title-main">Danh sách sản phẩm</div>
+          <div class="search-function">
+            <form action="#" method="get">
+              <input
+                type="search"
+                name="search"
+                placeholder="Search by name product..."
+              />
+              <button type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+            <button class="add-button">
+              Thêm mới
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+        <div class="main-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Ảnh</th>
+                <th>Tên Sản Phẩm</th>
+                <th>Mô Tả</th>
+                <th>Màu</th>
+                <th>Loại</th>
+                <th>Số Lượng</th>
+                <th>Giá</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <img
+                    src="../../public/imgs/Phone/iPhone-14-Pro-Max_Bac.png"
+                    alt="Sản Phẩm 1"
+                    width="80"
+                  />
+                </td>
+                <td>Sản Phẩm 1</td>
+                <td class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  auctor metus at ante tincidunt, a auctor tellus lacinia.
+                </td>
+                <td>Đen</td>
+                <td>Áo</td>
+                <td>10</td>
+                <td>100,000 VNĐ</td>
+                <td>
+                  <button class="edit-button">Sửa</button>
+                  <button class="delete-button">Xóa</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="../../public/imgs/Phone/OPPO-Reno8-T_1.png"
+                    alt="Sản Phẩm 2"
+                    width="80"
+                  />
+                </td>
+                <td>Sản Phẩm 2</td>
+                <td class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  auctor metus at ante tincidunt, a auctor tellus lacinia.
+                </td>
+                <td>Trắng</td>
+                <td>Quần</td>
+                <td>5</td>
+                <td>200,000 VNĐ</td>
+                <td>
+                  <button class="edit-button">Sửa</button>
+                  <button class="delete-button">Xóa</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="../../public/imgs/Phone/realme-9-Pro-Plus_1.png"
+                    alt="Sản Phẩm 3"
+                    width="80"
+                  />
+                </td>
+                <td>Sản Phẩm 3</td>
+                <td class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  auctor metus at ante tincidunt, a auctor tellus lacinia.
+                </td>
+                <td>Xám</td>
+                <td>Giày</td>
+                <td>2</td>
+                <td>300,000 VNĐ</td>
+                <td>
+                  <button class="edit-button">Sửa</button>
+                  <button class="delete-button">Xóa</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <img
+                    src="../../public/imgs/Phone/ASUS-ROG-Phone-6_1.png"
+                    alt="Sản Phẩm 3"
+                    width="80"
+                  />
+                </td>
+                <td>Sản Phẩm 4</td>
+                <td class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  auctor metus at ante tincidunt, a auctor tellus lacinia.
+                </td>
+                <td>Xám</td>
+                <td>Giày</td>
+                <td>2</td>
+                <td>300,000 VNĐ</td>
+                <td>
+                  <button class="edit-button">Sửa</button>
+                  <button class="delete-button">Xóa</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pagenumbers" id="panigation">
+            <div class="page-prev page hidden-page">Prev</div>
+            <div class="page-1 page active-page">1</div>
+            <div class="page-2 page">2</div>
+            <div class="page-3 page">3</div>
+            <div class="page-4 page">4</div>
+            <div class="page-next page">Next</div>
+          </div>
+          <div class="form-detail_container">
+            <div class="form-detail_wrapper">
+              <form>
+                <div class="product-id">
+                  <label for="product-id">ID Sản Phẩm:</label>
+                  <input
+                    type="text"
+                    id="product-id"
+                    name="product-id"
+                    required
+                  />
+                </div>
+                <div class="product-name">
+                  <label for="product-name">Tên Sản Phẩm:</label>
+                  <input
+                    type="text"
+                    id="product-name"
+                    name="product-name"
+                    required
+                  />
+                </div>
+                <div class="product-description">
+                  <label for="product-description">Mô Tả:</label>
+                  <textarea
+                    id="product-description"
+                    name="product-description"
+                    required
+                  ></textarea>
+                </div>
+                <div class="product-color">
+                  <label for="product-color">Màu:</label>
+                  <input
+                    type="text"
+                    id="product-color"
+                    name="product-color"
+                    required
+                  />
+                </div>
+                <div class="product-size">
+                  <label for="product-type">Loại:</label>
+                  <input type="text" id="product-type" name="product-type" />
+                </div>
+                <div class="product-quantity">
+                  <label for="product-quantity">Số Lượng:</label>
+                  <input
+                    type="number"
+                    id="product-quantity"
+                    name="product-quantity"
+                    min="1"
+                    required
+                  />
+                </div>
+                <div class="product-price">
+                  <label for="product-price">Giá:</label>
+                  <input
+                    type="number"
+                    id="product-price"
+                    name="product-price"
+                    min="0"
+                    required
+                  />
+                </div>
+                <div class="product-image">
+                  <label for="product-images">Ảnh:</label>
+                  <input
+                    type="file"
+                    id="product-images"
+                    name="product-images[]"
+                    accept="image/*"
+                    multiple
+                    required
+                  />
+                  <div id="preview-images"></div>
+                </div>
+
+                <button class="btn-fun" type="submit"></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="manager.js"></script>
+  </body>
+</html>

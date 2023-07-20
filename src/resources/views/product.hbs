@@ -12,12 +12,11 @@
     <div class="product-wrapper">
       <div class="imgs-product">
         <div class="list-img_product">
-          <div class="img-item">
-            <img src="{{product.imageURL}}" alt="" />
-          </div>
-          <div class="img-item">
-            <img src="/imgs/Phone/Mask group.png" alt="" />
-          </div>
+          {{#each product.imgs}}
+            <div class="img-item">
+              <img src="{{this.imageURL}}" alt="{{this.imageName}}" />
+            </div>
+          {{/each}}
         </div>
         <div class="img-show_container">
           <div class="img-show">
@@ -28,11 +27,7 @@
               <i class="fa-solid fa-angle-left"></i>
             </div>
             <div class="img-wrapper">
-              <img
-                src=""
-                alt=""
-                class="img-big"
-              />
+              <img src="" alt="" class="img-big" />
             </div>
             <div class="next">
               <i class="fa-solid fa-angle-right"></i>
@@ -42,7 +37,7 @@
       </div>
       <div class="product-description">
         <p class="name-product">{{product.productName}}</p>
-        <p class="price-product">{{product.price}}</p>
+        <p class="price-product">{{product.price}} VND</p>
         <div class="horizontal-line" style="width: 70%"></div>
         <p class="product-overview">
           {{product.description}}
@@ -53,9 +48,9 @@
           <label for="size">Size:</label>
           <div class="custom-dropdown">
             <select id="size">
-              <option value="size-1">128GB</option>
-              <option value="size-2">256GB</option>
-              <option value="size-3">1TB</option>
+              {{#each product.uniqueSizes}}
+              <option value="{{this}}">{{this}}GB</option>
+              {{/each}}
             </select>
           </div>
         </div>
@@ -64,9 +59,9 @@
           <label for="color">Color:</label>
           <div class="custom-dropdown">
             <select id="color">
-              <option value="color-1">Blue</option>
-              <option value="color-2">Purple</option>
-              <option value="color-3">White</option>
+              {{#each product.uniqueColors}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </div>
         </div>
@@ -80,6 +75,7 @@
                   type="number"
                   value="1"
                   min="1"
+                  max="{{product.quantity}}"
                   id="quantity"
                   name="quantity"
                 />
@@ -124,16 +120,8 @@
       </div>
     </div>
     <div class="front-back view">
-      <img
-        class="front-img"
-        src="/imgs/S23 Ultra Front View.png"
-        alt=""
-      />
-      <img
-        class="back-img"
-        src="/imgs/S23 Ultra Front View.png"
-        alt=""
-      />
+      <img class="front-img" src="/imgs/S23 Ultra Front View.png" alt="" />
+      <img class="back-img" src="/imgs/S23 Ultra Front View.png" alt="" />
     </div>
   </section>
 </main>

@@ -20,6 +20,8 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources\\views"));
 
+//get data by form
+app.use(express.urlencoded({ extended: false }));
 // app.get("/", (req, res) => {
 //   res.render("home", {
 //     title: "Home",
@@ -27,7 +29,7 @@ app.set("views", path.join(__dirname, "resources\\views"));
 //   });
 // });
 
-app.get("/login", (req, res) => {
+app.get("/Users/login", (req, res) => {
   res.render("login", {
     title: "Login",
     linkcss: "/css/login.css",
@@ -59,18 +61,19 @@ app.get("/checkout", (req, res) => {
   });
 });
 
-// app.get("/product", (req, res) => {
-//   res.render("product", {
-//     title: "Product",
-//     linkcss: "/css/product.css",
-//     linkjs: "/js/product.js",
-//   });
-// });
+app.get("/manager", (req, res) => {
+  res.render("manager", {
+    title: "manager",
+    linkcss: "/css/manager.css",
+    linkjs: "/js/manager.js",
+  });
+});
 
 const productRouter = require("./routes/product");
 const hometRouter = require("./routes/home");
+const userRouter = require("./routes/user");
 app.use("/Home", hometRouter);
-app.use("/", productRouter);
-app.use("/", productRouter);
+app.use("/Products", productRouter);
+app.use("/Account", userRouter);
 
 module.exports = app;

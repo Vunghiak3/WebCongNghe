@@ -5,7 +5,7 @@ const imgWrapper = document.querySelector(".img-detail");
 const imgBig = document.querySelector(".img-big");
 const imgPrev = document.querySelector(".prev");
 const imgNext = document.querySelector(".next");
-const imgClose = document.querySelector(".close");
+// const imgClose = document.querySelector(".close");
 
 let currentIndex = 0;
 

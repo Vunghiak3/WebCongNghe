@@ -1,6 +1,6 @@
 {{#each products}}
   <a
-    href="/{{this.categoryName}}/{{this.productName}}/{{this.productId}}"
+    href="/Products/{{this.categoryName}}/{{this.productName}}/{{this.productId}}"
     class="top-proItem item-product"
   >
     <img
@@ -9,6 +9,6 @@
       title="{{this.productName}}"
     />
     <p class="name-proItem">{{this.productName}}</p>
-    <p class="price-proItem">{{this.price}}</p>
+    <p class="price-proItem">{{this.price}} VND</p>
   </a>
 {{/each}}

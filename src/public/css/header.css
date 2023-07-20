@@ -1,5 +1,5 @@
 :root {
-  --width-menu: 1500px;
+  --width-menu: 1300px;
   --size-logo: 70px;
   --width-search: 300px; }
 
@@ -12,8 +12,7 @@
   justify-content: space-between;
   max-width: var(--width-menu);
   margin: 0 auto;
-  align-items: center;
-  overflow: hidden; }
+  align-items: center; }
 
 .menu-logo img {
   height: var(--size-logo); }
@@ -22,9 +21,9 @@
   display: flex; }
 
 .menu-item a {
-  padding: 45px 40px;
-  /* height: 100%; */
-  font-size: 18px; }
+  padding: 30px 50px;
+  font-size: 18px;
+  display: block; }
 
 .menu-item a:hover {
   background-color: #e7e7e7;
@@ -59,3 +58,55 @@
 .account i {
   font-size: 23px;
   cursor: pointer; }
+
+/* css option login */
+.account {
+  position: relative; }
+
+.option-login {
+  position: absolute;
+  top: 35px;
+  left: -30px;
+  background-color: #e7e7e7;
+  visibility: hidden;
+  z-index: 99;
+  transform: scale(0);
+  transform-origin: 10px 10px;
+  transition: transform 0.3s ease-in-out; }
+
+.account a:hover + .option-login {
+  visibility: visible;
+  transform: scale(1); }
+
+.option-login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10px;
+  transform: translate(100%, -100%);
+  border-bottom: 10px solid #e7e7e7;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent; }
+
+.option-login::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 20px;
+  transform: translateY(-100%); }
+
+.item-login a {
+  display: block;
+  white-space: nowrap;
+  padding: 15px 20px; }
+
+.item-login a:hover {
+  background-color: #e6e6e6;
+  color: #46d0cb; }
+
+.account:hover .option-login {
+  visibility: visible;
+  transform: scale(1);
+  transition-delay: 0.2s; }
