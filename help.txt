@@ -25,6 +25,9 @@ npm install jsonwebtoken
 #install panigation
 npm install paginate-info.
 
+#install exress-session
+npm install express-session
+
 // Template engine
 -- npm install express-handlebars@3.1.0
 

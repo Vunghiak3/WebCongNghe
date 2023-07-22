@@ -70,7 +70,6 @@ exports.getUser = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   const newUser = req.body;
-  console.log("🚀 ~ file: user.js:73 ~ exports.createUser= ~ newUser:", newUser)
   try {
     await UserDAO.addUser(newUser);
     let user = await UserDAO.getUserByUserName(newUser.username);

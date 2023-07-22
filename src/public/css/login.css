@@ -63,11 +63,11 @@
 .password-login label {
   font-size: 20px; }
 
-#username-login,
-#password-login,
-#username-register,
-#password-register,
-#again-pass,
+#username_login,
+#password_login,
+#username_register,
+#password_register,
+#again_pass,
 #fullname,
 #address {
   margin: 20px 0;
@@ -80,11 +80,11 @@
   border: 1px solid gray;
   padding: 10px; }
 
-#username-login:focus,
-#password-login:focus,
-#username-register:focus,
-#password-register:focus,
-#again-pass:focus,
+#username_login:focus,
+#password_login:focus,
+#username_register:focus,
+#password_register:focus,
+#again_pass:focus,
 #fullname:focus,
 #address:focus {
   border-color: #2268f5; }

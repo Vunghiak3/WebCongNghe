@@ -17,50 +17,52 @@ const signToken = (id, username) => {
 exports.login = async (req, res) => {
   try {
     const form = req.body;
-    console.log("🚀 ~ file: auth.js:20 ~ exports.login= ~ form:", form);
     if (!form.password_login || !form.username_login) {
-      return res.status(403).json({
-        code: 403,
-        msg: "Invalid params",
-      });
+      // return res.status(403).json({
+      //   code: 403,
+      //   msg: "Invalid params",
+      // });
+      return res.redirect("/Account")
     }
 
     const user = await UserDAO.getUserByUserName(form.username_login);
-    console.log("🚀 ~ file: auth.js:28 ~ exports.login= ~ user:", user);
     if (!user) {
-      return res.status(401).json({
-        code: 401,
-        msg: `Invalid user - ${form.username_login}`,
-      });
+      // return res.status(401).json({
+      //   code: 401,
+      //   msg: `Invalid user - ${form.username_login}`,
+      // });
+      return res.redirect("/Account")
     }
 
     const isValidPassword = await bcrypt.compare(
       form.password_login,
       user.password
     );
+    // if (!isValidPassword) {
+    //   return res.status(401).json({
+    //     code: 401,
+
+    //     msg: "Invalid authentication!",
+    //   });
+    // }
+    console.log("🚀 ~ file: auth.js:49 ~ exports.login= ~ !isValidPassword:", !isValidPassword)
     if (!isValidPassword) {
-      return res.status(401).json({
-        code: 401,
-
-        msg: "Invalid authentication!",
-      });
+      // return res.render("login", {
+      //   linkcss: "/css/login.css",
+      // });
+      return res.redirect("/Account")
     }
-
     const token = signToken(user.userId, user.username);
-    console.log("🚀 ~ file: auth.js:47 ~ exports.login= ~ token:", token);
-    // res.status(200).json({
-    //   code: 200,
-    //   msg: "OK",
-    //   data: {
-    //     token,
-    //   },
-    // });
-    res.render("home", {
-      title: "home",
-      linkcss: "/css/home.css",
-      linkjs: "/js/home.js",
-      islogin: true,
-    });
+    req.session.isAuthenicated = true;
+    req.session.token = `Bearer ${token}`
+    delete user.password;
+    req.session.authUser = user;
+
+    if (user.roleId === StaticData.AUTH.Role.admin) {
+      return res.redirect("/Account/Manager");
+    } else if (user.roleId === StaticData.AUTH.Role.user) {
+      return res.redirect("/Account/Profile");
+    }
   } catch (e) {
     console.error(e);
     res
@@ -114,16 +116,14 @@ exports.protect = async (req, res, next) => {
   try {
     let token;
     if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
+      req.session.token &&
+      req.session.token.startsWith("Bearer")
     ) {
-      token = req.headers.authorization.split(" ")[1];
+      token = req.session.token.split(" ")[1];
     }
+    console.log("🚀 ~ file: auth.js:125 ~ exports.protect= ~ !token:", !token)
     if (!token) {
-      return res.status(401).json({
-        code: 401,
-        msg: "Your are not logged in! Please log in to gert access.",
-      });
+      return res.redirect("/Account");
     }
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     const currentUser = await UserDAO.getUser(payload.id);
@@ -149,18 +149,12 @@ exports.protect = async (req, res, next) => {
 exports.restricTo = (...roles) => {
   return async (req, res, next) => {
     if (!roles.includes(req.user.roleId)) {
-      return res.status(403).json({
-        code: 401,
-        msg: "Your do not have permission to perform this action!",
-      });
+      // return res.status(403).json({
+      //   code: 401,
+      //   msg: "Your do not have permission to perform this action!",
+      // });
+      return res.send("<h1>Your do not have permission to perform this action!</h1>")
     }
     next();
   };
 };
-
-// exports.restric = (req, res, next) => {
-//   if (!req.session.isAuthenticated) {
-//     return res.redirect("/account");
-//   }
-//   next();
-// };

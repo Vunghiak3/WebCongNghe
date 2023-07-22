@@ -3,6 +3,7 @@ const app = express();
 const morgan = require("morgan");
 const path = require("path");
 const handlebars = require("express-handlebars");
+const session = require("express-session");
 
 app.use(express.json());
 //HTTP logger
@@ -20,6 +21,18 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources\\views"));
 
+app.set("trust proxy", 1); // trust first proxy
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      //  secure: true
+    },
+  })
+);
+
 //get data by form
 app.use(express.urlencoded({ extended: false }));
 // app.get("/", (req, res) => {
@@ -29,7 +42,18 @@ app.use(express.urlencoded({ extended: false }));
 //   });
 // });
 
-app.get("/Users/login", (req, res) => {
+app.use(async (req, res, next) => {
+  if (req.session.isAuthenicated === null) {
+    req.session.isAuthenicated = false;
+  }
+
+  res.locals.lcIsAuthenticated = req.session.isAuthenicated;
+  res.locals.lcAuthUser = req.session.authUser;
+
+  next();
+});
+
+app.get("/Account", (req, res) => {
   res.render("login", {
     title: "Login",
     linkcss: "/css/login.css",
@@ -58,14 +82,6 @@ app.get("/checkout", (req, res) => {
     title: "Checkout",
     linkcss: "/css/checkout.css",
     linkjs: "/js/checkout.js",
-  });
-});
-
-app.get("/manager", (req, res) => {
-  res.render("manager", {
-    title: "manager",
-    linkcss: "/css/manager.css",
-    linkjs: "/js/manager.js",
   });
 });
 
