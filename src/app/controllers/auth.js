@@ -22,7 +22,7 @@ exports.login = async (req, res) => {
       //   code: 403,
       //   msg: "Invalid params",
       // });
-      return res.redirect("/Account")
+      return res.redirect("/Account");
     }
 
     const user = await UserDAO.getUserByUserName(form.username_login);
@@ -31,7 +31,7 @@ exports.login = async (req, res) => {
       //   code: 401,
       //   msg: `Invalid user - ${form.username_login}`,
       // });
-      return res.redirect("/Account")
+      return res.redirect("/Account");
     }
 
     const isValidPassword = await bcrypt.compare(
@@ -45,23 +45,26 @@ exports.login = async (req, res) => {
     //     msg: "Invalid authentication!",
     //   });
     // }
-    console.log("🚀 ~ file: auth.js:49 ~ exports.login= ~ !isValidPassword:", !isValidPassword)
+    console.log(
+      "🚀 ~ file: auth.js:49 ~ exports.login= ~ !isValidPassword:",
+      !isValidPassword
+    );
     if (!isValidPassword) {
       // return res.render("login", {
       //   linkcss: "/css/login.css",
       // });
-      return res.redirect("/Account")
+      return res.redirect("/Account");
     }
     const token = signToken(user.userId, user.username);
     req.session.isAuthenicated = true;
-    req.session.token = `Bearer ${token}`
+    req.session.token = `Bearer ${token}`;
     delete user.password;
     req.session.authUser = user;
 
     if (user.roleId === StaticData.AUTH.Role.admin) {
-      return res.redirect("/Account/Manager");
+      return res.redirect("/Manager");
     } else if (user.roleId === StaticData.AUTH.Role.user) {
-      return res.redirect("/Account/Profile");
+      return res.redirect("/Profile");
     }
   } catch (e) {
     console.error(e);
@@ -77,30 +80,47 @@ exports.login = async (req, res) => {
 exports.signup = async (req, res) => {
   try {
     const form = req.body;
-    if (form.password !== form.repeatPassword) {
-      return res.status(403).json({
-        code: 403,
-        msg: "Invalid password!",
-      });
+    if (form.password_register !== form.again_pass) {
+      // return res.status(403).json({
+      //   code: 403,
+      //   msg: "Invalid password!",
+      // });
+      // req.session.errEmail = false;
+      req.session.errName = false;
+      req.session.errPassword = true;
+      return res.redirect("/Account");
     }
+
+    const user1 = await UserDAO.getUserByUserName(form.username_register);
+    if (user1 && user1.username) {
+      // req.session.errEmail = false;
+      req.session.errPassword = false;
+      req.session.errName = true;
+      return res.redirect("/Account");
+    }
+
     await UserDAO.addUser({
-      username: form.username,
-      password: form.password,
+      username: form.username_register,
+      password: form.password_register,
       email: form.email,
-      name: form.name,
+      name: form.fullname,
       address: form.address,
-      phone: form.phone,
+      phone: form.phonenumber,
       roleId: StaticData.AUTH.Role.user,
     });
-    const user = await UserDAO.getUserByUserName(form.username);
-    delete user.password;
-    delete user.passwordAt;
-    res.status(201).json({
-      status: "success",
-      data: {
-        user,
-      },
-    });
+    const user = await UserDAO.getUserByUserName(form.username_register);
+    delete user.password_register;
+    // res.status(201).json({
+    //   status: "success",
+    //   data: {
+    //     user,
+    //   },
+    // });
+    if (user) {
+      req.session.signUpSuccess = true;
+      req.session.errPassword = false;
+      res.redirect("/Account");
+    }
   } catch (e) {
     console.error(e);
     res
@@ -115,13 +135,9 @@ exports.signup = async (req, res) => {
 exports.protect = async (req, res, next) => {
   try {
     let token;
-    if (
-      req.session.token &&
-      req.session.token.startsWith("Bearer")
-    ) {
+    if (req.session.token && req.session.token.startsWith("Bearer")) {
       token = req.session.token.split(" ")[1];
     }
-    console.log("🚀 ~ file: auth.js:125 ~ exports.protect= ~ !token:", !token)
     if (!token) {
       return res.redirect("/Account");
     }
@@ -153,7 +169,9 @@ exports.restricTo = (...roles) => {
       //   code: 401,
       //   msg: "Your do not have permission to perform this action!",
       // });
-      return res.send("<h1>Your do not have permission to perform this action!</h1>")
+      return res.send(
+        "<h1>Your do not have permission to perform this action!</h1>"
+      );
     }
     next();
   };

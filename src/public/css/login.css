@@ -69,7 +69,9 @@
 #password_register,
 #again_pass,
 #fullname,
-#address {
+#address,
+#email,
+#phonenumber {
   margin: 20px 0;
   line-height: 35px;
   width: 370px;
@@ -86,7 +88,9 @@
 #password_register:focus,
 #again_pass:focus,
 #fullname:focus,
-#address:focus {
+#address:focus,
+#email:focus,
+#phonenumber:focus {
   border-color: #2268f5; }
 
 .remember-me {
@@ -143,3 +147,7 @@
 .content-service {
   color: gray;
   font-size: 18px; }
+
+.errInput {
+  color: red;
+  margin-left: 10px; }

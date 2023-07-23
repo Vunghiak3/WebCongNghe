@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const productController = require("./../app/controllers/productController");
-const authController = require("../app/controllers/auth");
-const StaticData = require("../utils/StaticData");
 
 router.param("id", productController.checkProductById);
+<<<<<<< HEAD
 //Anh nam tạ works
 router
   .route("/:id")
@@ -27,6 +26,9 @@ router
 //     authController.restricTo(StaticData.AUTH.Role.admin),
 //     productController.getProductHandler
 //   );
+=======
+
+>>>>>>> a077fcf762e38f03a2694387b4cfe531881d3855
 router.route("/Laptops").get(productController.showLaptopHandler);
 router.route("/Phones").get(productController.showPhoneHandler);
 router

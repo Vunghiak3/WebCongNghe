@@ -59,7 +59,6 @@ exports.addUser = async (user) => {
   query += " (" + insertFieldNamesStr + ") VALUES (" + insertValuesStr + ")";
 
   let result = await request.query(query);
-  console.log("🚀 ~ file: UserDAO.js:65 ~ exports.addUser= ~ result:", result);
 
   return result.recordsets;
 };

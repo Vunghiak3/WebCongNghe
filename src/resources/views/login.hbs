@@ -28,7 +28,11 @@
             </div>
             <div class="password_login">
               <label for="password_login"> Mật khẩu </label><br />
-              <input type="password" id="password_login" name="password_login" />
+              <input
+                type="password"
+                id="password_login"
+                name="password_login"
+              />
             </div>
             <div class="remember-me">
               <input type="checkbox" name="remember" id="remember" />
@@ -45,15 +49,20 @@
           <div class="title-register">
             <h1>Đăng ký</h1>
           </div>
-          <form action="/Account/singup" method="post" id="register-form">
+          <form action="/Account/signup" method="post" id="register-form">
             <div class="username_register">
               <label for="username_register">
-                Tên người dùng hoặc email
+                Tên người dùng
+                {{#if errName}}
+                  <span class="errInput errName">* Đã có người dùng tên tài
+                    khoản này</span>
+                {{/if}}
               </label><br />
               <input
                 type="text"
                 id="username_register"
                 name="username_register"
+                required
               />
             </div>
             <div class="password_register">
@@ -62,19 +71,49 @@
                 type="password"
                 name="password_register"
                 id="password_register"
+                required
               />
             </div>
             <div class="again_pass">
-              <label for="again_pass">Nhập lại mật khẩu</label><br />
-              <input type="password" name="again_pass" id="again_pass" />
+              <label for="again_pass">
+                Nhập lại mật khẩu
+                {{#if errPassword}}
+                  <span class="errInput errPass">* Mật khẩu không khớp</span>
+                {{/if}}
+              </label><br />
+              <input
+                type="password"
+                name="again_pass"
+                id="again_pass"
+                required
+              />
+            </div>
+            <div class="email">
+              <label for="email">
+                Email
+                {{#if errEmail}}
+                  <span class="errInput errEmail">* Đã có người dùng email này</span>
+                {{/if}}
+              </label><br />
+              <input
+                type="text"
+                name="email"
+                id="email"
+                required
+                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+              />
             </div>
             <div class="fullname">
               <label for="fullname">Họ và Tên</label><br />
-              <input type="text" name="fullname" id="fullname" />
+              <input type="text" name="fullname" id="fullname" required />
             </div>
             <div class="address">
               <label for="address">Địa chỉ</label><br />
-              <input type="text" name="address" id="address" />
+              <input type="text" name="address" id="address" required />
+            </div>
+            <div class="phonenumber">
+              <label for="phonenumber">Phone number</label><br />
+              <input type="text" name="phonenumber" id="phonenumber" required />
             </div>
             <input type="submit" value="Đăng ký" class="btnRegister" />
           </form>
@@ -105,3 +144,10 @@
     </div>
   </section>
 </main>
+{{#if signUpSuccess}}
+  <script>
+    document.addEventListener("DOMContentLoaded", function () { const
+    signUpSuccess = '<%=res.locals.signUpSuccess %>'; if (signUpSuccess) {
+    setTimeout(function () { window.alert('Đăng ký thành công!'); }, 500); } });
+  </script>
+{{/if}}

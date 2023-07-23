@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const path = require("path");
 const handlebars = require("express-handlebars");
 const session = require("express-session");
+const authController = require("./app/controllers/auth");
 
 app.use(express.json());
 //HTTP logger
@@ -35,39 +36,21 @@ app.use(
 
 //get data by form
 app.use(express.urlencoded({ extended: false }));
-// app.get("/", (req, res) => {
-//   res.render("home", {
-//     title: "Home",
-//     linkcss: "/css/home.css",
-//   });
-// });
 
 app.use(async (req, res, next) => {
   if (req.session.isAuthenicated === null) {
     req.session.isAuthenicated = false;
   }
 
+  res.locals.errName = req.session.errName;
+  res.locals.errEmail = req.session.errEmail;
+  res.locals.errPassword = req.session.errPassword;
+  res.locals.signUpSuccess = req.session.signUpSuccess;
   res.locals.lcIsAuthenticated = req.session.isAuthenicated;
   res.locals.lcAuthUser = req.session.authUser;
 
   next();
 });
-
-app.get("/Account", (req, res) => {
-  res.render("login", {
-    title: "Login",
-    linkcss: "/css/login.css",
-    linkjs: "/js/login.js",
-  });
-});
-
-// app.get("/shop", (req, res) => {
-//   res.render("shop", {
-//     title: "Shop",
-//     linkcss: "/css/shop.css",
-//     // linkjs: "/js/shop.js"
-//   });
-// });
 
 app.get("/cart", (req, res) => {
   res.render("cart", {
@@ -87,9 +70,14 @@ app.get("/checkout", (req, res) => {
 
 const productRouter = require("./routes/product");
 const hometRouter = require("./routes/home");
-const userRouter = require("./routes/user");
+const accountRouter = require("./routes/account");
+const managerRouter = require("./routes/manager");
 app.use("/Home", hometRouter);
 app.use("/Products", productRouter);
-app.use("/Account", userRouter);
+app.use("/Account", accountRouter);
+app.use("/Manager", managerRouter);
+app.get("/Profile", authController.protect, (req, res) => {
+  res.render("accountProfile");
+});
 
 module.exports = app;
