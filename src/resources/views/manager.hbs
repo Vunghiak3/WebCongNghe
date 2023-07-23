@@ -13,37 +13,37 @@
   <div class="menu-slidebar_container">
     <ul class="menu-slidebar_wrapper">
       <li class="item-slidebar product-list">
-        <a href="">
+        <a href="/Manager/Product">
           <i class="fa-solid fa-list"></i>
           Danh sách sản phẩm
         </a>
       </li>
       <li class="item-slidebar product-category">
-        <a href="">
+        <a href="/Manager/Catogery">
           <i class="fa-solid fa-gears"></i>
           Danh mục sản phẩm
         </a>
       </li>
       <li class="item-slidebar product-cart">
-        <a href="">
+        <a href="/Manager/Cart">
           <i class="fa-solid fa-cart-shopping"></i>
           Giỏ hàng
         </a>
       </li>
       <li class="item-slidebar product-order">
-        <a href="">
+        <a href="/Manager/Order">
           <i class="fa-solid fa-file-invoice"></i>
-          Tanh toán sản phẩm
+          Thanh toán sản phẩm
         </a>
       </li>
       <li class="item-slidebar product-review">
-        <a href="">
+        <a href="/Manager/Review">
           <i class="fa-solid fa-comment"></i>
           Đánh giá sản phẩm
         </a>
       </li>
       <li class="item-slidebar user-account">
-        <a href="">
+        <a href="/Manager/Account">
           <i class="fa-solid fa-user"></i>
           Người dùng
         </a>
@@ -51,4 +51,6 @@
     </ul>
   </div>
 </nav>
+{{#if product}}
 {{> productList}}
+{{/if}}

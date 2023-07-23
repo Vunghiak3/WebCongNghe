@@ -26,6 +26,7 @@
           <th>Tên Sản Phẩm</th>
           <th>Mô Tả</th>
           <th>Màu</th>
+          <th>Dung lượng</th>
           <th>Loại</th>
           <th>Số Lượng</th>
           <th>Giá</th>
@@ -36,20 +37,20 @@
         <tr>
           <td>
             <img
-              src="/imgs/Phone/iPhone-14-Pro-Max_Bac.png"
-              alt="Sản Phẩm 1"
+              src="{{this.imagerURL}}"
+              alt="{{this.productName}}"
               width="80"
             />
           </td>
-          <td>Sản Phẩm 1</td>
+          <td>{{this.productName}}</td>
           <td class="description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor
-            metus at ante tincidunt, a auctor tellus lacinia.
+           {{this.description}}
           </td>
-          <td>Đen</td>
-          <td>Áo</td>
-          <td>10</td>
-          <td>100,000 VNĐ</td>
+          <td>{{this.color}}</td>
+          <td>{{this.size}}</td>
+          <td>{{this.category}}</td>
+          <td>{{this.quantity}}</td>
+          <td>{{this.price}}</td>
           <td>
             <button class="edit-button">Sửa</button>
             <button class="delete-button">Xóa</button>
@@ -69,6 +70,7 @@
             metus at ante tincidunt, a auctor tellus lacinia.
           </td>
           <td>Trắng</td>
+          <td>{{this.size}}</td>
           <td>Quần</td>
           <td>5</td>
           <td>200,000 VNĐ</td>
@@ -91,6 +93,7 @@
             metus at ante tincidunt, a auctor tellus lacinia.
           </td>
           <td>Xám</td>
+          <td>{{this.size}}</td>
           <td>Giày</td>
           <td>2</td>
           <td>300,000 VNĐ</td>
@@ -113,6 +116,7 @@
             metus at ante tincidunt, a auctor tellus lacinia.
           </td>
           <td>Xám</td>
+          <td>{{this.size}}</td>
           <td>Giày</td>
           <td>2</td>
           <td>300,000 VNĐ</td>

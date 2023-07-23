@@ -81,7 +81,9 @@
 #password_register,
 #again_pass,
 #fullname,
-#address {
+#address,
+#email,
+#phonenumber {
   margin: 20px 0;
   line-height: 35px;
   width: 370px;
@@ -99,7 +101,9 @@
 #password_register:focus,
 #again_pass:focus,
 #fullname:focus,
-#address:focus {
+#address:focus,
+#email:focus,
+#phonenumber:focus {
   border-color: rgb(34, 104, 245);
 }
 
@@ -167,4 +171,10 @@
 .content-service {
   color: gray;
   font-size: 18px;
+}
+
+// error pass
+.errInput{
+  color: red;
+  margin-left: 10px;
 }
