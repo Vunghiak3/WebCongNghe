@@ -5,7 +5,11 @@ const authController = require("../app/controllers/auth");
 const StaticData = require("../utils/StaticData");
 
 router.param("id", productController.checkProductById);
-
+//Anh nam tạ works
+router
+  .route("/:id")
+  .delete(productController.deleteProduct)
+  .patch(productController.updateProduct);
 // router
 //   .route("/abc")
 //   .post(

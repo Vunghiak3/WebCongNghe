@@ -225,3 +225,42 @@ exports.getProductHandler = async (req, res) => {
     });
   }
 };
+//Anh nam tạ works
+exports.deleteProduct = async (req, res) => {
+  try {
+    const id = req.params.id * 1;
+    await ProductDAO.deleteProductById(id);
+    return res.status(200).json({
+      code: 200,
+      msg: `Delete product with ${id} successfully!`,
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
+  }
+};
+
+exports.updateProduct = async (req, res) => {
+  try {
+    const id = req.params.id * 1;
+    const updateInfo = req.body;
+    await ProductDAO.updateProductById(id, updateInfo);
+    const product = await ProductDAO.getProductById(id);
+    return res.status(200).json({
+      code: 200,
+      msg: `Update product id: ${id} successfully!`,
+      data: {
+        product,
+      },
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
+  }
+};
