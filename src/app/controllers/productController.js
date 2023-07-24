@@ -1,4 +1,5 @@
 const ProductDAO = require("./../../DAO/ProductDAO");
+const ProductCartDAO = require("./../../DAO/ProductCartDAO");
 const jwt = require("jsonwebtoken");
 
 exports.getALLProductsHandler = async (req, res) => {
@@ -225,10 +226,12 @@ exports.getProductHandler = async (req, res) => {
     });
   }
 };
+
 //Anh nam tạ works
 exports.deleteProduct = async (req, res) => {
   try {
     const id = req.params.id * 1;
+    await ProductCartDAO.deleteProductCartById(id);
     await ProductDAO.deleteProductById(id);
     return res.status(200).json({
       code: 200,
@@ -242,7 +245,7 @@ exports.deleteProduct = async (req, res) => {
     });
   }
 };
-
+//checked ok
 exports.updateProduct = async (req, res) => {
   try {
     const id = req.params.id * 1;
@@ -255,6 +258,29 @@ exports.updateProduct = async (req, res) => {
       data: {
         product,
       },
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
+  }
+};
+//checked
+exports.createProducts = async (req, res) => {
+  const newProduct = req.body;
+  try {
+    const now = new Date();
+    const options = { timeZone: "Asia/Ho_Chi_Minh" };
+    const vietnamTime = now.toLocaleString("en-US", options);
+
+    await ProductDAO.createProducts(newProduct);
+    const product = await ProductDAO.getProductByCreatedAt(vietnamTime);
+    return res.status(200).json({
+      code: 200,
+      msg: "Create new products successfully!",
+      data: { product },
     });
   } catch (e) {
     console.error(e);
