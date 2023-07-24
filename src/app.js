@@ -72,10 +72,12 @@ const productRouter = require("./routes/product");
 const hometRouter = require("./routes/home");
 const accountRouter = require("./routes/account");
 const managerRouter = require("./routes/manager");
+const cartRouter = require("./routes/productCart");
 app.use("/Home", hometRouter);
 app.use("/Products", productRouter);
 app.use("/Account", accountRouter);
 app.use("/Manager", managerRouter);
+app.use("/Cart", cartRouter);
 app.get("/Profile", authController.protect, (req, res) => {
   res.render("accountProfile");
 });

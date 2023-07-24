@@ -176,3 +176,89 @@ exports.restricTo = (...roles) => {
     next();
   };
 };
+
+// exports.login = async (req, res) => {
+//   try {
+//     const form = req.body;
+//     if (!form.password_login || !form.username_login) {
+//       return res.status(403).json({
+//         code: 403,
+//         msg: "Invalid params",
+//       });
+//     }
+
+//     const user = await UserDAO.getUserByUserName(form.username_login);
+//     if (!user) {
+//       return res.status(401).json({
+//         code: 401,
+//         msg: `Invalid user - ${form.username_login}`,
+//       });
+//     }
+
+//     const isValidPassword = await bcrypt.compare(
+//       form.password_login,
+//       user.Password
+//     );
+//     if (!isValidPassword) {
+//       return res.status(401).json({
+//         code: 401,
+//         msg: "Invalid authentication!",
+//       });
+//     }
+
+//     const token = signToken(user.Id, user.Username);
+//     res.status(200).json({
+//       code: 200,
+//       msg: "OK",
+//       data: {
+//         token,
+//       },
+//     });
+//   } catch (e) {
+//     console.error(e);
+//     res
+//       .status(500) // 401 - Unauthorized
+//       .json({
+//         code: 500,
+//         msg: e.toString(),
+//       });
+//   }
+// };
+
+// exports.signup = async (req, res) => {
+//   try {
+//     const form = req.body;
+//     if (form.password !== form.repeatPassword) {
+//       return res.status(403).json({
+//         code: 403,
+//         msg: "Invalid password!",
+//       });
+//     }
+//     await UserDAO.addUser({
+//       username: form.username,
+//       password: form.password,
+//       email: form.email,
+//       name: form.fullname,
+//       address: form.address,
+//       phone: form.phonenumber,
+//       roleId: StaticData.AUTH.Role.user,
+//     });
+//     const user = await UserDAO.getUserByUserName(form.username);
+//     delete user.password;
+//     delete user.passwordAt;
+//     res.status(201).json({
+//       status: "success",
+//       data: {
+//         user,
+//       },
+//     });
+//   } catch (e) {
+//     console.error(e);
+//     res
+//       .status(500) // 401 - Unauthorized
+//       .json({
+//         code: 500,
+//         msg: e.toString(),
+//       });
+//   }
+// };
