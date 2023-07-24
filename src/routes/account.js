@@ -17,26 +17,4 @@ router.route("/").get((req, res) => {
   });
 });
 
-// router
-//   .route("/Manager")
-//   .get(
-//     auth.protect,
-//     auth.restricTo(StaticData.AUTH.Role.admin, StaticData.AUTH.Role.manager),
-//     (req, res) => {
-//       res.render("manager", {
-//         title: "manager",
-//         linkcss: "/css/manager.css",
-//         linkjs: "/js/manager.js",
-//       });
-//     }
-//   )
-//   .get(userController.getAllUsers)
-//   .post(userController.createUser);
-
-// router
-//   .route("/Manager/:id")
-//   .get(userController.getUser)
-//   .delete(userController.deleteUser)
-//   .patch(userController.updateUser);
-
 module.exports = router;

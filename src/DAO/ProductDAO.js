@@ -39,6 +39,7 @@ exports.getAllProducts = async (filter) => {
   if (paginationStr) {
     query += " " + paginationStr;
   }
+  console.log("🚀 ~ file: ProductDAO.js:41 ~ exports.getAllProducts= ~ query:", query)
   let result = await dbConfig.db.pool.request().query(query);
   const countResult = await dbConfig.db.pool.request().query(countQuery);
   let totalItem = 0;

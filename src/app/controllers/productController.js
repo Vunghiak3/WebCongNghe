@@ -5,17 +5,27 @@ exports.getALLProductsHandler = async (req, res) => {
   try {
     const { page, pageSize, totalPage, totalItem, products } =
       await ProductDAO.getAllProducts(req.query);
-    return res.status(200).json({
-      code: 200,
-      msg: "OK",
-      page,
-      pageSize,
-      totalPage,
-      totalItem,
-      data: {
-        products,
-      },
+    console.log(
+      "🚀 ~ file: productController.js:17 ~ returnres.status ~ products:",
+      products
+    );
+    return res.render("manager", {
+      title: "Manager",
+      linkcss: "/css/manager.css",
+      linkjs: "/js/manager.js",
+      product: true,
     });
+    // return res.status(200).json({
+    //   code: 200,
+    //   msg: "OK",
+    //   page,
+    //   pageSize,
+    //   totalPage,
+    //   totalItem,
+    //   data: {
+    //     products,
+    //   },
+    // });
   } catch (e) {
     console.error(e);
     res

@@ -21,21 +21,15 @@ router
     }
   );
 
-router.route("/Product").get(
-  authController.protect,
-  authController.restricTo(
-    StaticData.AUTH.Role.admin,
-    StaticData.AUTH.Role.manager
-  ),
-  (req, res) => {
-    res.render("manager", {
-      title: "manager",
-      linkcss: "/css/manager.css",
-      linkjs: "/js/manager.js",
-      product: true,
-    });
-  },
-  productController.getALLProductsHandler
-);
+router
+  .route("/Product")
+  .get(
+    authController.protect,
+    authController.restricTo(
+      StaticData.AUTH.Role.admin,
+      StaticData.AUTH.Role.manager
+    ),
+    productController.getALLProductsHandler
+  );
 
 module.exports = router;
