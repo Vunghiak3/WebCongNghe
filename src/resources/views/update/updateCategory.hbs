@@ -1,0 +1,31 @@
+<main>
+  <div class="form-container">
+    <h1>Cập nhật loại sản phẩm</h1>
+    <form
+      action="/Manager/Category/{{category.categoryId}}?_method=PATCH"
+      method="POST"
+    >
+      <div class="form-group">
+        <label for="categoryName">Tên sản phẩm:</label>
+        <input
+          type="text"
+          value="{{category.categoryName}}"
+          name="categoryName"
+          id="categoryName"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Mô tả:</label>
+        <input
+          type="text"
+          value="{{category.categoryDescription}}"
+          name="categoryDescription"
+          id="description"
+          required
+        />
+      </div>
+      <button type="submit">Cập nhật</button>
+    </form>
+  </div>
+</main>

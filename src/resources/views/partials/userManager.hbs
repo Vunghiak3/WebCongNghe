@@ -1,0 +1,65 @@
+<div class="main-container">
+  <div class="funtion-header">
+    <div class="title-main">Danh sách người dùng</div>
+    <div class="search-function">
+      <form action="/Manager/User" method="get">
+        <input
+          type="search"
+          name="username"
+          placeholder="Search by username..."
+        />
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+      <a href="/Manager/User/create">
+        <button class="add-button">
+        Thêm mới
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      </a>
+    </div>
+  </div>
+  <div class="main-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Mã Người Dùng</th>
+          <th>Tên Tài Khoản</th>
+          <th>Mật khẩu</th>
+          <th>Email</th>
+          <th>Họ Tên</th>
+          <th>Địa chỉ</th>
+          <th>Địa chỉ</th>
+          <th>Vai trò</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+        <tr>
+          <td>{{userId}}</td>
+          <td>{{username}}</td>
+          <td class="description">{{password}}</td>
+          <td>{{email}}</td>
+          <td>{{name}}</td>
+          <td>{{address}}</td>
+          <td>{{phone}}</td>
+          <td>{{roleName}}</td>
+          <td>
+              <a href="/Manager/User/{{userId}}/edit">
+                <button type="submit" class="edit-button">Sửa</button>
+              </a>
+              <form action="/Manager/User/{{userId}}?_method=DELETE" method="POST">
+                <button type="submit" class="delete-button">Xóa</button>
+              </form>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="pagenumbers" id="panigation">
+      {{> panigation productPartialData}}
+    </div>
+  </div>
+</div>

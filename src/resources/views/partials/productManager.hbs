@@ -1,0 +1,69 @@
+<div class="main-container">
+  <div class="funtion-header">
+    <div class="title-main">Danh sách sản phẩm</div>
+    <div class="search-function">
+      <form action="/Manager/Product" method="get">
+        <input
+          type="search"
+          name="productName"
+          placeholder="Search by name product..."
+        />
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+      <a href="/Manager/Product/create">
+        <button class="add-button">
+        Thêm mới
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      </a>
+    </div>
+  </div>
+  <div class="main-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Ảnh</th>
+          <th>Mã Sản Phẩm</th>
+          <th>Tên Sản Phẩm</th>
+          <th>Mô Tả</th>
+          <th>Loại</th>
+          <th>Giá</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each productPartialData.products}}
+        <tr>
+          <td>
+            <img
+              src="{{this.imgShow}}"
+              alt="{{this.productName}}"
+              width="80"
+            />
+          </td>
+          <td>{{this.productId}}</td>
+          <td>{{this.productName}}</td>
+          <td class="description">
+           {{this.description}}
+          </td>
+          <td>{{this.categoryName}}</td>
+          <td>{{this.price}}</td>
+          <td>
+              <a href="/Manager/Product/{{this.productId}}/edit">
+                <button type="submit" class="edit-button">Sửa</button>
+              </a>
+              <form action="/Manager/Product/{{this.productId}}?_method=DELETE" method="POST">
+                <button type="submit" class="delete-button">Xóa</button>
+              </form>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="pagenumbers" id="panigation">
+      {{> panigation productPartialData}}
+    </div>
+  </div>
+</div>

@@ -89,11 +89,11 @@ exports.updateUser = async (id, updateUser) => {
     throw new Error("Invalid update param");
   }
 
-  request.input(UserSchema.schema.id.name, UserSchema.schema.id.sqlType, id);
+  request.input(UserSchema.schema.userId.name, UserSchema.schema.userId.sqlType, id);
   query +=
     " " +
     updateStr +
-    ` WHERE ${UserSchema.schema.id.name} = @${UserSchema.schema.id.name}`;
+    ` WHERE ${UserSchema.schema.userId.name} = @${UserSchema.schema.userId.name}`;
 
   let result = await request.query(query);
   return result.recordsets;
@@ -137,7 +137,7 @@ exports.getAllUsers = async function (filter) {
   }
 
   let query = `SELECT * FROM ${UserSchema.schemaName}`;
-  let countQuery = `SELECT COUNT(DISTINCT ${UserSchema.schema.id.name}) AS totalItem FROM ${UserSchema.schemaName}`;
+  let countQuery = `SELECT COUNT(DISTINCT ${UserSchema.schema.userId.name}) AS totalItem FROM ${UserSchema.schemaName}`;
 
   const page = filter.page * 1 || 1;
   let pageSize = filter.pageSize * 1 || StaticData.config.MAX_PAGE_SIZE;

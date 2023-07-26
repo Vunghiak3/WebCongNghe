@@ -28,9 +28,10 @@ const ProductSchema = new ModelSchema(
       precision: 10,
       scale: 2,
     }),
-    quantity: new ModelSchemaValidator({
-      name: "quantity",
-      sqlType: sql.Int,
+    imgShow: new ModelSchemaValidator({
+      name: "imgShow",
+      sqlType: sql.VarChar,
+      maxLength: 300,
       require: true,
     }),
     categoryId: new ModelSchemaValidator({

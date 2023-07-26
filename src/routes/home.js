@@ -4,6 +4,6 @@ const productController = require("./../app/controllers/productController");
 
 router
   .route("/")
-  .get(productController.showTopProductHandler);
+  .get(productController.showTopProductsForHome);
 
 module.exports = router;

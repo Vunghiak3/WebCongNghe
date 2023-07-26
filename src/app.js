@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const path = require("path");
 const handlebars = require("express-handlebars");
 const session = require("express-session");
+const methodOverride = require("method-override");
 const authController = require("./app/controllers/auth");
 
 app.use(express.json());
@@ -17,6 +18,9 @@ app.engine(
   "hbs",
   handlebars({
     extname: ".hbs",
+    helpers: {
+      sum: (a, b) => a + b,
+    },
   })
 );
 app.set("view engine", "hbs");
@@ -33,6 +37,8 @@ app.use(
     },
   })
 );
+
+app.use(methodOverride("_method"));
 
 //get data by form
 app.use(express.urlencoded({ extended: false }));

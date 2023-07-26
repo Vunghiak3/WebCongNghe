@@ -19,7 +19,7 @@
         </a>
       </li>
       <li class="item-slidebar product-category">
-        <a href="/Manager/Catogery">
+        <a href="/Manager/Category">
           <i class="fa-solid fa-gears"></i>
           Danh mục sản phẩm
         </a>
@@ -43,7 +43,7 @@
         </a>
       </li>
       <li class="item-slidebar user-account">
-        <a href="/Manager/Account">
+        <a href="/Manager/User">
           <i class="fa-solid fa-user"></i>
           Người dùng
         </a>
@@ -51,6 +51,12 @@
     </ul>
   </div>
 </nav>
-{{#if product}}
-{{> productList}}
+{{#if isProduct}}
+{{> productManager}}
+{{/if}}
+{{#if isCategory}}
+{{> categoryManager}}
+{{/if}}
+{{#if isUser}}
+{{> userManager}}
 {{/if}}

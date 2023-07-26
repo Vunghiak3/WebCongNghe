@@ -1,0 +1,76 @@
+<main>
+  <div class="form-container">
+    <h1>Thêm tài khoản</h1>
+    <form action="/Manager/User/{{user.userId}}?_method=PATCH" method="POST">
+      <div class="form-group">
+        <label for="username">Tên tài khoản</label>
+        <input
+          type="text"
+          value="{{user.username}}"
+          name="username"
+          id="username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input
+          type="text"
+          value="{{user.password}}"
+          name="password"
+          id="password"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          value="{{user.email}}"
+          name="email"
+          id="email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="name">Họ tên</label>
+        <input
+          type="text"
+          value="{{user.name}}"
+          name="name"
+          id="name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input
+          type="text"
+          value="{{user.address}}"
+          name="address"
+          id="address"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="phone">SĐT</label>
+        <input
+          type="text"
+          value="{{user.phone}}"
+          name="phone"
+          id="phone"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="product-type">Vai trò</label>
+        <select name="roleName" id="product-type">
+          {{#each roles}}
+            <option value="{{roleName}}">{{roleName}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <button type="submit">Cập nhật</button>
+    </form>
+  </div>
+</main>

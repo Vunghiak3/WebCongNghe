@@ -1,4 +1,103 @@
 const UserDAO = require("../../DAO/UserDAO");
+const RoleDAO = require("../../DAO/RoleDAO");
+const querystring = require("querystring");
+
+exports.showUserForManager = async (req, res) => {
+  try {
+    const { page, pageSize, totalPage, totalItem, users } =
+      await UserDAO.getAllUsers(req.query);
+
+    await Promise.all(
+      users.map(async (user) => {
+        const roles = await RoleDAO.getRoleById(user.roleId);
+        user.roleName = roles.roleName;
+      })
+    );
+
+    const pages = [];
+    for (let i = 1; i <= totalPage; i++) {
+      pages.push({
+        page: i,
+        queryPage: querystring.stringify({ ...req.query, page: i }),
+        active: i === page,
+      });
+    }
+    const isFirstPage = page !== 1 && totalPage > 1;
+    const isLastPage = page !== totalPage && totalPage > 1;
+
+    const productPartialData = {
+      totalPage: totalPage,
+      pages: pages,
+      isFirstPage: isFirstPage,
+      isLastPage: isLastPage,
+    };
+
+    return res.render("manager", {
+      title: "Manager",
+      linkjs: "/js/manager.js",
+      linkcss: "/css/manager.css",
+      users,
+      productPartialData,
+      isUser: true,
+    });
+  } catch (e) {
+    console.error(e);
+    res
+      .status(500) // 500 - Internal Error
+      .json({
+        code: 500,
+        msg: e.toString(),
+      });
+  }
+};
+
+exports.showFormCreateUser = async (req, res) => {
+  try {
+    const roles = await RoleDAO.getAllRole();
+    return res.render("createNew/newUser", {
+      title: "Create new User",
+      linkcss: "/css/newProduct.css",
+      roles,
+    });
+  } catch (e) {
+    console.error(e);
+    res
+      .status(500) // 500 - Internal Error
+      .json({
+        code: 500,
+        msg: e.toString(),
+      });
+  }
+};
+
+exports.showFormUpdateUser = async (req, res) => {
+  const id = req.params.id * 1;
+  try {
+    const user = await UserDAO.getUser(id);
+    const roles = await RoleDAO.getAllRole();
+    const index = roles.findIndex((role) => role.roleId === user.roleId);
+
+    if (index !== -1) {
+      const role = roles[index];
+      roles.splice(index, 1);
+      roles.unshift(role);
+    }
+    return res.render("update/updateUser", {
+      title: "Update new User",
+      linkcss: "/css/newProduct.css",
+      user,
+      roles,
+    });
+  } catch (e) {
+    console.error(e);
+    res
+      .status(500) // 500 - Internal Error
+      .json({
+        code: 500,
+        msg: e.toString(),
+      });
+  }
+};
 
 exports.checkId = async (req, res, next, val) => {
   try {
@@ -70,16 +169,15 @@ exports.getUser = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   const newUser = req.body;
+  console.log(
+    "🚀 ~ file: user.js:144 ~ exports.createUser= ~ newUser:",
+    newUser
+  );
   try {
+    const role = await RoleDAO.getRoleByName(newUser.roleName);
+    newUser.roleId = role.roleId;
     await UserDAO.addUser(newUser);
-    let user = await UserDAO.getUserByUserName(newUser.username);
-    return res.status(200).json({
-      code: 200,
-      msg: "Create new user successfully!",
-      data: {
-        user,
-      },
-    });
+    res.redirect("/Manager/User");
   } catch (e) {
     console.error(e);
     res
@@ -117,13 +215,14 @@ exports.updateUser = async (req, res) => {
     const updateUser = req.body;
     await UserDAO.updateUser(id, updateUser);
     const user = await UserDAO.getUser(id);
-    res.status(200).json({
-      code: 200,
-      msg: `Update user with id: ${id} successfully!`,
-      data: {
-        user,
-      },
-    });
+    // res.status(200).json({
+    //   code: 200,
+    //   msg: `Update user with id: ${id} successfully!`,
+    //   data: {
+    //     user,
+    //   },
+    // });
+    res.redirect("/Manager/User")
   } catch (e) {
     console.error(e);
     res

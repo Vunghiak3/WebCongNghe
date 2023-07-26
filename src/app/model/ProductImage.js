@@ -32,11 +32,6 @@ const ProductImageSchema = new ModelSchema(
       maxLength: 250,
       require: true,
     }),
-    isPrimary: new ModelSchemaValidator({
-      name: "isPrimary",
-      sqlType: sql.Bit,
-      require: true,
-    }),
     createdAt: new ModelSchemaValidator({
       name: "createdAt",
       sqlType: sql.DateTime,

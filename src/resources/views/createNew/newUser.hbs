@@ -1,0 +1,40 @@
+<main>
+  <div class="form-container">
+    <h1>Thêm tài khoản</h1>
+    <form action="/Manager/User/create" method="POST">
+      <div class="form-group">
+        <label for="username">Tên tài khoản</label>
+        <input type="text" name="username" id="username" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <input type="text" name="password" id="password" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" required />
+      </div>
+      <div class="form-group">
+        <label for="name">Họ tên</label>
+        <input type="text" name="name" id="name" required />
+      </div>
+      <div class="form-group">
+        <label for="address">Địa chỉ</label>
+        <input type="text" name="address" id="address" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">SĐT</label>
+        <input type="text" name="phone" id="phone" required />
+      </div>
+      <div class="form-group">
+        <label for="product-type">Vai trò</label>
+        <select name="roleName" id="product-type">
+          {{#each roles}}
+            <option value="{{roleName}}">{{roleName}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <button type="submit">Thêm mới</button>
+    </form>
+  </div>
+</main>

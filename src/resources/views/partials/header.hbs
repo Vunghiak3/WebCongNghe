@@ -10,10 +10,10 @@
             <a href="/Home">Home</a>
           </li>
           <li class="menu-item">
-            <a href="/Products/Phones">Phone</a>
+            <a href="/Products/Phones?categoryId=1&page=1">Phone</a>
           </li>
           <li class="menu-item">
-            <a href="/Products/Laptops">Laptop</a>
+            <a href="/Products/Laptops?categoryId=2&page=1">Laptop</a>
           </li>
         </ul>
       </div>
@@ -32,28 +32,28 @@
           </a>
         </div>
         {{#if lcIsAuthenticated}}
-        <div class="account">
-          <a>
-          <i class="fa-solid fa-user"></i>
-          </a>
-          <ul class="option-login">
-            <li class="item-login my-profile">
-              <a href="/Account/Profile">Tài khoản của tôi</a>
-            </li>
-            <li class="item-login manager-login">
-              <a href="/Account/Manager">Quản lý</a>
-            </li>
-            <li class="item-login log-out">
-              <a href="">Đăng xuất</a>
-            </li>
-          </ul>
-        </div>
+          <div class="account">
+            <a>
+              <i class="fa-solid fa-user"></i>
+            </a>
+            <ul class="option-login">
+              <li class="item-login my-profile">
+                <a href="/Profile">Tài khoản của tôi</a>
+              </li>
+              <li class="item-login manager-login">
+                <a href="/Manager">Quản lý</a>
+              </li>
+              <li class="item-login log-out">
+                <a href="">Đăng xuất</a>
+              </li>
+            </ul>
+          </div>
         {{else}}
-        <div class="account">
-          <a href="/Account">
-          <i class="fa-solid fa-user"></i>
-          </a>
-        </div>
+          <div class="account">
+            <a href="/Account">
+              <i class="fa-solid fa-user"></i>
+            </a>
+          </div>
         {{/if}}
       </div>
     </div>

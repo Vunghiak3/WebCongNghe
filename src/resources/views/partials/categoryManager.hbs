@@ -1,0 +1,57 @@
+<div class="main-container">
+  <div class="funtion-header">
+    <div class="title-main">Danh mục sản phẩm</div>
+    <div class="search-function">
+      <form action="/Manager/Category" method="get">
+        <input
+          type="search"
+          name="categoryName"
+          placeholder="Search by name category..."
+        />
+        <button type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+      <a href="/Manager/Category/create">
+        <button class="add-button">
+        Thêm mới
+        <i class="fa-solid fa-plus"></i>
+      </button>
+      </a>
+    </div>
+  </div>
+  <div class="main-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Mã loại SP</th>
+          <th>Tên loại SP</th>
+          <th>Mô Tả</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each categoriesData.categories}}
+        <tr>
+          <td>{{this.categoryId}}</td>
+          <td>{{this.categoryName}}</td>
+          <td class="description">
+           {{this.categoryDescription}}
+          </td>
+          <td>
+              <a href="/Manager/Category/{{this.categoryId}}/edit">
+                <button type="submit" class="edit-button">Sửa</button>
+              </a>
+              <form action="/Manager/Category/{{this.categoryId}}?_method=DELETE" method="POST">
+                <button type="submit" class="delete-button">Xóa</button>
+              </form>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    <div class="pagenumbers" id="panigation">
+      {{> panigation categoriesData}}
+    </div>
+  </div>
+</div>

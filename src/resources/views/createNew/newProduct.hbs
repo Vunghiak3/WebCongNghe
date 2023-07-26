@@ -1,0 +1,32 @@
+<main>
+  <div class="form-container">
+    <h1>Thêm sản phẩm</h1>
+    <form action="/Manager/Product/create" method="POST">
+      <div class="form-group">
+        <label for="imgShow">Ảnh sản phẩm:</label>
+        <input type="text" name="imgShow" id="imgShow" required />
+      </div>
+      <div class="form-group">
+        <label for="productName">Tên sản phẩm:</label>
+        <input type="text" name="productName" id="productName" required />
+      </div>
+      <div class="form-group">
+        <label for="description">Mô tả:</label>
+        <input type="text" name="description" id="description" required />
+      </div>
+      <div class="form-group">
+        <label for="product-type">Loại:</label>
+        <select name="categoryName" id="product-type">
+          {{#each categories}}
+            <option value="{{categoryName}}">{{categoryName}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="price">Giá:</label>
+        <input type="text" name="price" id="price" required />
+      </div>
+      <button type="submit">Thêm mới</button>
+    </form>
+  </div>
+</main>

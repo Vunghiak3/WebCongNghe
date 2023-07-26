@@ -28,6 +28,9 @@ npm install paginate-info.
 #install exress-session
 npm install express-session
 
+#install method
+npm install method-override
+
 // Template engine
 -- npm install express-handlebars@3.1.0
 

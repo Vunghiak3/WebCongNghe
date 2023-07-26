@@ -1,0 +1,59 @@
+<main>
+  <div class="form-container">
+    <h1>Cập nhật sản phẩm</h1>
+    <form
+      action="/Manager/Product/{{product.productId}}?_method=PATCH"
+      method="POST"
+    >
+      <div class="form-group">
+        <label for="imgShow">Ảnh sản phẩm:</label>
+        <input
+          type="text"
+          value="{{product.imgShow}}"
+          name="imgShow"
+          id="imgShow"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="productName">Tên sản phẩm:</label>
+        <input
+          type="text"
+          value="{{product.productName}}"
+          name="productName"
+          id="productName"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Mô tả:</label>
+        <input
+          type="text"
+          value="{{product.description}}"
+          name="description"
+          id="description"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="product-type">Loại:</label>
+        <select name="categoryName" id="product-type">
+          {{#each category}}
+            <option value="{{categoryName}}">{{categoryName}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="price">Giá:</label>
+        <input
+          type="text"
+          value="{{product.price}}"
+          name="price"
+          id="price"
+          required
+        />
+      </div>
+      <button type="submit">Cập nhật</button>
+    </form>
+  </div>
+</main>

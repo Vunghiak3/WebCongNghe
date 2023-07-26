@@ -64,7 +64,7 @@ exports.getFilterQuery = (schema, filter, page, pageSize, defaultSort) => {
             i++;
           }
         } else if (schemaProp.type === "string") {
-          filterStr += criteria + " = '" + filter[criteria] + "'";
+          filterStr += criteria + " LIKE '%" + filter[criteria] + "%'";
           i++;
         }
       }
