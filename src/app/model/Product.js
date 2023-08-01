@@ -21,6 +21,11 @@ const ProductSchema = new ModelSchema(
       sqlType: sql.Text,
       require: true,
     }),
+    quantity: new ModelSchemaValidator({
+      name: "quantity",
+      sqlType: sql.Int,
+      require: true,
+    }),
     price: new ModelSchemaValidator({
       name: "price",
       sqlType: sql.Decimal,

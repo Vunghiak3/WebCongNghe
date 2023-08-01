@@ -17,4 +17,13 @@ router.route("/").get((req, res) => {
   });
 });
 
+router
+  .route("/forgot-password")
+  .get((req, res) => {
+    res.render("forgotPassword", {
+      linkcss: "/css/forgotPassword.css",
+    });
+  })
+  .patch(userController.changePassword);
+
 module.exports = router;

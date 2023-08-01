@@ -35,36 +35,15 @@
           </div>
         </div>
       </div>
-      <div class="product-description">
+      <form action="/cart/{{product.productId}}" method="POST" class="product-description">
         <p class="name-product">{{product.productName}}</p>
-        <p class="price-product">{{product.price}} VND</p>
+        <p class="price-product">{{product.price}}</p>
         <div class="horizontal-line" style="width: 70%"></div>
         <p class="product-overview">
           {{product.description}}
         </p>
         <div class="horizontal-line" style="width: 70%"></div>
 
-        <div class="selection">
-          <label for="size">Size:</label>
-          <div class="custom-dropdown">
-            <select id="size">
-              {{#each product.uniqueSizes}}
-              <option value="{{this}}">{{this}}GB</option>
-              {{/each}}
-            </select>
-          </div>
-        </div>
-
-        <div class="selection">
-          <label for="color">Color:</label>
-          <div class="custom-dropdown">
-            <select id="color">
-              {{#each product.uniqueColors}}
-              <option value="{{this}}">{{this}}</option>
-              {{/each}}
-            </select>
-          </div>
-        </div>
         <div class="btn-wrapper">
           <div class="add-to-cart">
             <label for="quantity">Quantity:</label>
@@ -88,7 +67,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </section>
   <section class="description">

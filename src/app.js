@@ -5,7 +5,8 @@ const path = require("path");
 const handlebars = require("express-handlebars");
 const session = require("express-session");
 const methodOverride = require("method-override");
-const authController = require("./app/controllers/auth");
+// const authController = require("./app/controllers/auth");
+const paypal = require("./payment")
 
 app.use(express.json());
 //HTTP logger
@@ -84,8 +85,5 @@ app.use("/Products", productRouter);
 app.use("/Account", accountRouter);
 app.use("/Manager", managerRouter);
 app.use("/Cart", cartRouter);
-app.get("/Profile", authController.protect, (req, res) => {
-  res.render("accountProfile");
-});
 
 module.exports = app;

@@ -1,6 +1,7 @@
 const ProductDAO = require("./../../DAO/ProductDAO");
 const ProductCartDAO = require("./../../DAO/ProductCartDAO");
 const ProductCategoriesDAO = require("./../../DAO/ProductCategoriesDAO");
+const ProductOptionDAO = require("./../../DAO/ProductOptionDAO");
 const jwt = require("jsonwebtoken");
 const querystring = require("querystring");
 
@@ -39,6 +40,12 @@ exports.showProductsForShop = async (req, res) => {
     }
     const isFirstPage = page !== 1 && totalPage > 1;
     const isLastPage = page !== totalPage && totalPage > 1;
+
+    await Promise.all(
+      products.map(async (product) => {
+        product.price = product.price.toLocaleString("vi-VN") + " VND";
+      })
+    );
 
     const productPartialData = {
       products: products,
@@ -127,18 +134,33 @@ exports.showProductsForManager = async (req, res) => {
 //Show FORM
 exports.showDetailProductHandler = async (req, res) => {
   const id = req.params.id * 1;
-  const product = await ProductDAO.getProductById(id);
-  const imgs = await ProductDAO.getAllImgProductByIdProduct(id);
-  product.imgs = imgs;
-  if (!product) {
-    res.send(`<h1>Can not find Product with id = ${id} </h1>`);
-  } else {
-    res.render("product", {
-      title: "Product",
-      linkcss: "/css/product.css",
-      linkjs: "/js/product.js",
-      product,
-    });
+  try {
+    const product = await ProductDAO.getProductById(id);
+    const imgs = await ProductDAO.getAllImgProductByIdProduct(id);
+    product.imgs = imgs;
+    product.price = product.price.toLocaleString("vi-VN") + " VND";
+    const sizes = await ProductOptionDAO.getOptionSizeById(id);
+    const colors = await ProductOptionDAO.getOptionColorById(id);
+    if (!product) {
+      res.send(`<h1>Can not find Product with id = ${id} </h1>`);
+    } else {
+      res.render("product", {
+        title: "Product",
+        linkcss: "/css/product.css",
+        linkjs: "/js/product.js",
+        product,
+        sizes,
+        colors
+      });
+    }
+  } catch (e) {
+    console.error(e);
+    res
+      .status(500) // 500 - Internal Error
+      .json({
+        code: 500,
+        msg: e.toString(),
+      });
   }
 };
 exports.showFormCreateProduct = async (req, res) => {
@@ -217,13 +239,14 @@ exports.updateProduct = async (req, res) => {
   try {
     const id = req.params.id * 1;
     req.body.price = parseFloat(req.body.price);
+    req.body.quantity = parseFloat(req.body.quantity);
     const category = await ProductCategoriesDAO.getProductCategoryByName(
       req.body.categoryName
     );
     req.body.categoryId = category.categoryId;
     const updateInfo = req.body;
     await ProductDAO.updateProductById(id, updateInfo);
-    const product = await ProductDAO.getProductById(id);
+    // const product = await ProductDAO.getProductById(id);
     return res.redirect("/Manager/Product");
   } catch (e) {
     console.error(e);

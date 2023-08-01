@@ -18,19 +18,11 @@ exports.login = async (req, res) => {
   try {
     const form = req.body;
     if (!form.password_login || !form.username_login) {
-      // return res.status(403).json({
-      //   code: 403,
-      //   msg: "Invalid params",
-      // });
       return res.redirect("/Account");
     }
 
     const user = await UserDAO.getUserByUserName(form.username_login);
     if (!user) {
-      // return res.status(401).json({
-      //   code: 401,
-      //   msg: `Invalid user - ${form.username_login}`,
-      // });
       return res.redirect("/Account");
     }
 
@@ -38,21 +30,7 @@ exports.login = async (req, res) => {
       form.password_login,
       user.password
     );
-    // if (!isValidPassword) {
-    //   return res.status(401).json({
-    //     code: 401,
-
-    //     msg: "Invalid authentication!",
-    //   });
-    // }
-    console.log(
-      "🚀 ~ file: auth.js:49 ~ exports.login= ~ !isValidPassword:",
-      !isValidPassword
-    );
     if (!isValidPassword) {
-      // return res.render("login", {
-      //   linkcss: "/css/login.css",
-      // });
       return res.redirect("/Account");
     }
     const token = signToken(user.userId, user.username);
@@ -64,7 +42,7 @@ exports.login = async (req, res) => {
     if (user.roleId === StaticData.AUTH.Role.admin) {
       return res.redirect("/Manager");
     } else if (user.roleId === StaticData.AUTH.Role.user) {
-      return res.redirect("/Profile");
+      return res.redirect("/Home");
     }
   } catch (e) {
     console.error(e);
@@ -81,11 +59,6 @@ exports.signup = async (req, res) => {
   try {
     const form = req.body;
     if (form.password_register !== form.again_pass) {
-      // return res.status(403).json({
-      //   code: 403,
-      //   msg: "Invalid password!",
-      // });
-      // req.session.errEmail = false;
       req.session.errName = false;
       req.session.errPassword = true;
       return res.redirect("/Account");
@@ -93,7 +66,6 @@ exports.signup = async (req, res) => {
 
     const user1 = await UserDAO.getUserByUserName(form.username_register);
     if (user1 && user1.username) {
-      // req.session.errEmail = false;
       req.session.errPassword = false;
       req.session.errName = true;
       return res.redirect("/Account");
@@ -110,12 +82,6 @@ exports.signup = async (req, res) => {
     });
     const user = await UserDAO.getUserByUserName(form.username_register);
     delete user.password_register;
-    // res.status(201).json({
-    //   status: "success",
-    //   data: {
-    //     user,
-    //   },
-    // });
     if (user) {
       req.session.signUpSuccess = true;
       req.session.errPassword = false;
@@ -165,10 +131,6 @@ exports.protect = async (req, res, next) => {
 exports.restricTo = (...roles) => {
   return async (req, res, next) => {
     if (!roles.includes(req.user.roleId)) {
-      // return res.status(403).json({
-      //   code: 401,
-      //   msg: "Your do not have permission to perform this action!",
-      // });
       return res.send(
         "<h1>Your do not have permission to perform this action!</h1>"
       );

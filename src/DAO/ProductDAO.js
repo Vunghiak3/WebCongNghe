@@ -3,6 +3,7 @@ const ProductImageSchema = require("../app/model/ProductImage");
 const dbUtils = require("./../utils/dbUtils");
 const StaticData = require("./../utils/StaticData");
 const dbConfig = require("../config/dbconfig");
+const ProductOptionSchema = require("../app/model/ProductOptions");
 
 exports.getAllProducts = async (filter) => {
   if (!dbConfig.db.pool) {
@@ -112,7 +113,7 @@ exports.createNewProduct = async (product) => {
   return result.recordsets;
 };
 
-exports.updateProductById = async (id, updateInfo) => {
+exports.updateProductById = async (productId, updateInfo) => {
   if (!dbConfig.db.pool) {
     throw new Error("Not connected to db!");
   }
@@ -131,12 +132,12 @@ exports.updateProductById = async (id, updateInfo) => {
   request.input(
     ProductSchema.schema.productId.name,
     ProductSchema.schema.productId.sqlType,
-    id
+    productId
   );
   query +=
     " " +
     updateStr +
-    ` WHERE ${ProductSchema.schema.productId.name} = @${ProductSchema.schema.productId.name}`;
+    ` WHERE ${ProductSchema.schema.productId.name} = @productId`;
   let result = await request.query(query);
   return result.recordsets;
 };

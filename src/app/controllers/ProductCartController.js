@@ -1,6 +1,8 @@
 //Anh nam tạ works
 const ProductCartDAO = require("./../../DAO/ProductCartDAO");
+const UserDAO = require("../../DAO/UserDAO");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 //Unchecked
 exports.deleteCartProductUser = async (req, res) => {
   try {
@@ -91,4 +93,34 @@ exports.checkCartById = async (req, res, next, val) => {
       });
   }
   next();
+};
+
+exports.addCart = async (req, res) => {
+  const cart = req.body;
+  cart.productId = req.params.id * 1;
+  let token;
+    if (req.session.token && req.session.token.startsWith("Bearer")) {
+      token = req.session.token.split(" ")[1];
+    }
+    if (!token) {
+      return res.redirect("/Account");
+    }
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const currentUser = await UserDAO.getUser(payload.id);
+    if (!currentUser) {
+      return res.status(401).json({
+        code: 401,
+        msg: "Invalid authenication!",
+      });
+    }
+    cart.userId = currentUser.userId
+    console.log("🚀 ~ file: ProductCartController.js:116 ~ exports.addCart= ~ cart:", cart)
+  try {
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
+  }
 };

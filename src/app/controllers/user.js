@@ -82,6 +82,7 @@ exports.showFormUpdateUser = async (req, res) => {
       roles.splice(index, 1);
       roles.unshift(role);
     }
+
     return res.render("update/updateUser", {
       title: "Update new User",
       linkcss: "/css/newProduct.css",
@@ -169,10 +170,6 @@ exports.getUser = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   const newUser = req.body;
-  console.log(
-    "🚀 ~ file: user.js:144 ~ exports.createUser= ~ newUser:",
-    newUser
-  );
   try {
     const role = await RoleDAO.getRoleByName(newUser.roleName);
     newUser.roleId = role.roleId;
@@ -215,14 +212,27 @@ exports.updateUser = async (req, res) => {
     const updateUser = req.body;
     await UserDAO.updateUser(id, updateUser);
     const user = await UserDAO.getUser(id);
-    // res.status(200).json({
-    //   code: 200,
-    //   msg: `Update user with id: ${id} successfully!`,
-    //   data: {
-    //     user,
-    //   },
-    // });
-    res.redirect("/Manager/User")
+    res.redirect("/Manager/User");
+  } catch (e) {
+    console.error(e);
+    res
+      .status(500) // 500 - Internal Error
+      .json({
+        code: 500,
+        msg: e.toString(),
+      });
+  }
+};
+
+exports.changePassword = async (req, res) => {
+  try {
+    const updateUser = req.body;
+    if(updateUser.password !== updateUser.confirmPassword){
+      res.redirect("/Account")
+    }
+    const user = await UserDAO.getUserByUserName(updateUser.username);
+    await UserDAO.updateUser(user.userId, updateUser);
+    res.redirect("/Account");
   } catch (e) {
     console.error(e);
     res

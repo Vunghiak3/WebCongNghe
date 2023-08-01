@@ -22,6 +22,7 @@
     "mssql": "^9.1.1",
     "nodemon": "^2.0.22",
     "paginate-info": "^1.0.4",
+    "paypal-rest-sdk": "^1.8.1",
     "tedious": "^16.2.0"
   },
   "devDependencies": {

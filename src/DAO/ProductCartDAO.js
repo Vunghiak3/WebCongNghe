@@ -119,3 +119,27 @@ exports.getCartById = async (id) => {
   let cart = result.recordsets[0][0];
   return cart;
 };
+
+exports.addCart = async(cart)=>{
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  if (!cart) {
+    throw new Error("Invalid input params!");
+  }
+  const now = new Date();
+  const options = { timeZone: "Asia/Ho_Chi_Minh" };
+  const vietnamTime = now.toLocaleString("en-US", options);
+  cart.createdAt = vietnamTime;
+  let insertData = ProductCartSchema.validateData(cart);
+  let query = `INSERT INTO ${ProductCartSchema.schemaName}`;
+  const { request, insertFieldNamesStr, insertValuesStr } =
+    dbUtils.getInsertQuery(
+      ProductCartSchema.schema,
+      dbConfig.db.pool.request(),
+      insertData
+    );
+  query += " (" + insertFieldNamesStr + ") VALUES (" + insertValuesStr + ")";
+  let result = await request.query(query);
+  return result.recordsets;
+}

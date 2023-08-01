@@ -13,25 +13,24 @@ const ProductOptionSchema = new ModelSchema(
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       },
-      size: new ModelSchemaValidator({
-        name: "size",
-        sqlType: sql.Int,
-        require: true,
-      }),
-      color: new ModelSchemaValidator({
-        name: "color",
-        sqlType: sql.VarChar,
-        maxLength: 200,
-        require: true,
-      }),
-      quantity: new ModelSchemaValidator({
-        name: "quantity",
-        sqlType: sql.Int,
-        require: true,
-      }),
       require: true,
     }),
-    
+    size: new ModelSchemaValidator({
+      name: "size",
+      sqlType: sql.Int,
+      require: true,
+    }),
+    color: new ModelSchemaValidator({
+      name: "color",
+      sqlType: sql.VarChar,
+      maxLength: 200,
+      require: true,
+    }),
+    quantity: new ModelSchemaValidator({
+      name: "quantity",
+      sqlType: sql.Int,
+      require: true,
+    }),
   },
   "ProductOptions",
   "createdAt"

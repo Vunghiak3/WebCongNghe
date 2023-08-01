@@ -18,4 +18,6 @@ router
     authController.protect,
     ProductCartController.updateProductQuantityUser
   );
+
+router.route("/:id").post(ProductCartController.addCart);
 module.exports = router;
