@@ -9,7 +9,6 @@ router
   .route("/:category/:name/:id")
   .get(productController.showDetailProductHandler);
 
-//Anh Nam ta works
 router
   .route("/:id")
   .delete(productController.deleteProduct)

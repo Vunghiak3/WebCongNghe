@@ -150,7 +150,7 @@ exports.showDetailProductHandler = async (req, res) => {
         linkjs: "/js/product.js",
         product,
         sizes,
-        colors
+        colors,
       });
     }
   } catch (e) {
@@ -314,9 +314,6 @@ exports.getProductHandler = async (req, res) => {
   }
 };
 
-//Anh nam tạ work
-//checked ok
-//checked
 exports.createProducts = async (req, res) => {
   const newProduct = req.body;
   try {
