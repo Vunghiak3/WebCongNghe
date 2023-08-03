@@ -32,6 +32,25 @@ exports.getOrderByUserId = async (userId) => {
   let order = result.recordsets[0][0];
   return order;
 };
+//get order id
+exports.getOrderById = async (id) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      OrderSchema.schema.orderId.name,
+      OrderSchema.schema.orderId.sqlType,
+      id
+    )
+    .query(
+      `SELECT * from ${OrderSchema.schemaName} 
+          where ${OrderSchema.schema.orderId.name} =@${OrderSchema.schema.orderId.name}`
+    );
+  let order = result.recordsets[0][0];
+  return order;
+};
 //DeleteOrder
 exports.deleteOrderById = async (id) => {
   if (!dbConfig.db.pool) {

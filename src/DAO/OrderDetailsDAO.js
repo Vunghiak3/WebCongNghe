@@ -52,6 +52,24 @@ exports.deleteOrderDetailsById = async (id) => {
     );
   return result.recordsets;
 };
+//delete by orderId
+exports.deleteDetailsByOrderId = async (id) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      OrderDetailSchema.schema.orderId.name,
+      OrderDetailSchema.schema.orderId.sqlType,
+      id
+    )
+    .query(
+      `delete from ${OrderDetailSchema.schemaName} 
+          where ${OrderDetailSchema.schema.orderId.name} = @${ProductCartSchema.schema.orderId.name}`
+    );
+  return result.recordsets;
+};
 //update by orderDetailId
 exports.updateOrderDetails = async (id, updateInfo) => {
   if (!dbConfig.db.pool) {

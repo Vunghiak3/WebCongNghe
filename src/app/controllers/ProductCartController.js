@@ -59,10 +59,11 @@ exports.getCartByUserId = async (req, res) => {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decodedToken.id;
 
-    await ProductCartDAO.getCartByUserId(userId);
+    const cart = await ProductCartDAO.getCartByUserId(userId);
     return res.status(200).json({
       code: 200,
-      msg: `Get cart with user ${id} successfully!`,
+      msg: `Get cart with user ${userId} successfully!`,
+      data: { cart },
     });
   } catch (e) {
     console.error(e);
@@ -99,22 +100,25 @@ exports.addCart = async (req, res) => {
   const cart = req.body;
   cart.productId = req.params.id * 1;
   let token;
-    if (req.session.token && req.session.token.startsWith("Bearer")) {
-      token = req.session.token.split(" ")[1];
-    }
-    if (!token) {
-      return res.redirect("/Account");
-    }
-    const payload = jwt.verify(token, process.env.JWT_SECRET);
-    const currentUser = await UserDAO.getUser(payload.id);
-    if (!currentUser) {
-      return res.status(401).json({
-        code: 401,
-        msg: "Invalid authenication!",
-      });
-    }
-    cart.userId = currentUser.userId
-    console.log("🚀 ~ file: ProductCartController.js:116 ~ exports.addCart= ~ cart:", cart)
+  if (req.session.token && req.session.token.startsWith("Bearer")) {
+    token = req.session.token.split(" ")[1];
+  }
+  if (!token) {
+    return res.redirect("/Account");
+  }
+  const payload = jwt.verify(token, process.env.JWT_SECRET);
+  const currentUser = await UserDAO.getUser(payload.id);
+  if (!currentUser) {
+    return res.status(401).json({
+      code: 401,
+      msg: "Invalid authenication!",
+    });
+  }
+  cart.userId = currentUser.userId;
+  console.log(
+    "🚀 ~ file: ProductCartController.js:116 ~ exports.addCart= ~ cart:",
+    cart
+  );
   try {
   } catch (e) {
     console.error(e);
