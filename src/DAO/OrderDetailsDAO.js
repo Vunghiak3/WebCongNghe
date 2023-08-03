@@ -3,6 +3,19 @@ const StaticData = require("./../utils/StaticData");
 const dbConfig = require("../config/dbconfig");
 const OrderDetailSchema = require("../app/model/OrderDetailSchema");
 
+//get all order details
+exports.getallOrderDetails = async () => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request.query(
+    `SELECT * from ${OrderDetailSchema.schemaName}`
+  );
+  let details = result.recordsets[0][0];
+  return details;
+};
+//get by order id
 exports.getDetailByOrderId = async (orderId) => {
   if (!dbConfig.db.pool) {
     throw new Error("Not connected to db!");

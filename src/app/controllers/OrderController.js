@@ -1,3 +1,3 @@
 const jwt = require("jsonwebtoken");
 const OrderDetailDAO = require("../../DAO/OrderDetailsDAO");
-const OrderDetail = require("../../DAO/OrderDetails");
+const OrderDAO = require("../../DAO/OrderDAO");

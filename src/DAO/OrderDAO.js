@@ -2,6 +2,36 @@ const dbUtils = require("./../utils/dbUtils");
 const StaticData = require("./../utils/StaticData");
 const dbConfig = require("../config/dbconfig");
 const OrderSchema = require("../app/model/OrderSchema");
+
+//GetAllOrder
+exports.getOrder = async () => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request.query(`SELECT * from ${OrderSchema.schemaName}`);
+  let order = result.recordsets[0][0];
+  return order;
+};
+//get order by user id
+exports.getOrderByUserId = async (userId) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      OrderSchema.schema.userId.name,
+      OrderSchema.schema.userId.sqlType,
+      userId
+    )
+    .query(
+      `SELECT * from ${OrderSchema.schemaName} 
+          where ${OrderSchema.schema.userId.name} =@${OrderSchema.schema.userId.name}`
+    );
+  let order = result.recordsets[0][0];
+  return order;
+};
 //DeleteOrder
 exports.deleteOrderById = async (id) => {
   if (!dbConfig.db.pool) {
@@ -69,23 +99,4 @@ exports.createNewOrder = async (order) => {
   query += " (" + insertFieldNamesStr + ") VALUES (" + insertValuesStr + ")";
   let result = await request.query(query);
   return result.recordsets;
-};
-//get order by user id
-exports.getOrderByUserId = async (userId) => {
-  if (!dbConfig.db.pool) {
-    throw new Error("Not connected to db!");
-  }
-  let request = dbConfig.db.pool.request();
-  let result = await request
-    .input(
-      OrderSchema.schema.userId.name,
-      OrderSchema.schema.userId.sqlType,
-      userId
-    )
-    .query(
-      `SELECT * from ${OrderSchema.schemaName} 
-          where ${OrderSchema.schema.userId.name} =@${OrderSchema.schema.userId.name}`
-    );
-  let cart = result.recordsets[0][0];
-  return cart;
 };
