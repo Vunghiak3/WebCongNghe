@@ -228,9 +228,12 @@ exports.changePassword = async (req, res) => {
   try {
     const updateUser = req.body;
     if(updateUser.password !== updateUser.confirmPassword){
-      res.redirect("/Account")
+      return res.redirect("/Account/forgot-password")
     }
     const user = await UserDAO.getUserByUserName(updateUser.username);
+    if(!user){
+      return res.redirect("/Account/forgot-password")
+    }
     await UserDAO.updateUser(user.userId, updateUser);
     res.redirect("/Account");
   } catch (e) {

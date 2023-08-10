@@ -3,17 +3,18 @@ const ProductCartSchema = require("../app/model/ProductCart");
 const dbUtils = require("./../utils/dbUtils");
 const StaticData = require("./../utils/StaticData");
 const dbConfig = require("../config/dbconfig");
+const ProductSchema = require("../app/model/Product");
 //Xoa hang trong gio hang cua User "not checked"
-exports.deleteUserProductCart = async (id, userId) => {
+exports.deleteUserProductCart = async (cartId, userId) => {
   if (!dbConfig.db.pool) {
     throw new Error("Not connected to db");
   }
   let request = dbConfig.db.pool.request();
   let result = await request
     .input(
-      ProductCartSchema.schema.productId.name,
-      ProductCartSchema.schema.productId.sqlType,
-      id
+      ProductCartSchema.schema.cartId.name,
+      ProductCartSchema.schema.cartId.sqlType,
+      cartId
     )
     .input(
       ProductCartSchema.schema.userId.name,
@@ -22,8 +23,7 @@ exports.deleteUserProductCart = async (id, userId) => {
     )
     .query(
       `delete from ${ProductCartSchema.schemaName} 
-        where ${ProductCartSchema.schema.productId.name} = @${ProductCartSchema.schema.productId.name} 
-        and ${ProductCartSchema.schema.userId.name} =@${ProductCartSchema.schema.userId.name}`
+        where ${ProductCartSchema.schema.cartId.name} = @cartId and ${ProductCartSchema.schema.userId.name} = @userId`
     );
   return result.recordsets;
 };
@@ -120,7 +120,7 @@ exports.getCartById = async (id) => {
   return cart;
 };
 
-exports.addCart = async(cart)=>{
+exports.addCart = async (cart) => {
   if (!dbConfig.db.pool) {
     throw new Error("Not connected to db!");
   }
@@ -142,4 +142,25 @@ exports.addCart = async(cart)=>{
   query += " (" + insertFieldNamesStr + ") VALUES (" + insertValuesStr + ")";
   let result = await request.query(query);
   return result.recordsets;
-}
+};
+
+exports.getAllCartByUserId = async (userId) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  if (!userId) {
+    throw new Error("Invalid input params!");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      ProductCartSchema.schema.userId.name,
+      ProductCartSchema.schema.userId.sqlType,
+      userId
+    )
+    .query(
+      `SELECT p.*, c.${ProductCartSchema.schema.quantity.name} cartQuantity, c.${ProductCartSchema.schema.cartId.name} FROM ${ProductSchema.schemaName} p, ${ProductCartSchema.schemaName} c WHERE p.${ProductSchema.schema.productId.name} = c.${ProductCartSchema.schema.productId.name} AND c.${ProductCartSchema.schema.userId.name} = @userId`
+    );
+  let cart = result.recordsets[0];
+  return cart;
+};

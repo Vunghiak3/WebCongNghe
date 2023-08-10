@@ -41,17 +41,17 @@ quantityInputs.forEach((input) => {
   });
 });
 
-// Thêm sự kiện lắng nghe cho các phần tử i để xóa phần tử tương ứng và cập nhật lại tổng giá trị
-const deleteButtons = document.querySelectorAll(".fa-trash");
-deleteButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const item = button.closest(".item-product");
-    const subtotal = parseFloat(
-      item.querySelector(".subtotal").textContent.replace(/\D/g, "")
-    );
-    item.remove();
-    total -= subtotal;
-    document.querySelector(".total-price").textContent =
-      total.toLocaleString("vi-VN") + " VND";
-  });
-});
+// // Thêm sự kiện lắng nghe cho các phần tử i để xóa phần tử tương ứng và cập nhật lại tổng giá trị
+// const deleteButtons = document.querySelectorAll(".fa-trash");
+// deleteButtons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     const item = button.closest(".item-product");
+//     const subtotal = parseFloat(
+//       item.querySelector(".subtotal").textContent.replace(/\D/g, "")
+//     );
+//     item.remove();
+//     total -= subtotal;
+//     document.querySelector(".total-price").textContent =
+//       total.toLocaleString("vi-VN") + " VND";
+//   });
+// });

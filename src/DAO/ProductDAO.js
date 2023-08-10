@@ -161,86 +161,86 @@ exports.deleteProductById = async (id) => {
 
 /////////////////////////////////////////////////
 
-// exports.getAllOptionsByIdProduct = async (productId) => {
-//   if (!dbConfig.db.pool) {
-//     throw new Error("Not connected to db!");
-//   }
-//   let request = dbConfig.db.pool.request();
-//   let result = await request
-//     .input(
-//       ProductImageSchema.schema.productId.name,
-//       ProductImageSchema.schema.productId.sqlType,
-//       productId
-//     )
-//     .query(
-//       `SELECT o.* FROM ${ProductOptionSchema.schemaName} o WHERE o.${ProductOptionSchema.schema.productId.name} = @productId`
-//     );
-//   let optionsProduct = result.recordsets[0];
-//   return optionsProduct;
-// };
+exports.getAllOptionsByIdProduct = async (productId) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      ProductImageSchema.schema.productId.name,
+      ProductImageSchema.schema.productId.sqlType,
+      productId
+    )
+    .query(
+      `SELECT o.* FROM ${ProductOptionSchema.schemaName} o WHERE o.${ProductOptionSchema.schema.productId.name} = @productId`
+    );
+  let optionsProduct = result.recordsets[0];
+  return optionsProduct;
+};
 
 
-// exports.getProductByCreatedAt = async (createdAt) => {
-//   if (!dbConfig.db.pool) {
-//     throw new Error("Not connected to db!");
-//   }
-//   let request = dbConfig.db.pool.request();
-//   let result = await request
-//     .input(
-//       ProductSchema.schema.createdAt.name,
-//       ProductSchema.schema.createdAt.sqlType,
-//       createdAt
-//     )
-//     .query(
-//       `SELECT p.*
-//       FROM ${ProductSchema.schemaName} p
-//       WHERE p.${ProductSchema.schema.createdAt.name} = @createdAt`
-//     );
-//   let product = result.recordsets[0][0];
-//   return product;
-// };
+exports.getProductByCreatedAt = async (createdAt) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      ProductSchema.schema.createdAt.name,
+      ProductSchema.schema.createdAt.sqlType,
+      createdAt
+    )
+    .query(
+      `SELECT p.*
+      FROM ${ProductSchema.schemaName} p
+      WHERE p.${ProductSchema.schema.createdAt.name} = @createdAt`
+    );
+  let product = result.recordsets[0][0];
+  return product;
+};
 
-// exports.getProductById = async (id) => {
-//   if (!dbConfig.db.pool) {
-//     throw new Error("Not connected to db!");
-//   }
-//   let request = dbConfig.db.pool.request();
-//   let result = await request
-//     .input(
-//       ProductSchema.schema.productId.name,
-//       ProductSchema.schema.productId.sqlType,
-//       id
-//     )
-//     .query(
-//       `SELECT * FROM ${ProductSchema.schemaName} WHERE ${ProductSchema.schema.productId.name} = @${ProductSchema.schema.productId.name}`
-//     );
-//   let product = result.recordsets[0][0];
-//   return product;
-// };
+exports.getProductById = async (id) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      ProductSchema.schema.productId.name,
+      ProductSchema.schema.productId.sqlType,
+      id
+    )
+    .query(
+      `SELECT * FROM ${ProductSchema.schemaName} WHERE ${ProductSchema.schema.productId.name} = @${ProductSchema.schema.productId.name}`
+    );
+  let product = result.recordsets[0][0];
+  return product;
+};
 
-// //Anh nam tạ works
+//Anh nam tạ works
 
 //CHECKED
-// exports.createProducts = async (product) => {
-//   if (!dbConfig.db.pool) {
-//     throw new Error("Not connected to db!");
-//   }
-//   if (!product) {
-//     throw new Error("Invalid input param!");
-//   }
-//   const now = new Date();
-//   const options = { timeZone: "Asia/Ho_Chi_Minh" };
-//   const vietnamTime = now.toLocaleString("en-US", options);
-//   product.createdAt = vietnamTime;
-//   let insertData = ProductSchema.validateData(product);
-//   let query = `INSERT INTO ${ProductSchema.schemaName}`;
-//   const { request, insertFieldNamesStr, insertValuesStr } =
-//     dbUtils.getInsertQuery(
-//       ProductSchema.schema,
-//       dbConfig.db.pool.request(),
-//       insertData
-//     );
-//   query += " (" + insertFieldNamesStr + ") VALUES (" + insertValuesStr + ")";
-//   let result = await request.query(query);
-//   return result.recordsets;
-// };
+exports.createProducts = async (product) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db!");
+  }
+  if (!product) {
+    throw new Error("Invalid input param!");
+  }
+  const now = new Date();
+  const options = { timeZone: "Asia/Ho_Chi_Minh" };
+  const vietnamTime = now.toLocaleString("en-US", options);
+  product.createdAt = vietnamTime;
+  let insertData = ProductSchema.validateData(product);
+  let query = `INSERT INTO ${ProductSchema.schemaName}`;
+  const { request, insertFieldNamesStr, insertValuesStr } =
+    dbUtils.getInsertQuery(
+      ProductSchema.schema,
+      dbConfig.db.pool.request(),
+      insertData
+    );
+  query += " (" + insertFieldNamesStr + ") VALUES (" + insertValuesStr + ")";
+  let result = await request.query(query);
+  return result.recordsets;
+};

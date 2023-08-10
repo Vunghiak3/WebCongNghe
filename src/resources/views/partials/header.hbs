@@ -27,7 +27,7 @@
           </form>
         </div>
         <div class="cart-products">
-          <a href="/cart">
+          <a href="/Cart/{{userId}}">
             <i class="fa-solid fa-cart-shopping fa-bounce"></i>
           </a>
         </div>
@@ -37,12 +37,16 @@
               <i class="fa-solid fa-user"></i>
             </a>
             <ul class="option-login">
+              {{#if lcIsUser}}
               <li class="item-login my-profile">
                 <a href="/Profile">Tài khoản của tôi</a>
               </li>
+              {{/if}}
+              {{#if lcIsManager}}
               <li class="item-login manager-login">
                 <a href="/Manager">Quản lý</a>
               </li>
+              {{/if}}
               <li class="item-login log-out">
                 <a href="">Đăng xuất</a>
               </li>

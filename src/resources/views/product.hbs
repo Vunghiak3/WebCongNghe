@@ -35,7 +35,11 @@
           </div>
         </div>
       </div>
-      <form action="/cart/{{product.productId}}" method="POST" class="product-description">
+      <form
+        action="/Cart/{{product.productId}}/add"
+        method="POST"
+        class="product-description"
+      >
         <p class="name-product">{{product.productName}}</p>
         <p class="price-product">{{product.price}}</p>
         <div class="horizontal-line" style="width: 70%"></div>

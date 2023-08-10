@@ -31,6 +31,9 @@ npm install express-session
 #install method
 npm install method-override
 
+#install paypall
+npm install paypal-rest-sdk
+
 // Template engine
 -- npm install express-handlebars@3.1.0
 

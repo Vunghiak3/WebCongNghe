@@ -144,23 +144,21 @@ td:last-child {
   display: block; }
 
 /* btn */
-.btn-placeOrder {
-  text-align: center;
-  margin-top: 30px; }
-
-#place-order-button {
+.form-product button {
   padding: 20px 90px;
   border-radius: 15px;
   border: 1px solid black;
   background-color: white;
   cursor: pointer;
-  font-size: 18px; }
+  font-size: 18px;
+  text-align: center;
+  margin-top: 30px; }
 
-#place-order-button:hover {
+.form-product button:hover {
   background-color: #edebeb;
   transition: all 0.1s linear; }
 
-#place-order-button:active {
+.form-product button:active {
   background-color: #dbdbdb; }
 
 /* css thank order */

@@ -39,35 +39,20 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(async (req, res, next) => {
-  if (req.session.isAuthenticated === null) {
-    // Fix the variable name
-    req.session.isAuthenticated = false; // Fix the variable name
+  if (req.session.isAuthenicated === null) {
+    req.session.isAuthenicated = false;
   }
 
   res.locals.errName = req.session.errName;
   res.locals.errEmail = req.session.errEmail;
   res.locals.errPassword = req.session.errPassword;
   res.locals.signUpSuccess = req.session.signUpSuccess;
-  res.locals.lcIsAuthenticated = req.session.isAuthenticated; // Fix the variable name
+  res.locals.lcIsAuthenticated = req.session.isAuthenicated;
   res.locals.lcAuthUser = req.session.authUser;
+  res.locals.lcIsUser = req.session.isUser;
+  res.locals.lcIsManager = req.session.isManager;
 
   next();
-});
-
-app.get("/cart", (req, res) => {
-  res.render("cart", {
-    title: "Cart",
-    linkcss: "/css/cart.css",
-    linkjs: "/js/cart.js",
-  });
-});
-
-app.get("/checkout", (req, res) => {
-  res.render("checkout", {
-    title: "Checkout",
-    linkcss: "/css/checkout.css",
-    linkjs: "/js/checkout.js",
-  });
 });
 
 const paypalRouter = require("./routes/paypalRouter");
@@ -76,12 +61,14 @@ const hometRouter = require("./routes/home");
 const accountRouter = require("./routes/account");
 const managerRouter = require("./routes/manager");
 const cartRouter = require("./routes/productCart");
+const checkRouter = require("./routes/checkout");
 
 app.use("/Home", hometRouter);
 app.use("/Products", productRouter);
 app.use("/Account", accountRouter);
 app.use("/Manager", managerRouter);
 app.use("/Cart", cartRouter);
+app.use("/Checkout", checkRouter);
 app.use("/paypal", paypalRouter);
 
 module.exports = app;

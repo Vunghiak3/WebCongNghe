@@ -14,20 +14,21 @@
       <div class="delivery-address">
         <div class="title-address">
           <i class="fa-solid fa-location-dot"></i>
-          Delivery Address
+          Địa chỉ giao hàng
         </div>
-        <form class="form-product">
-          <label for="name">Name:</label>
+        <form action="/paypal/pay" method="post" class="form-product">
+          <label for="name">Tên:</label>
           <input type="text" id="name" name="name" /><br />
 
-          <label for="address">Address:</label>
+          <label for="address">Địa chỉ:</label>
           <input type="text" id="address" name="address" /><br />
 
-          <label for="city">City:</label>
+          <label for="city">Thành phố:</label>
           <input type="text" id="city" name="city" /><br />
 
-          <label for="number-phone">Number phone:</label>
-          <input type="text" id="number-phone" name="number-phone" /><br />
+          <label for="number-phone">Số điện thoại:</label>
+          <input type="text" id="number-phone" name="numberPhone" /><br />
+          <button type="submit">Place Order</button>
         </form>
       </div>
       <div class="product-container">
@@ -35,44 +36,36 @@
           <table class="table-product">
             <thead class="product-header">
               <tr>
-                <th class="name-column name-product">Product</th>
+                <th class="name-column name-product">Sản phẩm</th>
                 <th class="name-column quantity-product"></th>
-                <th class="name-column subtotal-product">Subtotal</th>
+                <th class="name-column subtotal-product">Tổng</th>
               </tr>
             </thead>
             <tbody class="product-body">
+              {{#each carts}}
               <tr class="item-product">
-                <td class="name">IPhone 14</td>
-                <td class="quantity">x 1</td>
-                <td class="price">30.000.000 VND</td>
+                <td class="name">{{productName}}</td>
+                <td class="quantity">x {{cartQuantity}}</td>
+                <td class="price">{{price}}</td>
               </tr>
-              <tr class="item-product">
-                <td class="name">IPhone13</td>
-                <td class="quantity">x 1</td>
-                <td class="price">35.000.000 VND</td>
-              </tr>
-              <tr class="item-product">
-                <td class="name">Z Flip 4</td>
-                <td class="quantity">x 1</td>
-                <td class="price">50.000.000 VND</td>
-              </tr>
+              {{/each}}
               <!-- thêm các hàng khác cho sản phẩm khác -->
             </tbody>
             <tfoot class="product-foot">
               <tr>
-                <td colspan="2" class="subtotal">Subtotal:</td>
+                <td colspan="2" class="subtotal">Tổng tiền:</td>
                 <td class="subtotal-price"></td>
               </tr>
               <tr>
-                <td colspan="2" class="total">Total:</td>
+                <td colspan="2" class="total">Tổng:</td>
                 <td class="total-price"></td>
               </tr>
             </tfoot>
           </table>
         </div>
         <div class="payment-method">
-          <h2 class="title-payment">Payment methods</h2>
-          <div class="payment-options">
+          <h2 class="title-payment">Phương thức thanh toán</h2>
+          <div  method="post" class="payment-options">
             <div class="payment-option">
               <input
                 type="radio"
@@ -81,7 +74,7 @@
                 value="cash-on-delivery"
                 checked
               />
-              <label for="cash-on-delivery">Payment on delivery</label>
+              <label for="cash-on-delivery">Thanh toán tiền mặt</label>
             </div>
             <div class="payment-option">
               <input
@@ -90,25 +83,9 @@
                 id="momo"
                 value="momo"
               />
-              <label for="momo">Payment via momo</label>
+              <label for="momo">Thanh toán qua VNPay</label>
             </div>
           </div>
-          <div class="momo-payment">
-            <!-- Phần tử chứa phương thức thanh toán qua Momo -->
-            <div class="momo-payment-details">
-              <p>Vui lòng chuyển khoản đến số tài khoản Momo sau:</p>
-              <p>Số điện thoại: 0123456789</p>
-              <p>Số tiền: <input type="number" /> đồng</p>
-              <p>Nội dung: <input type="text" /></p>
-            </div>
-          </div>
-        </div>
-        <div class="btn-placeOrder">
-          <form action="/paypal/pay" method="post">
-            <input type="submit" value="Place Order with PayPal" />
-          </form>
-          {{! <button id="place-order-button">Place Order</button> }}
-        </div>
       </div>
     </div>
   </section>

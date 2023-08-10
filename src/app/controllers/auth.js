@@ -40,8 +40,12 @@ exports.login = async (req, res) => {
     req.session.authUser = user;
 
     if (user.roleId === StaticData.AUTH.Role.admin) {
+      req.session.isManager = true;
+      req.session.isUser = false;
       return res.redirect("/Manager");
     } else if (user.roleId === StaticData.AUTH.Role.user) {
+      req.session.isManager = false;
+      req.session.isUser = true;
       return res.redirect("/Home");
     }
   } catch (e) {

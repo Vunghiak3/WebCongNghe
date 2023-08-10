@@ -1,5 +1,7 @@
 const paypal = require("paypal-rest-sdk");
-
+require("dotenv").config({
+  path: __dirname + "/./config/config.env",
+});
 paypal.configure({
   mode: "sandbox",
   client_id: process.env.CLIENT_ID,

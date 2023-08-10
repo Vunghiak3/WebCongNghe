@@ -6,11 +6,12 @@ const router = express.Router();
 
 router.post("/pay", async (req, res) => {
   // Pre-request Script
+  console.log(req.body);
   const return_url = "http://localhost:8080/Home";
   const cancel_url = "http://localhost:8080";
-  const item_name = req.body.item_name;
-  const item_sku = req.body.item_sku;
-  const item_price = req.body.item_price;
+  const item_name = "item1"; 
+  const item_sku = "itemsku"; 
+  const item_price = "10"; 
   const item_currency = "USD";
 
   // Set the JSON request body
@@ -84,7 +85,7 @@ router.get("/success", async (req, res) => {
 });
 
 router.get("/cancel", (req, res) => {
-  res.render("cancel", { title: "Payment Cancelled" });
+  res.redirect("/cart")
 });
 
 module.exports = router;

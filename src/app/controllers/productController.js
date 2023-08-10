@@ -139,8 +139,8 @@ exports.showDetailProductHandler = async (req, res) => {
     const imgs = await ProductDAO.getAllImgProductByIdProduct(id);
     product.imgs = imgs;
     product.price = product.price.toLocaleString("vi-VN") + " VND";
-    const sizes = await ProductOptionDAO.getOptionSizeById(id);
-    const colors = await ProductOptionDAO.getOptionColorById(id);
+    // const sizes = await ProductOptionDAO.getOptionSizeById(id);
+    // const colors = await ProductOptionDAO.getOptionColorById(id);
     if (!product) {
       res.send(`<h1>Can not find Product with id = ${id} </h1>`);
     } else {
@@ -149,8 +149,8 @@ exports.showDetailProductHandler = async (req, res) => {
         linkcss: "/css/product.css",
         linkjs: "/js/product.js",
         product,
-        sizes,
-        colors,
+        // sizes,
+        // colors,
       });
     }
   } catch (e) {
@@ -220,6 +220,7 @@ exports.createProductHandler = async (req, res) => {
       req.body.categoryName
     );
     req.body.categoryId = category.categoryId;
+    product.quantity = parseFloat(req.body.quantity);
     await ProductDAO.createNewProduct(product);
     // const newProduct = await ProductDAO.getProductByCreatedAt(
     // product.createdAt

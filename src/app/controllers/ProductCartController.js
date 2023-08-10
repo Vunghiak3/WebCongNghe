@@ -6,17 +6,14 @@ const bcrypt = require("bcryptjs");
 //Unchecked
 exports.deleteCartProductUser = async (req, res) => {
   try {
-    const productId = req.params.id * 1; //
-
-    let token = req.headers.authorization.split(" ")[1];
+    if (req.session.token && req.session.token.startsWith("Bearer")) {
+      token = req.session.token.split(" ")[1];
+    }
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const userId = decodedToken.id;
-
-    await ProductCartDAO.deleteUserProductCart(productId, userId);
-    return res.status(200).json({
-      code: 200,
-      msg: `Delete product in cart with ${id} successfully!`,
-    });
+    const cartId = req.params.id * 1;
+    await ProductCartDAO.deleteUserProductCart(cartId, userId);
+    res.redirect("/Cart");
   } catch (e) {
     console.error(e);
     res.status(500).json({
@@ -96,30 +93,88 @@ exports.checkCartById = async (req, res, next, val) => {
   next();
 };
 
+//check successfull
 exports.addCart = async (req, res) => {
   const cart = req.body;
-  cart.productId = req.params.id * 1;
+  try {
+    cart.productId = req.params.id * 1;
+    cart.quantity = parseFloat(cart.quantity);
+    let token;
+    if (req.session.token && req.session.token.startsWith("Bearer")) {
+      token = req.session.token.split(" ")[1];
+    }
+    if (!token) {
+      return res.redirect("/Account");
+    }
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    const currentUser = await UserDAO.getUser(payload.id);
+    if (!currentUser) {
+      return res.status(401).json({
+        code: 401,
+        msg: "Invalid authenication!",
+      });
+    }
+    cart.userId = currentUser.userId;
+    await ProductCartDAO.addCart(cart);
+    return res.redirect(`/Cart`);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
+  }
+};
+
+exports.showCart = async (req, res) => {
   let token;
   if (req.session.token && req.session.token.startsWith("Bearer")) {
     token = req.session.token.split(" ")[1];
   }
-  if (!token) {
-    return res.redirect("/Account");
-  }
-  const payload = jwt.verify(token, process.env.JWT_SECRET);
-  const currentUser = await UserDAO.getUser(payload.id);
-  if (!currentUser) {
-    return res.status(401).json({
-      code: 401,
-      msg: "Invalid authenication!",
+  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  const id = decodedToken.id;
+  try {
+    let carts = await ProductCartDAO.getAllCartByUserId(id);
+    await Promise.all(
+      carts.map(async (cart) => {
+        cart.price = cart.price.toLocaleString("vi-VN") + " VND";
+      })
+    );
+    res.render("cart", {
+      title: "Cart",
+      linkcss: "/css/cart.css",
+      linkjs: "/js/cart.js",
+      carts,
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
     });
   }
-  cart.userId = currentUser.userId;
-  console.log(
-    "🚀 ~ file: ProductCartController.js:116 ~ exports.addCart= ~ cart:",
-    cart
-  );
+};
+
+exports.showCheckout = async (req, res) => {
+  let token;
+  if (req.session.token && req.session.token.startsWith("Bearer")) {
+    token = req.session.token.split(" ")[1];
+  }
+  const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+  const id = decodedToken.id;
   try {
+    let carts = await ProductCartDAO.getAllCartByUserId(id);
+    await Promise.all(
+      carts.map(async (cart) => {
+        cart.price = cart.price.toLocaleString("vi-VN") + " VND";
+      })
+    );
+    res.render("checkout", {
+      title: "Checkout",
+      linkcss: "/css/checkout.css",
+      linkjs: "/js/checkout.js",
+      carts,
+    });
   } catch (e) {
     console.error(e);
     res.status(500).json({
