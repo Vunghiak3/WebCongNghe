@@ -55,6 +55,19 @@ app.use(async (req, res, next) => {
   next();
 });
 
+app.get("/OrderSuccess", (req, res) => {
+  res.render("orderSuccess", {
+    title: "Order Success",
+    linkcss: "/css/orderSuccess.css"
+  });
+});
+app.get("/OrderCancel", (req, res) => {
+  res.render("orderCancel", {
+    title: "Order Cancel",
+    linkcss: "/css/cancelOrder.css"
+  });
+});
+
 const paypalRouter = require("./routes/paypalRouter");
 const productRouter = require("./routes/product");
 const hometRouter = require("./routes/home");

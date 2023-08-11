@@ -7,8 +7,8 @@ const router = express.Router();
 router.post("/pay", async (req, res) => {
   // Pre-request Script
   console.log(req.body);
-  const return_url = "http://localhost:8080/Home";
-  const cancel_url = "http://localhost:8080";
+  const return_url = "http://localhost:8080/OrderSuccess";
+  const cancel_url = "http://localhost:8080/OrderCancel";
   const item_name = "item1"; 
   const item_sku = "itemsku"; 
   const item_price = "10"; 
