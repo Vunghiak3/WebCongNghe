@@ -1,0 +1,24 @@
+{{!< layouts/main}}
+<div class="order-list">
+    <h2>Order List</h2>
+    <table class="order-table">
+        <thead>
+            <tr>
+                <th>Order</th>
+                <th>Order ID</th>
+                <th>Total Amount</th>
+                <th>Order Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each orders}}
+                <tr>
+                    <td><i class="fa-solid fa-receipt"></i></td>
+                    <td>{{ this.orderId }}</td>
+                    <td>{{ this.totalAmount }}</td>
+                    <td>{{ this.orderStatus }}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

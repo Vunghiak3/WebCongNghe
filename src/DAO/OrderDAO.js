@@ -20,17 +20,17 @@ exports.getOrderByUserId = async (userId) => {
   }
   let request = dbConfig.db.pool.request();
   let result = await request
-    .input(
+  .input(
       OrderSchema.schema.userId.name,
       OrderSchema.schema.userId.sqlType,
       userId
-    )
-    .query(
+  )
+  .query(
       `SELECT * from ${OrderSchema.schemaName} 
-          where ${OrderSchema.schema.userId.name} =@${OrderSchema.schema.userId.name}`
-    );
-  let order = result.recordsets[0][0];
-  return order;
+      where ${OrderSchema.schema.userId.name} =@${OrderSchema.schema.userId.name}`
+  );
+let orders = result.recordsets[0];
+return orders;
 };
 //get order id
 exports.getOrderById = async (id) => {

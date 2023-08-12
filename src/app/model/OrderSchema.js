@@ -28,7 +28,7 @@ const OrderSchema = new ModelSchema(
     }),
     totalAmount: new ModelSchemaValidator({
       name: "totalAmount",
-      sqlType: sql.Money,
+      sqlType: sql.Float,
       require: true,
     }),
     createdAt: new ModelSchemaValidator({

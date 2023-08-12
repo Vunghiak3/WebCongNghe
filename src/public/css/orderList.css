@@ -1,0 +1,30 @@
+.order-list {
+    text-align: center;
+    padding: 2rem;
+}
+
+.order-list h2 {
+    margin-bottom: 1rem;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.order-table th,
+.order-table td {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+}
+
+.order-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.order-table img {
+    max-width: 100px;
+    height: auto;
+}

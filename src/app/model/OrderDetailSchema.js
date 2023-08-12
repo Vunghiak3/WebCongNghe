@@ -27,12 +27,12 @@ const OrderDetailSchema = new ModelSchema(
     }),
     price: new ModelSchemaValidator({
       name: "price",
-      sqlType: sql.Money,
+      sqlType: sql.Float,
       require: true,
     }),
     totalPrice: new ModelSchemaValidator({
       name: "totalPrice",
-      sqlType: sql.Money,
+      sqlType: sql.Float,
       require: true,
     }),
     createdAt: new ModelSchemaValidator({

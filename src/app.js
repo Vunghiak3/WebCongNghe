@@ -75,6 +75,7 @@ const accountRouter = require("./routes/account");
 const managerRouter = require("./routes/manager");
 const cartRouter = require("./routes/productCart");
 const checkRouter = require("./routes/checkout");
+const orderRouter = require("./routes/order");
 
 app.use("/Home", hometRouter);
 app.use("/Products", productRouter);
@@ -83,5 +84,6 @@ app.use("/Manager", managerRouter);
 app.use("/Cart", cartRouter);
 app.use("/Checkout", checkRouter);
 app.use("/paypal", paypalRouter);
+app.use("/Order", orderRouter)
 
 module.exports = app;
