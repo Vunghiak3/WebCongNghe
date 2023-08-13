@@ -69,7 +69,6 @@ exports.getAllUserOrder = async (req, res) => {
   }
 };
 
-
 exports.getAllOrder = async (req, res) => {
   try {
     let token = req.headers.authorization.split(" ")[1];
@@ -80,28 +79,6 @@ exports.getAllOrder = async (req, res) => {
       code: 200,
       msg: `Get user cart with ${userId} successfully!`,
       data: { order },
-    });
-  } catch (e) {
-    console.error(e);
-    res.status(500).json({
-      code: 500,
-      msg: e.toString(),
-    });
-  }
-};
-
-exports.updateOrderById = async (req, res) => {
-  try {
-    const id = req.params.id * 1;
-    const updateInfo = req.body;
-    await OrderDAO.updateOrderById(id, updateInfo);
-    const order = await OrderDAO.getOrderById(id);
-    return res.status(200).json({
-      code: 200,
-      msg: `Update order with id: ${id} successfully!`,
-      data: {
-        order,
-      },
     });
   } catch (e) {
     console.error(e);
@@ -129,5 +106,40 @@ exports.deleteOrderById = async (req, res) => {
     });
   }
 };
+//CREATE
+exports.createOrder = async (req, res) => {
+  const order = req.body;
+  try {
+    order.totalPrice = req.body.totalPrice;
+    req.body.shippingAddress = category.categoryId;
+    req.body.orderStatus = "Pending";
+    await OrderDAO.createNewOrder(order);
 
-//createOrder
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
+  }
+};
+
+//UPDATE
+exports.updateOrder = async (req, res) => {
+  try {
+    const id = req.params.id * 1;
+    req.body.price = parseFloat(req.body.price);
+    req.body.quantity = parseFloat(req.body.quantity);
+    const category = await ProductCategoriesDAO.getProductCategoryByName(
+      req.body.categoryName
+    );
+    req.body.categoryId = category.categoryId;
+    await OrderDAO.approvedOrder(id);
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({
+      code: 500,
+      msg: e.toString(),
+    });
+  }
+};

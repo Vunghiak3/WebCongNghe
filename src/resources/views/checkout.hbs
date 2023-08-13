@@ -21,13 +21,14 @@
           <input type="text" id="name" name="name" /><br />
 
           <label for="address">Địa chỉ:</label>
-          <input type="text" id="address" name="address" /><br />
+          <input type="text" id="shippingAddress" name="shippingAddress" /><br />
 
           <label for="city">Thành phố:</label>
           <input type="text" id="city" name="city" /><br />
 
           <label for="number-phone">Số điện thoại:</label>
           <input type="text" id="number-phone" name="numberPhone" /><br />
+           <input type="hidden" id="total-amount" name="totalAmount" value="{{ totalAmount }}" />
           <button type="submit">Place Order</button>
         </form>
       </div>
@@ -65,7 +66,7 @@
         </div>
         <div class="payment-method">
           <h2 class="title-payment">Phương thức thanh toán</h2>
-          <div  method="post" class="payment-options">
+          {{!-- <div  method="post" class="payment-options">
             <div class="payment-option">
               <input
                 type="radio"
@@ -75,7 +76,7 @@
                 checked
               />
               <label for="cash-on-delivery">Thanh toán tiền mặt</label>
-            </div>
+            </div> --}}
             <div class="payment-option">
               <input
                 type="radio"
@@ -83,7 +84,7 @@
                 id="momo"
                 value="momo"
               />
-              <label for="momo">Thanh toán qua VNPay</label>
+              <label for="momo">Thanh toán qua Paypal</label>
             </div>
           </div>
       </div>
@@ -112,3 +113,14 @@
     </div>
   </section>
 </main>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const totalElement = document.querySelector(".total-price");
+  const totalAmountInput = document.querySelector("#total-amount");
+
+  if (totalElement && totalAmountInput) {
+    const totalAmount = parseFloat(totalElement.textContent);
+    totalAmountInput.value = totalAmount.toFixed(2);
+  }
+});
+</script>

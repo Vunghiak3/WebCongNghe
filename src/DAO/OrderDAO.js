@@ -64,7 +64,7 @@ exports.deleteOrderById = async (id) => {
       id
     )
     .query(
-      `delete from ${OrderSchema.schemaName} where ${OrderSchema.schema.productId.name} = @${ProductSchema.schema.productId.name}`
+      `delete from ${OrderSchema.schemaName} where ${OrderSchema.schema.orderId.name} = @${ProductSchema.schema.orderId.name}`
     );
   return result.recordsets;
 };
@@ -95,12 +95,13 @@ exports.updateOrderById = async (id, updateInfo) => {
   let result = await request.query(query);
   return result.recordsets;
 };
-//createNewOder
+
+
 exports.createNewOrder = async (order) => {
   if (!dbConfig.db.pool) {
     throw new Error("Not connected to db!");
   }
-  if (!product) {
+  if (!order) {
     throw new Error("Invalid input params!");
   }
   const now = new Date();
@@ -118,4 +119,38 @@ exports.createNewOrder = async (order) => {
   query += " (" + insertFieldNamesStr + ") VALUES (" + insertValuesStr + ")";
   let result = await request.query(query);
   return result.recordsets;
+};
+
+exports.approvedOrder = async (id) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      OrderSchema.schema.orderId.name,
+      OrderSchema.schema.orderId.sqlType,
+      id
+    )
+    .query(
+      `UPDATE ${OrderSchema.schemaName} SET ${OrderSchema.schema.orderStatus.name} = 'Approved' WHERE ${OrderSchema.schema.orderId.name} = @${OrderSchema.schema.orderId.name}`
+    );
+  return result.recordsets;
+};
+
+exports.getnewestOrderByUser = async (id) => {
+  if (!dbConfig.db.pool) {
+    throw new Error("Not connected to db");
+  }
+  let request = dbConfig.db.pool.request();
+  let result = await request
+    .input(
+      OrderSchema.schema.userId.name,
+      OrderSchema.schema.userId.sqlType,
+      id
+    )
+    .query(
+      `SELECT TOP 1 * FROM ${OrderSchema.schemaName} WHERE ${OrderSchema.schema.userId.name} = @${OrderSchema.schema.userId.name} ORDER BY ${OrderSchema.schema.createdAt.name} DESC;`
+    );
+  return result.recordsets[0][0];
 };
