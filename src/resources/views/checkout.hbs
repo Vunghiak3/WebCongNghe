@@ -28,7 +28,7 @@
 
           <label for="number-phone">Số điện thoại:</label>
           <input type="text" id="number-phone" name="numberPhone" /><br />
-           <input type="hidden" id="total-amount" name="totalAmount" value="{{ totalAmount }}" />
+           <input type="hidden" id="totalAmount" name="totalAmount" value="{{ totalAmount }}" />
           <button type="submit">Place Order</button>
         </form>
       </div>
@@ -116,7 +116,7 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const totalElement = document.querySelector(".total-price");
-  const totalAmountInput = document.querySelector("#total-amount");
+  const totalAmountInput = document.querySelector("#totalAmount");
 
   if (totalElement && totalAmountInput) {
     const totalAmount = parseFloat(totalElement.textContent);

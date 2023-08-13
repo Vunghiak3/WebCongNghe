@@ -16,7 +16,7 @@ router.post("/pay", async (req, res) => {
     if (!token) {
       return res.redirect("/Account");
     }
-    
+    //create order
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     const currentUser = await UserDAO.getUser(payload.id);
     const { shippingAddress, totalAmount } = req.body;
@@ -25,7 +25,7 @@ router.post("/pay", async (req, res) => {
       userId: currentUser.userId,
       shippingAddress,
       orderStatus: "Pending",
-      totalAmount: 10000,
+      totalAmount: parseFloat(totalAmount),
     };
     
     await OrderDAO.createNewOrder(order);
@@ -35,7 +35,7 @@ router.post("/pay", async (req, res) => {
     const cancel_url = "http://localhost:8080/paypal/cancel";
     const item_name = "item1";
     const item_sku = "itemsku";
-    const item_price = 10000; // Use the total amount from the form
+    const item_price = parseFloat(totalAmount); // Use the total amount from the form
     const item_currency = "USD";
 
     const create_payment_json = {
@@ -68,7 +68,8 @@ router.post("/pay", async (req, res) => {
         },
       ],
     };
-
+    req.session.totalAmount = totalAmount; //totalAmount
+    // Redirect to PayPal for payment
     const approvalUrl = await PaypalDAO.createPayment(create_payment_json);
     res.redirect(approvalUrl);
   } catch (error) {
@@ -79,6 +80,7 @@ router.post("/pay", async (req, res) => {
 router.get("/success", async (req, res) => {
   const payerId = req.query.PayerID;
   const paymentId = req.query.paymentId;
+  const totalAmount = req.session.totalAmount; //totalAmount
   let token;
   if (req.session.token && req.session.token.startsWith("Bearer")) {
     token = req.session.token.split(" ")[1];
@@ -99,7 +101,7 @@ router.get("/success", async (req, res) => {
       {
         amount: {
           currency: "USD",
-          total: "10000",
+          total: totalAmount,
         },
       },
     ],
